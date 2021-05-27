@@ -10,7 +10,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Excon</title>
+
+    <title><?= $judul ?></title>
+
     <link rel="icon" href="<?= base_url(); ?>assets/frontend/img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/bootstrap.min.css">
@@ -38,7 +40,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"> <img style="width: 190px; height: 60px;" src="<?= base_url(); ?>assets/frontend/img/logo/1.png" alt="logo"> </a>
+                        <a class="navbar-brand" href="index.html"> <img style="width: 190px; height: 60px;" src="<?= base_url(); ?>assets/frontend/img/upload/logo/1.png" alt="logo"> </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="ti-menu"></span>
                         </button>

@@ -1,11 +1,11 @@
-<section class="banner_part" style="background-image: url(<?= base_url(); ?>assets/frontend/img/banner_img.png);">
+<section class="banner_part" style="background-image: url(<?= base_url(); ?>assets/frontend/img/upload/hero/<?= $foto_h ?>);">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 col-xl-6">
                 <div class="banner_text">
                     <div class="banner_text_iner">
-                        <h1>Berkomitmen Untuk <span>Kualitas </span> Dan Hasil Yang Unggul</h1>
-                        <p>Moving male there under air air beast lesser creeping saying wherein two void can' ness saw set meat our. Whose give day. Morning own fifth from Were moved darkness. Female bring abundantly and research </p>
+                        <h1><span>Berkomitmen </span><?= $tittle ?></h1>
+                        <p><?= $deskripsi ?></p>
                         <a href="#" class="btn_1">View project </a>
                     </div>
                 </div>
@@ -21,13 +21,13 @@
         <div class="row align-items-center justify-content-between">
             <div class="col-md-6 col-lg-6">
                 <div class="about_part_img">
-                    <img src="<?= base_url(); ?>assets/frontend/img/about_part_img.png" alt="">
+                    <img src="<?= base_url(); ?>assets/frontend/img/upload/profile/<?= $foto ?>" alt="">
                 </div>
             </div>
             <div class="col-md-6 col-lg-5">
                 <div class="about_part_text">
                     <h2>Rancang Impian Anda Bersama Kami</h2>
-                    <p>Which cattle fruitful he fly visi won't let above lesser stars. Fly form wonder every let third form two air seas after us said day won light also together midst two female she great to open.</p>
+                    <p><?= $keterangan_p ?></p>
                     <ul>
                         <li>
                             <span class="flaticon-drop"></span>
@@ -103,7 +103,7 @@
         <div class="row align-items-center justify-content-between">
             <div class="col-md-6 col-lg-6">
                 <div class="about_part_text">
-                    <h2>Kami Berpengalaman dalam Pengelasan</h2>
+                    <h2>Kami Berpengalaman dalam Pengerjaan</h2>
                     <p>Their whose made waters there our, air above first give dry fruit that second whose herb creeping it us light spirit appear mans. So green abundantly She'd. Greater divide dry bearing years ourends herb upon which open lights had blessed replenish Cattle give his. Abundantly over saying which beast dominion multiply behold to wateo.</p>
                     <div class="about_text_iner">
                         <div class="about_text_counter">
@@ -131,64 +131,37 @@
         <div class="row justify-content-between">
             <div class="col-lg-5 col-sm-10">
                 <div class="section_tittle">
-                    <h2>PROYEK KAMI</h2>
+                    <h2>PRODUK KAMI</h2>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-10">
-                <div class="filters portfolio-filter project_menu_item">
-                    <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".buildings">Buildings</li>
-                        <li data-filter=".rebuild">Rebuild</li>
-                        <li data-filter=".architecture">Architecture</li>
-                    </ul>
-                </div>
-            </div>
+
         </div>
         <div class="filters-content">
             <div class="row justify-content-between portfolio-grid">
-                <div class="col-lg-4 col-sm-6 all buildings">
-                    <div class="single_our_project">
-                        <div class="single_offer">
-                            <img src="<?= base_url(); ?>assets/frontend/img/project_1.png" alt="offer_img_1">
-                            <div class="hover_text">
-                                <p>Bank Protected</p>
-                                <a href="#">
-                                    <h2>Banking & Finance</h2>
-                                </a>
+
+                <?php foreach ($produk as $p) : ?>
+
+                    <div class="col-lg-4 col-sm-6 mb-4 all buildings">
+                        <div class="single_our_project">
+                            <div class="single_offer">
+                                <img src="<?= base_url(); ?>assets/frontend/img/project_1.png" alt="offer_img_1">
+                                <div class="hover_text">
+                                    <p><?= $p['nama_p'] ?></p>
+                                    <a href="#" class="btn_1">View project </a>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 all rebuild">
-                    <div class="single_our_project">
-                        <div class="single_offer">
-                            <img src="<?= base_url(); ?>assets/frontend/img/project_2.png" alt="offer_img_1">
-                            <div class="hover_text">
-                                <p>Bank Protected</p>
-                                <a href="#">
-                                    <h2>Banking & Finance</h2>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 all architecture">
-                    <div class="single_our_project">
-                        <div class="single_offer">
-                            <img src="<?= base_url(); ?>assets/frontend/img/project_3.png" alt="offer_img_1">
-                            <div class="hover_text">
-                                <p>Bank Protected</p>
-                                <a href="#">
-                                    <h2>Banking & Finance</h2>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                <?php endforeach ?>
+
+
             </div>
         </div>
     </div>
+
+
 </section>
 <!-- our_project part end-->
 
@@ -249,13 +222,19 @@
             </div>
             <div class="col-lg-6 col-sm-12">
                 <div class="review_part_cotent owl-carousel">
-                    <div class="single_review_part">
-                        <img src="<?= base_url(); ?>assets/frontend/img/client/client_2.png" alt="">
-                        <div class="tour_pack_content">
-                            <p>Life open fifth midst lesser place light after unto move that make had void and whales. So after void called whose were cattle fourth seed Image yielding is given every own tree Image</p>
-                            <h4>Sawpalo, Brasil</h4>
+
+                    <?php foreach ($testimoni as $testi) : ?>
+
+                        <div class="single_review_part">
+                            <img src="<?= base_url(); ?>assets/frontend/img/client/<?= $testi['foto'] ?>" alt="">
+                            <div class="tour_pack_content">
+                                <p><?= $testi['testimoni'] ?></p>
+                                <h4><?= $testi['nama'] ?></h4>
+                            </div>
                         </div>
-                    </div>
+
+                    <?php endforeach ?>
+
                     <div class="single_review_part">
                         <img src="<?= base_url(); ?>assets/frontend/img/client/client_1.png" alt="">
                         <div class="tour_pack_content">

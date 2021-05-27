@@ -3,7 +3,7 @@
         <div class="row justify-content-between">
             <div class="col-sm-6 col-md-4 col-xl-3">
                 <div class="single-footer-widget footer_1">
-                    <a href="index.html"> <img src="<?= base_url(); ?>assets/frontend/img/logo/1.png" alt=""> </a>
+                    <a href="index.html"> <img src="<?= base_url(); ?>assets/frontend/img/upload/logo/<?= $logo ?>" alt=""> </a>
                     <p>So seed seed green that winged cattle in Gahesd thing made fly you're no divided deep move lan Gathering thing us land years living on floor me the cavaty do buty fresh</p>
                 </div>
             </div>
@@ -50,11 +50,11 @@
                 <div class="single-footer-widget footer_2">
                     <h4>Contact info</h4>
                     <div class="contact_info">
-                        <p>4361 Morningview Lane Artland , Street
-                            Latimer, IA 50452 / 23654</p>
+                        <p><?= $alamat ?></p>
                         <p><span> Address :</span> Hath of it fly signs bear be one blessed after </p>
-                        <p><span> Phone :</span> +2 36 265 (8060)</p>
-                        <p><span> Email : </span>info@colorlib.com </p>
+                        <p><span> Phone :</span> +62 <?= $telpon ?></p>
+                        <p><span> Phone :</span> +62 <?= $telpon2 ?></p>
+                        <p><span> Email : </span> <?= $email ?> </p>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com/" target="_blank">Colorlib</a>
+                                </script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com/" target="_blank">AnbomekerDev</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
