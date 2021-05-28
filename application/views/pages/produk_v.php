@@ -15,18 +15,7 @@
     </div>
 </section>
 
-<section class="our_service section_padding single_page_services">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-5">
-                <div class="section_tittle">
-                    <h2>our services</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
+
 <style>
     .main-section {
         margin-top: 20px;
@@ -134,7 +123,7 @@
                                 <div class="col-lg-12 pb-2">
                                     <div class="row" style="justify-content: center;">
                                         <div class="col-lg-6">
-                                            <a href="#" class="btn btn-danger btn-block btn-sm">VIEW PRODUK</a>
+                                            <a href="<?= base_url(); ?>produk/detailproduk" class="btn btn-danger btn-block btn-sm">VIEW PRODUK</a>
                                         </div>
 
                                     </div>
@@ -148,4 +137,24 @@
             </div>
         </div>
     </div>
+    <nav class="blog-pagination justify-content-center d-flex">
+        <ul class="pagination">
+            <li class="page-item">
+                <a href="#" class="page-link" aria-label="Previous">
+                    <i class="ti-angle-left"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link">1</a>
+            </li>
+            <li class="page-item active">
+                <a href="#" class="page-link">2</a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link" aria-label="Next">
+                    <i class="ti-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </section>
