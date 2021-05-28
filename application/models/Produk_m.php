@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home_m extends CI_Model
+class Produk_m extends CI_Model
 {
 
     public function get_profile($varams)
@@ -13,14 +13,7 @@ class Home_m extends CI_Model
         return $data;
     }
 
-    public function get_hero_f($f_hero)
-    {
-        $query = $this->db->get('set_hero')->row();
-        // $result = $query;
-        $data = $query->$f_hero;
 
-        return $data;
-    }
 
 
 
@@ -41,25 +34,6 @@ class Home_m extends CI_Model
                 'spesifikasi' => $row->spesifikasi,
                 'deskripsi' => $row->deskripsi,
                 'harga' => $row->harga,
-
-
-            );
-        }
-        return $data;
-    }
-
-    public function get_testimoni()
-    {
-        $query = $this->db->query('select * from testimoni');
-
-        $data = array();
-        foreach ($query->result() as $row) {
-            $data[] = array(
-                'id_testi' => $row->id_testi,
-                'nama' => $row->nama,
-                'testimoni' => $row->testimoni,
-                'foto' => $row->foto,
-
             );
         }
         return $data;

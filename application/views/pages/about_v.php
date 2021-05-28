@@ -28,21 +28,9 @@
             </div>
             <div class="col-md-6 col-lg-5">
                 <div class="about_part_text">
-                    <h2>Engineering Your
-                        Dreams With Us</h2>
-                    <p>Which cattle fruitful he fly visi won't let above lesser stars. Fly form wonder every let third form two air seas after us said day won light also together midst two female she great to open.</p>
-                    <ul>
-                        <li>
-                            <span class="flaticon-drop"></span>
-                            <h3>Certified Company</h3>
-                            <p>Be man air male shall under create light together grass fly dat also also his brought itself air abundantly </p>
-                        </li>
-                        <li>
-                            <span class="flaticon-ui"></span>
-                            <h3>Experience Employee</h3>
-                            <p>Be man air male shall under create light together grass fly do also also his brought itself air abundantly </p>
-                        </li>
-                    </ul>
+                    <h2>Rancang Impian Anda Bersama Kami</h2>
+                    <p><?= $deskripsi->deskripsi ?></p>
+
                 </div>
             </div>
         </div>

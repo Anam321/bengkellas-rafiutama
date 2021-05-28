@@ -54,7 +54,7 @@
                                     <a class="nav-link" href="<?= base_url('about'); ?>">ABOUT</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?= base_url('product'); ?>">PRODUCT</a>
+                                    <a class="nav-link" href="<?= base_url('produk'); ?>">PRODUCT</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?= base_url('blog'); ?>">BLOG</a>
