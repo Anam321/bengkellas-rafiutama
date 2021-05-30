@@ -24,7 +24,7 @@ class Home_m extends CI_Model
 
 
 
-    public function get_produk()
+    public function get_produk($limit, $start)
     {
         $query = $this->db->query('select * from ref_produk');
 
@@ -46,6 +46,11 @@ class Home_m extends CI_Model
             );
         }
         return $data;
+    }
+
+    public function get_produkLimit($limit, $start)
+    {
+        return $this->db->get('ref_produk', $limit, $start)->result_array();
     }
 
     public function get_testimoni()

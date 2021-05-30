@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller
+class Contact extends CI_Controller
 {
 
     public function __construct()
@@ -28,19 +28,19 @@ class Home extends CI_Controller
 
             // konten
 
-            'keterangan_p' => $this->home->get_profile('keterangan_perusahaan'),
-            'foto_h' => $this->home->get_hero_f('foto'),
-            'foto' => $this->home->get_profile('foto'),
+            // 'keterangan_p' => $this->home->get_profile('keterangan_perusahaan'),
+            // 'foto_h' => $this->home->get_hero_f('foto'),
+            // 'foto' => $this->home->get_profile('foto'),
 
-            'produk' => $this->home->get_produkLimit(3, 0),
+            // 'produk' => $this->home->get_produk(),
 
-            // 'projek' => $this->home->get_projek(),
-            // 'hero' => $this->home->get_hero(),
-            'testimoni' => $this->home->get_testimoni(),
+            // // 'projek' => $this->home->get_projek(),
+            // // 'hero' => $this->home->get_hero(),
+            // 'testimoni' => $this->home->get_testimoni(),
         ];
 
         $this->load->view('layout/header', $data);
-        $this->load->view('pages/home_v', $data);
+        $this->load->view('pages/contact_v');
         $this->load->view('layout/footer', $data);
     }
 }

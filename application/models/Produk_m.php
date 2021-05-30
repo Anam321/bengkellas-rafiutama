@@ -14,9 +14,6 @@ class Produk_m extends CI_Model
     }
 
 
-
-
-
     public function get_produk()
     {
         $query = $this->db->query('select * from ref_produk');
@@ -34,8 +31,19 @@ class Produk_m extends CI_Model
                 'spesifikasi' => $row->spesifikasi,
                 'deskripsi' => $row->deskripsi,
                 'harga' => $row->harga,
+                'foto' => $row->foto,
             );
         }
         return $data;
+    }
+
+    public function get_produkLimit($limit, $start)
+    {
+        return $this->db->get('ref_produk', $limit, $start)->result_array();
+    }
+
+    public function get_countProdukLimit()
+    {
+        return $this->db->get('ref_produk')->num_rows();
     }
 }

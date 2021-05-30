@@ -3,7 +3,7 @@
         <div class="row align-items-center justify-content-between">
             <div class="col-sm-6">
                 <div class="breadcrumb_tittle text-left">
-                    <h2>services</h2>
+                    <h2>Produk</h2>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -70,16 +70,16 @@
         <div class="row justify-content-between">
             <div class="col-lg-5 col-sm-10">
                 <div class="section_tittle">
-                    <h2>Our Projects</h2>
+                    <h2>Our Produk</h2>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-10">
                 <div class="filters portfolio-filter project_menu_item">
                     <ul>
                         <li class="active" data-filter="*">All</li>
-                        <li data-filter=".buildings">Buildings</li>
-                        <li data-filter=".rebuild">Rebuild</li>
-                        <li data-filter=".architecture">Architecture</li>
+                        <li data-filter=".K_las">Kontruksi Las</li>
+                        <li data-filter=".Gorden">Gorden</li>
+
                     </ul>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                         <div class="section border bg-white rounded p-2">
                             <div class="row">
                                 <div class="col-lg-12 img-section">
-                                    <img src="<?= base_url(); ?>assets/frontend/img/project_1.png" class="p-0 m-0 res-ponsive">
+                                    <img src="<?= base_url(); ?>assets/frontend/img/<?= $p['foto'] ?>" class="p-0 m-0 res-ponsive">
                                     <!--Ganti Gambar Sendiri/ Script PHP Produk-->
                                     <span class="badge badge-danger add-sens p-2 rounded-0">NOW</span>
                                 </div>
@@ -103,7 +103,7 @@
                                 <div class="col-lg-12">
                                     <div class="row">
                                         <div class="col-lg-2">
-                                            <span class="badge badge-success p-2">Rp 300.000</span>
+                                            <span class="badge badge-success p-2">Rp <?= $p['harga'] ?></span>
                                         </div>
                                         <div class="col-lg-10 text-right">
                                             <span><i class="fas fa-star"></i></span>
@@ -137,7 +137,10 @@
             </div>
         </div>
     </div>
-    <nav class="blog-pagination justify-content-center d-flex">
+
+    <?php echo $this->pagination->create_links(); ?>
+
+    <!-- <nav class="blog-pagination justify-content-center d-flex">
         <ul class="pagination">
             <li class="page-item">
                 <a href="#" class="page-link" aria-label="Previous">
@@ -156,5 +159,5 @@
                 </a>
             </li>
         </ul>
-    </nav>
+    </nav> -->
 </section>
