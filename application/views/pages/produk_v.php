@@ -89,7 +89,7 @@
 
                 <?php foreach ($produk as $p) : ?>
 
-                    <div class="col-lg-3 mb-4 col-sm-6 all <?= $p['filter'] ?>">
+                    <div class="col-lg-3 mb-5 col-sm-6 all <?= $p['filter'] ?>">
                         <div class="section border bg-white rounded p-2">
                             <div class="row">
                                 <div class="col-lg-12 img-section">
@@ -115,15 +115,15 @@
                                     </div>
                                     <hr>
                                 </div>
-                                <div class="col-lg-12 section-detail">
+                                <!-- <div class="col-lg-12 section-detail">
                                     <p class="ml-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                         tempor.</p>
                                     <hr>
-                                </div>
+                                </div> -->
                                 <div class="col-lg-12 pb-2">
                                     <div class="row" style="justify-content: center;">
                                         <div class="col-lg-6">
-                                            <a href="<?= base_url(); ?>produk/detailproduk" class="btn btn-danger btn-block btn-sm">VIEW PRODUK</a>
+                                            <a href="<?= base_url(); ?>produk/produk_detail" class="btn btn-danger btn-block btn-sm">VIEW PRODUK</a>
                                         </div>
 
                                     </div>
@@ -138,26 +138,7 @@
         </div>
     </div>
 
-    <?php echo $this->pagination->create_links(); ?>
+    <?php echo $paging ?>
 
-    <!-- <nav class="blog-pagination justify-content-center d-flex">
-        <ul class="pagination">
-            <li class="page-item">
-                <a href="#" class="page-link" aria-label="Previous">
-                    <i class="ti-angle-left"></i>
-                </a>
-            </li>
-            <li class="page-item">
-                <a href="#" class="page-link">1</a>
-            </li>
-            <li class="page-item active">
-                <a href="#" class="page-link">2</a>
-            </li>
-            <li class="page-item">
-                <a href="#" class="page-link" aria-label="Next">
-                    <i class="ti-angle-right"></i>
-                </a>
-            </li>
-        </ul>
-    </nav> -->
+
 </section>
