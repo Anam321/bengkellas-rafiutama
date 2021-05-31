@@ -123,7 +123,7 @@
                                 <div class="col-lg-12 pb-2">
                                     <div class="row" style="justify-content: center;">
                                         <div class="col-lg-6">
-                                            <a href="<?= base_url(); ?>produk/produk_detail" class="btn btn-danger btn-block btn-sm">VIEW PRODUK</a>
+                                            <a href="<?= base_url('produk/produk_detail/'); ?><?= $p['slug'] ?>" class="btn btn-danger btn-block btn-sm">VIEW PRODUK</a>
                                         </div>
 
                                     </div>

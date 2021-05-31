@@ -90,28 +90,31 @@ class Produk extends CI_Controller
 
     public function produk_detail($slug)
     {
-        $produk = $this->produk->get_kategori_by_slug($slug);
-        $kat = $produk['kategori'];
-        $idkat = $produk['id_kategori'];
+
+        $produk = $this->produk->get_produk_by_slug($slug);
+
+
 
         $data = [
-            'judul' => 'Jasa Pembuatan & Pemasangan ' . $kat,
-            // Seo Setting
-
-            'logo' => $this->produk->get_profile('logo'),
-
-
+            //title Page
+            'judul' => 'Jasa Pembuatan & Pemasangan ',
+            'perusahaan' => $this->produk->get_profile('nama_perusahaan'),
             'telpon' => $this->produk->get_profile('no_telpon'),
             'telpon2' => $this->produk->get_profile('no_telpon2'),
             'email' => $this->produk->get_profile('email'),
             'alamat' => $this->produk->get_profile('alamat'),
-            // Content
+            'logo' => $this->produk->get_profile('logo'),
+
+            // konten
+
             'produk' => $produk,
-            'produk_detail' => $this->pages->get_produk_detail($idkat),
+
+
 
         ];
+
         $this->load->view('layout/header', $data);
-        $this->load->view('pages/produk_detail_v', $data);
+        $this->load->view('pages/d_produk_v', $data);
         $this->load->view('layout/footer', $data);
     }
 }

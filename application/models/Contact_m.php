@@ -4,6 +4,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Contact_m extends CI_Model
 {
 
+
+    // SET DATA HEADER AND FOOTER
+
     public function get_profile($varams)
     {
         $query = $this->db->get('set_profile')->row();
@@ -12,6 +15,14 @@ class Contact_m extends CI_Model
 
         return $data;
     }
+
+    //  END SET DATA HEADER AND FOOTER
+
+
+
+    // SET DATA CONTACT
+
+
     public function submitContact($data)
     {
         // var_dump($data);

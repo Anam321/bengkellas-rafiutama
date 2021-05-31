@@ -8,6 +8,7 @@ class Contact extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Contact_m', 'kontak');
+        $this->load->library('form_validation');
     }
     public function index()
     {
@@ -26,25 +27,13 @@ class Contact extends CI_Controller
             'tittle' => $this->kontak->get_profile('tittle'),
             'deskripsi' => $this->kontak->get_profile('deskripsi'),
 
-            // konten
-
-            // 'keterangan_p' => $this->kontak->get_profile('keterangan_perusahaan'),
-            // 'foto_h' => $this->kontak->get_hero_f('foto'),
-            // 'foto' => $this->kontak->get_profile('foto'),
-
-            // 'produk' => $this->kontak->get_produk(),
-
-            // // 'projek' => $this->home->get_projek(),
-            // // 'hero' => $this->home->get_hero(),
-            // 'testimoni' => $this->home->get_testimoni(),
         ];
 
         $this->load->view('layout/header', $data);
         $this->load->view('pages/contact_v', $data);
         $this->load->view('layout/footer', $data);
     }
-
-    public function submitContact()
+    public function inputContact()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nama = $this->input->post('nama');

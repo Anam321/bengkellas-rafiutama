@@ -67,7 +67,7 @@
              </div>
              <div class="col-lg-8">
 
-                 <form class="form-contact contact_form" action="<?= base_url('contact') ?>" method="post" novalidate="novalidate">
+                 <form class="form-contact contact_form" action="<?= base_url('contact/inputcontact') ?>" method="post" novalidate="novalidate">
                      <div class="row">
                          <div class="col-12">
                              <div class="form-group">

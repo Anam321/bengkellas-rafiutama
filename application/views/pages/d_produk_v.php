@@ -231,7 +231,7 @@
         <div class="row">
             <div class="col-xl-5">
                 <div class="section_tittle">
-                    <h2>Detail Produk</h2>
+                    <h2><?= $produk['kategori'] ?></h2>
                 </div>
             </div>
         </div>
@@ -239,6 +239,7 @@
         <div class="container-fliud">
             <div class="blog_details">
                 <div class="wrapper row">
+
 
 
 
@@ -252,6 +253,7 @@
                                 <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
                                 <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div> -->
                         </div>
+
                         <ul class="preview-thumbnail nav nav-tabs">
                             <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
                             <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
@@ -262,7 +264,7 @@
 
                     </div>
                     <div class="details col-md-6">
-                        <h3 class="product-title"><?= $produk['kategori'] ?></h3>
+                        <h3 class="product-title"></h3>
                         <div class="rating">
                             <div class="stars">
                                 <span class="fa fa-star checked"></span>
@@ -271,10 +273,11 @@
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
                             </div>
+                            <h2><?= $produk['slug'] ?></h2>
                             <span class="review-no">41 reviews</span>
                         </div>
-                        <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-                        <h4 class="price">current price: <span>$180</span></h4>
+                        <p class="product-description"><?= $produk['keterangan'] ?></p>
+                        <h4 class="price">current price: <span>Rp. <?= $produk['harga'] ?></span></h4>
                         <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
                         <h5 class="sizes">sizes:
                             <span class="size" data-toggle="tooltip" title="small">s</span>
@@ -288,8 +291,8 @@
                             <span class="color blue"></span>
                         </h5>
                         <div class="action">
-                            <button class="add-to-cart btn btn-default" type="button">add to cart</button>
-                            <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                            <button class="add-to-cart btn btn-default" type="button">Order sekarang</button>
+                            <button class="add-to-cart btn btn-danger" style="background:blue;" type="button">Produk Lain</button>
 
                         </div>
                     </div>
@@ -321,7 +324,7 @@
                                         <h6 style="color: #5c5959c7;">Kategori</h6 style="color: #5c5959c7;">
                                     </td>
                                     <td style="padding-left: 70px;">
-                                        Gorden
+                                        <?= $produk['kategori'] ?>
                                     </td>
 
                                 </tr>
@@ -330,7 +333,7 @@
                                         <h6 style="color: #5c5959c7;">Bahan</h6 style="color: #5c5959c7;">
                                     </td>
                                     <td style="padding-top: 20px; padding-left: 70px;">
-                                        Rnull null nullnull
+                                        <?= $produk['bahan'] ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -338,7 +341,7 @@
                                         <h6 style="color: #5c5959c7;">Pembuatan</h6 style="color: #5c5959c7;">
                                     </td>
                                     <td style="padding-top: 20px; padding-left: 70px;">
-                                        Hari
+                                        <?= $produk['pembuatan'] ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -346,7 +349,7 @@
                                         <h6 style="color: #5c5959c7;">Pemasangan</h6 style="color: #5c5959c7;">
                                     </td>
                                     <td style="padding-top: 20px; padding-left: 70px;">
-                                        Hari
+                                        <?= $produk['pemasangan'] ?>
                                     </td>
                                 </tr>
                             </table>
@@ -364,7 +367,7 @@
                                 <tr>
                                     <td>
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo enim aut voluptates amet animi excepturi obcaecati maxime fugiat, laudantium asperiores magnam eaque accusantium saepe consequatur quam deleniti ab alias voluptatem adipisci molestiae. Explicabo nesciunt tempora commodi consequuntur ex optio suscipit cupiditate quos placeat, accusantium libero, sequi doloremque eveniet nisi qui!
+                                            <?= $produk['deskripsi'] ?>
                                         </p>
                                     </td>
                                 </tr>
