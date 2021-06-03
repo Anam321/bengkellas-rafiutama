@@ -1,0 +1,5 @@
+/* put your own styles to customize and override the theme */
+.app-header-dark {
+    background-color: #A41726;
+    color: hsla(0,0%,100%,.8);
+}

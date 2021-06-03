@@ -90,6 +90,7 @@
                                  <input class="form-control" name="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder='Enter Subject'>
                              </div>
                          </div>
+
                      </div>
                      <div class="form-group mt-3">
                          <button type="submit" class="button button-contactForm btn_1">Send Message</button>

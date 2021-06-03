@@ -37,11 +37,11 @@ class Auth extends CI_Controller
                     'role_id' => $user['role_id'],
                 ];
                 $this->session->set_userdata($data);
-                redirect('admin/dashbord');
+                redirect('admin/dashboard');
             } else {
 
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-  Login gagal, silahkan cek email dan password !.</div>');
+  Login gagal, password tidakk valid !.</div>');
                 redirect('admin/auth');
             }
         } else {
@@ -50,4 +50,43 @@ class Auth extends CI_Controller
             redirect('admin/auth');
         }
     }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role_id');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+  A simple success alert—check it out!
+</div>');
+        redirect('admin/auth');
+    }
+
+    //     public function registrasi()
+    //     {
+
+
+    //         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+    //         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[8]|matches[password2]');
+    //         $this->form_validation->set_rules('password2', 'Password2', 'required|trim|matches[password]');
+
+
+    //         if ($this->form_validation->run() == false) {
+
+    //             $this->load->view('admin/regist');
+    //         } else {
+    //             $data = [
+
+    //                 'email' => htmlspecialchars($this->input->post('email', true)),
+    //                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+    //                 'role_id' => 2,
+    //                 'is_active' => 1,
+
+    //             ];
+    //             $this->db->insert('user', $data);
+    //             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+    //   A simple success alert—check it out!
+    // </div>');
+    //             redirect('admin/auth');
+    //         }
+    //     }
 }
