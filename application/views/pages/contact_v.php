@@ -62,32 +62,46 @@
 
 
          <div class="row">
+
+
+             <div class="falsh-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+             <?php if ($this->session->flashdata('flash')) : ?>
+
+                 <!-- <div class="alert alert-warning alert-success fade show" role="alert">
+                     <strong>Holy guacamole!</strong> <?= $this->session->flashdata('flash'); ?>
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                 </div> -->
+
+             <?php endif; ?>
+
+
              <div class="col-12">
                  <h2 class="contact-title">Get in Touch</h2>
              </div>
              <div class="col-lg-8">
 
-                 <form class="form-contact contact_form" action="<?= base_url('contact/inputcontact') ?>" method="post" novalidate="novalidate">
+                 <?= validation_errors() ?>
+                 <form class="form-contact contact_form" action="<?= base_url('contact'); ?>" method="post" novalidate="novalidate">
                      <div class="row">
                          <div class="col-12">
                              <div class="form-group">
 
-                                 <textarea class="form-control w-100" name="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder='Enter Message'></textarea>
+                                 <textarea class="form-control w-100" id="message" name="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder='Enter Message' required></textarea>
                              </div>
                          </div>
                          <div class="col-sm-6">
                              <div class="form-group">
-                                 <input class="form-control" name="nama" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='Enter your name'>
+                                 <input class="form-control" id="nama" name="nama" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='Enter your name'>
                              </div>
                          </div>
                          <div class="col-sm-6">
                              <div class="form-group">
-                                 <input class="form-control" name="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder='Enter email address'>
+                                 <input class="form-control" id="email" name="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder='Enter email address'>
                              </div>
                          </div>
                          <div class="col-12">
                              <div class="form-group">
-                                 <input class="form-control" name="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder='Enter Subject'>
+                                 <input class="form-control" id="subject" name="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder='Enter Subject'>
                              </div>
                          </div>
 
@@ -97,6 +111,13 @@
                      </div>
                  </form>
              </div>
+
+
+
+
+
+
+
 
              <div class="col-lg-4">
                  <div class="media contact-info">

@@ -85,7 +85,9 @@
 
 <!-- jquery plugins here-->
 <!-- jquery -->
+<script src="<?= base_url(); ?>assets/frontend/dist/sweetalert2.all.min.js"></script>
 <script src="<?= base_url(); ?>assets/frontend/js/jquery-1.12.1.min.js"></script>
+<script src="<?= base_url(); ?>assets/frontend/js/myscript.js"></script>
 <!-- popper js -->
 <script src="<?= base_url(); ?>assets/frontend/js/popper.min.js"></script>
 <!-- bootstrap js -->

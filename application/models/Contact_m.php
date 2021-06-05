@@ -23,20 +23,15 @@ class Contact_m extends CI_Model
     // SET DATA CONTACT
 
 
-    public function submitContact($data)
+    public function submitContact()
     {
-        // var_dump($data);
-        $r = $this->db->insert('set_contact', $data);
+        $data = [
+            "message" => $this->input->post('message', true),
+            "nama" => $this->input->post('nama', true),
+            "email" => $this->input->post('email', true),
+            "subject" => $this->input->post('subject', true),
+        ];
 
-        if ($r) {
-            $res['status'] = '00';
-            $res['type'] = 'success';
-            $res['mess'] = 'Terimakasih Sudah Memberi Testimoni';
-        } else {
-            $res['status'] = '01';
-            $res['type'] = 'error';
-            $res['mess'] = 'Gagal Simpan Data';
-        }
-        return $res;
+        $this->db->insert('set_contact', $data);
     }
 }

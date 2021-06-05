@@ -7,40 +7,114 @@ class Blog extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Home_m', 'home');
+        $this->load->model('Blog_m', 'blog');
     }
     public function index()
     {
-        // $this->load->model('Home_m');
-        // $data = $this->Home_m->proyek()->result();
-        // var_dump($data);
+        $hdr = [
+            //title Page
+            'judul' => 'Blog | ' . $this->blog->get_profile('nama_perusahaan'),
+            'logo' => $this->blog->get_profile('logo'),
+        ];
+
+        $footer = [
+            'logo' => $this->blog->get_profile('logo'),
+            'telpon' => $this->blog->get_profile('no_telpon'),
+            'telpon2' => $this->blog->get_profile('no_telpon2'),
+            'email' => $this->blog->get_profile('email'),
+            'alamat' => $this->blog->get_profile('alamat'),
+        ];
+
+
+        // LOAD LIBERRY
+
+        $this->load->library('pagination');
+
+        // CONFIG PAGINTION
+
+        $config['base_url'] = base_url('blog/index');
+        $config['total_rows'] = $this->blog->get_CountblogLimit();
+        $config['per_page'] = 4;
+        $config['num_links'] = 3;
+
+        // var_dump($config['total_rows']); 
+        // die;
+
+        // STAYLIING PAGINATION
+
+        $config['full_tag_open'] = '<nav class="justify-content-center d-flex"><ul class="pagination">';
+        $config['full_tag_close'] = ' </ul></nav>';
+
+        $config['first_link'] = 'first';
+        $config['first_tag_open'] = ' <li class="page-item">';
+        $config['first_tag_close'] = ' </li>';
+
+        $config['last_link'] = 'Last';
+        $config['last_tag_open'] = ' <li class="page-item">';
+        $config['last_tag_close'] = ' </li>';
+
+
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = ' <li class="page-item">';
+        $config['next_tag_close'] = ' </li>';
+
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = ' <li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = ' <li class="page-item active"><a href="#" class="page-link" aria-label="Previous">';
+        $config['cur_tag_close'] = '</a></li>';
+
+        $config['num_tag_open'] = ' <li class="page-item">';
+        $config['num_tag_close'] = ' </li>';
+
+        $config['attributes'] = array('class' => 'page-link');
+
+        // INISIALISASI
+        $this->pagination->initialize($config);
+
+        $data = [
+
+            'blog' => $this->blog->get_blogLimit($config['per_page'], 0),
+            'paging' => $this->pagination->create_links(),
+        ];
+
+        // LOAD VIEW
+
+        $this->load->view('layout/header', $hdr);
+        $this->load->view('pages/blog_v', $data);
+        $this->load->view('layout/footer', $footer);
+    }
+
+
+
+    public function blog_detail($id_artikel)
+    {
+
+        $blog = $this->blog->get_blog_by_id($id_artikel);
+
+
+
         $data = [
             //title Page
-            'judul' => 'Home | ' . $this->home->get_profile('nama_perusahaan'),
-            'perusahaan' => $this->home->get_profile('nama_perusahaan'),
-            'telpon' => $this->home->get_profile('no_telpon'),
-            'telpon2' => $this->home->get_profile('no_telpon2'),
-            'email' => $this->home->get_profile('email'),
-            'alamat' => $this->home->get_profile('alamat'),
-            'logo' => $this->home->get_profile('logo'),
-            'tittle' => $this->home->get_profile('tittle'),
-            'deskripsi' => $this->home->get_profile('deskripsi'),
+            'judul' => 'Blog Detail',
+            'perusahaan' => $this->blog->get_profile('nama_perusahaan'),
+            'telpon' => $this->blog->get_profile('no_telpon'),
+            'telpon2' => $this->blog->get_profile('no_telpon2'),
+            'email' => $this->blog->get_profile('email'),
+            'alamat' => $this->blog->get_profile('alamat'),
+            'logo' => $this->blog->get_profile('logo'),
 
             // konten
+            'post' => $this->blog->get_blogLimit(4, 0),
+            'blog' => $blog,
 
-            //     'keterangan_p' => $this->home->get_profile('keterangan_perusahaan'),
-            //     'foto_h' => $this->home->get_hero_f('foto'),
-            //     'foto' => $this->home->get_profile('foto'),
 
-            //     'produk' => $this->home->get_produk(),
 
-            //     // 'projek' => $this->home->get_projek(),
-            //     // 'hero' => $this->home->get_hero(),
-            //     'testimoni' => $this->home->get_testimoni(),
         ];
 
         $this->load->view('layout/header', $data);
-        $this->load->view('pages/blog_v');
+        $this->load->view('pages/d_blog_v', $data);
         $this->load->view('layout/footer', $data);
     }
 }

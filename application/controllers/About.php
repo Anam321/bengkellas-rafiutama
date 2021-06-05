@@ -24,7 +24,9 @@ class About extends CI_Controller
             'alamat' => $this->about->get_profile('alamat'),
             'logo' => $this->about->get_profile('logo'),
             'tittle' => $this->about->get_profile('tittle'),
-            'deskripsi' => $this->about->get_profile('deskripsi2'),
+            'deskripsi' => $this->about->get_profile('deskripsi'),
+            'visi' => $this->about->get_profile('visi'),
+            'misi' => $this->about->get_profile('misi'),
 
             // konten
 

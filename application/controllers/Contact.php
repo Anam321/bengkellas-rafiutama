@@ -9,6 +9,7 @@ class Contact extends CI_Controller
         parent::__construct();
         $this->load->model('Contact_m', 'kontak');
         $this->load->library('form_validation');
+        $this->load->library('session');
     }
     public function index()
     {
@@ -29,29 +30,21 @@ class Contact extends CI_Controller
 
         ];
 
-        $this->load->view('layout/header', $data);
-        $this->load->view('pages/contact_v', $data);
-        $this->load->view('layout/footer', $data);
-    }
-    public function inputContact()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $nama = $this->input->post('nama');
-            $email = $this->input->post('email');
-            $subject = $this->input->post('subject');
-            $message = $this->input->post('message');
+        $this->form_validation->set_rules('message', 'Message', 'required');
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('subject', 'Subject', 'required');
 
-            $data = array(
-                'nama' => $nama,
-                'email' => $email,
-                'subject' => $subject,
-                'message' => $message,
-            );
-            // var_dump($data);
 
-            $insert = $this->countact->submitContact($data);
-            // echo json_encode($insert);
-            $this->load->view('pages/contact', $insert);
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('layout/header', $data);
+            $this->load->view('pages/contact_v', $data);
+            $this->load->view('layout/footer', $data);
+        } else {
+            $this->kontak->submitContact();
+
+            $this->session->set_flashdata('flash', 'Di Tambahkan');
+            redirect('contact');
         }
     }
 }

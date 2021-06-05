@@ -26,13 +26,19 @@ class Home extends CI_Controller
             'tittle' => $this->home->get_profile('tittle'),
             'deskripsi' => $this->home->get_profile('deskripsi'),
 
-            // konten
+
+            'visi' => $this->home->get_profile('visi'),
+            'misi' => $this->home->get_profile('misi'),
+            'foto' => $this->home->get_profile('foto'),
+            'foto_2' => $this->home->get_profile('foto'),
+            'foto_h' => $this->home->get_hero_f('foto'),
 
             'keterangan_p' => $this->home->get_profile('keterangan_perusahaan'),
-            'foto_h' => $this->home->get_hero_f('foto'),
-            'foto' => $this->home->get_profile('foto'),
+
+
 
             'produk' => $this->home->get_produkLimit(3, 0),
+            'blog' => $this->home->get_blogLimit(3, 0),
 
             // 'projek' => $this->home->get_projek(),
             // 'hero' => $this->home->get_hero(),
@@ -41,6 +47,37 @@ class Home extends CI_Controller
 
         $this->load->view('layout/header', $data);
         $this->load->view('pages/home_v', $data);
+        $this->load->view('layout/footer', $data);
+    }
+
+
+    public function blog_detail($id_artikel)
+    {
+
+        $blog = $this->home->get_blog_by_id($id_artikel);
+
+
+
+        $data = [
+            //title Page
+            'judul' => 'Blog Detail',
+            'perusahaan' => $this->home->get_profile('nama_perusahaan'),
+            'telpon' => $this->home->get_profile('no_telpon'),
+            'telpon2' => $this->home->get_profile('no_telpon2'),
+            'email' => $this->home->get_profile('email'),
+            'alamat' => $this->home->get_profile('alamat'),
+            'logo' => $this->home->get_profile('logo'),
+
+            // konten
+
+            'blog' => $blog,
+
+
+
+        ];
+
+        $this->load->view('layout/header', $data);
+        $this->load->view('pages/d_blog_v', $data);
         $this->load->view('layout/footer', $data);
     }
 }
