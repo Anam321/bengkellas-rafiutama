@@ -59,9 +59,28 @@ class Home_m extends CI_Model
         return $this->db->get('blog', $limit, $start)->result_array();
     }
 
+
+    // public function get_profile($varams)
+    // {
+    //     if ($varams == 'deskripsi2') {
+    //         $query = $this->db->query('select * from set_profile where id_profil=2');
+    //         $data = $query->row();
+    //     } else {
+    //         $query = $this->db->get('set_profile')->row();
+    //         // $result = $query;
+    //         $data = $query->$varams;
+    //     }
+
+    //     return $data;
+    // }
+
+
+
+
+
     public function get_testimoni()
     {
-        $query = $this->db->query('select * from testimoni');
+        $query = $this->db->query('select * from testimoni where activasi=1');
 
         $data = array();
         foreach ($query->result() as $row) {
@@ -75,8 +94,29 @@ class Home_m extends CI_Model
         }
         return $data;
     }
+
+
+
+
+
+
+
+
     public function get_blog_by_id($id_artikel)
     {
         return $this->db->get_where('blog', ['id_artikel' => $id_artikel])->row_array();
     }
+
+
+
+
+    // Input data Testi
+
+
+    public function inputtesti($data)
+    {
+        return $this->db->insert('testimoni', $data);
+    }
+
+    // END INPUT DATA TESTI
 }

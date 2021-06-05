@@ -254,6 +254,63 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
+        <div class=" col-lg-4">
+            <div class="blog_right_sidebar">
+
+                <aside class="single_sidebar_widget popular_post_widget">
+                    <div class="col-12">
+                        <h2 class="contact-title">Get in Testimoni</h2>
+                    </div>
+                    <div class="col-12">
+                        <?= $this->session->flashdata('message'); ?>
+                    </div>
+                    <div class="col-lg-10">
+
+
+                        <?php echo form_open_multipart('home/inputtesti'); ?>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+
+                                    <textarea class="form-control w-100" id="testmoni" name="testimoni" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder='Enter Message' required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" id="nama" name="nama" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'name'" placeholder='name'>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" id="foto" name="foto" type="file">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-3">
+
+                            <button type="submit" class="button button-contactForm btn_1">Send Message</button>
+                        </div>
+
+
+                        <?php echo form_close(); ?>
+
+
+                    </div>
+
+                </aside>
+
+
+
+            </div>
+        </div>
+    </div>
 </section>
 <!-- review part end-->
 
