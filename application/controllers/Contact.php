@@ -44,7 +44,7 @@ class Contact extends CI_Controller
             $this->kontak->submitContact();
 
             $this->session->set_flashdata('flash', 'Di Tambahkan');
-            redirect('contact');
+            redirect(base_url('contact'));
         }
     }
 }

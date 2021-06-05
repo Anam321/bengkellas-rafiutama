@@ -272,7 +272,7 @@
                     <div class="col-lg-10">
 
 
-                        <?php echo form_open_multipart('home/inputtesti'); ?>
+                        <?php echo form_open_multipart(base_url('home/inputtesti')); ?>
 
                         <div class="row">
                             <div class="col-12">

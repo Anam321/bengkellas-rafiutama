@@ -120,6 +120,6 @@ class Home extends CI_Controller
             'activasi' => 0,
         );
         $this->home->inputtesti($data, 'testimoni');
-        redirect('home');
+        redirect(base_url('home'));
     }
 }

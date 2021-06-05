@@ -42,12 +42,12 @@ class Auth extends CI_Controller
 
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
   Login gagal, password tidakk valid !.</div>');
-                redirect('admin/auth');
+                redirect(base_url('admin/auth'));
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
   Login gagal, silahkan cek email dan password !.</div>');
-            redirect('admin/auth');
+            redirect(base_url('admin/auth'));
         }
     }
 
@@ -58,7 +58,7 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
   A simple success alert—check it out!
 </div>');
-        redirect('admin/auth');
+        redirect(base_url('admin/auth'));
     }
 
     //     public function registrasi()
