@@ -52,8 +52,8 @@
                     <div class="contact_info">
                         <p><?= $alamat ?></p>
                         <p><span> Address :</span> Hath of it fly signs bear be one blessed after </p>
-                        <p><span> Phone :</span> +62 <?= $telpon ?></p>
                         <p><span> Phone :</span> +62 <?= $telpon2 ?></p>
+
                         <p><span> Email : </span> <?= $email ?> </p>
                     </div>
                 </div>
