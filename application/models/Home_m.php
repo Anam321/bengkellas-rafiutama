@@ -117,6 +117,10 @@ class Home_m extends CI_Model
     {
         return $this->db->insert('testimoni', $data);
     }
+    public function inputproduk($data)
+    {
+        return $this->db->insert('ref_produk', $data);
+    }
 
     // END INPUT DATA TESTI
 }

@@ -63,8 +63,7 @@
                     <div class="single_service">
                         <span class="flaticon-ui"></span>
                         <h4>Pengerjaan Cepat Dan Tepat</h4>
-                        <p>Set have great you male grasses yielding yielding first their to
-                            called deep abundantly Set have great you male</p>
+                        <p>Kami selalu mengerjakan dengan cepat, akurat dan tepat. Tentu nya dengan hasil yang baik. kami selalu teliti dengan pengerjaan kami, keselamatan dalam ruang lingkup kerja selalu di prioritaskan</p>
                         <a href="#" class="btn_3">read more</a>
                     </div>
                 </div>
@@ -74,8 +73,8 @@
                     <div class="single_service">
                         <span class="flaticon-ui"></span>
                         <h4>Bahan Berkualitas</h4>
-                        <p>Set have great you male grasses yielding yielding first their to called
-                            deep abundantly Set have great you male</p>
+                        <p>Produk kami selalu mengguakan bahan-bahan yag berkualitas, kepuasan pelanggan adalah ke utamaan kami</p>
+                        <br><br>
                         <a href="#" class="btn_3">read more</a>
                     </div>
                 </div>
@@ -85,8 +84,8 @@
                     <div class="single_service single_service_2">
                         <span class="flaticon-ui"></span>
                         <h4>Good Service</h4>
-                        <p>Set have great you male grasses yielding yielding first their to called deep
-                            abundantly Set have great you male</p>
+                        <p>service kami selalu yang terbaik, pelayanan yang ter aplikasi kan dengan sangat sempurna</p>
+                        <br><br><br><br>
                         <a href="#" class="btn_3">read more</a>
                     </div>
                 </div>
@@ -112,7 +111,7 @@
                             <h2>10</h2>
                         </div>
                         <div class="about_iner_content">
-                            <h3>year <span>of Experience</span></h3>
+                            <h3>Tahun <span>Kami Berdiri</span></h3>
                         </div>
                     </div>
                 </div>
@@ -157,10 +156,10 @@
                     <div class="col-lg-4 col-sm-6 mb-4 all <?= $p['filter'] ?>">
                         <div class="single_our_project">
                             <div class="single_offer">
-                                <img src="<?= base_url(); ?>assets/frontend/img/project_1.png" alt="offer_img_1">
+                                <img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $p['foto'] ?>" alt="offer_img_1">
                                 <div class="hover_text">
                                     <p><?= $p['nama_p'] ?></p>
-                                    <a href="#" class="btn_1">View project </a>
+                                    <a href="#" class="btn_1">View produk </a>
 
                                 </div>
                             </div>
@@ -239,7 +238,7 @@
                     <?php foreach ($testimoni as $testi) : ?>
 
                         <div class="single_review_part">
-                            <img src="<?= base_url(); ?>assets/frontend/img/client/<?= $testi['foto'] ?>" alt="">
+                            <img src="<?= base_url(); ?>assets/frontend/img/testimoni/<?= $testi['foto'] ?>" alt="">
                             <div class="tour_pack_content">
                                 <p><?= $testi['testimoni'] ?></p>
                                 <h4><?= $testi['nama'] ?></h4>

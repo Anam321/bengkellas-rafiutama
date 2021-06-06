@@ -247,21 +247,21 @@
                     <div class="preview col-md-6">
 
                         <div class="preview-pic tab-content">
-                            <div class="tab-pane active" id="pic-1"><img src="<?= base_url(); ?>assets/frontend/img/project_1.png" /></div>
-
+                            <div class="tab-pane active" id="pic-1"><img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $produk['foto'] ?>" /></div>
+                            <!-- 
                             <div class="tab-pane" id="pic-2"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></div>
                             <div class="tab-pane" id="pic-3"><img src="<?= base_url(); ?>assets/frontend/img/project_3.png" /></div>
                             <div class="tab-pane" id="pic-4"><img src="<?= base_url(); ?>assets/frontend/img/project_1.png" /></div>
-                            <div class="tab-pane" id="pic-5"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></div>
+                            <div class="tab-pane" id="pic-5"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></div> -->
                         </div>
-
+                        <!-- 
                         <ul class="preview-thumbnail nav nav-tabs">
                             <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_1.png" /></a></li>
                             <li><a data-target="#pic-2" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></a></li>
                             <li><a data-target="#pic-3" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_3.png" /></a></li>
                             <li><a data-target="#pic-4" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_1.png" /></a></li>
                             <li><a data-target="#pic-5" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></a></li>
-                        </ul>
+                        </ul> -->
 
                     </div>
                     <div class="details col-md-6">
@@ -292,8 +292,9 @@
                             <span class="color blue"></span>
                         </h5>
                         <div class="action">
-                            <button class="add-to-cart btn btn-default" type="button">Order sekarang</button>
-                            <button class="add-to-cart btn btn-danger" style="background:blue;" type="button">Produk Lain</button>
+                            <a href="https://api.whatsapp.com/send?phone=+6281321560099&text=Halo%20Rafi%20Utama,%20Saya%20mau%20order%20produk%20ini%20<?= base_url() ?>produk/produk_detail/<?= $produk['slug'] ?>"> <button class="add-to-cart btn btn-default" type="button">Order sekarang</button></a>
+                            <a href=""> <button class="add-to-cart btn btn-danger" style="background:blue;" type="button">Produk Lain</button></a>
+
 
                         </div>
                     </div>

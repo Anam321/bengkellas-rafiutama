@@ -93,7 +93,7 @@
                         <div class="section border bg-white rounded p-2">
                             <div class="row">
                                 <div class="col-lg-12 img-section">
-                                    <img src="<?= base_url(); ?>assets/frontend/img/<?= $p['foto'] ?>" class="p-0 m-0 res-ponsive">
+                                    <img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $p['foto'] ?>" class="p-0 m-0 res-ponsive">
                                     <!--Ganti Gambar Sendiri/ Script PHP Produk-->
                                     <span class="badge badge-danger add-sens p-2 rounded-0">NOW</span>
                                 </div>
