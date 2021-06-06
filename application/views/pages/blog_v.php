@@ -15,7 +15,7 @@
                              </div>
 
                              <div class="blog_details">
-                                 <a class="d-inline-block" href="single-blog.html">
+                                 <a class="d-inline-block" href="<?= base_url('blog/blog_detail/'); ?><?= $b['id_artikel'] ?>">
                                      <h2><?= $b['judul_artikel'] ?></h2>
                                  </a>
                                  <p><?= $b['konten'] ?></p>

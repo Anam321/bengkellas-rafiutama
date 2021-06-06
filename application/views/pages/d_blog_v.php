@@ -269,7 +269,7 @@
                             <div class="media post_item">
                                 <img style="widht:40px; height:40px;" src="<?= base_url(); ?>assets/frontend/img/upload/blog/<?= $b['gambar'] ?>" alt="post">
                                 <div class="media-body">
-                                    <a href="single-blog.html">
+                                    <a href="<?= base_url('blog/blog_detail/'); ?><?= $b['id_artikel'] ?>">
                                         <h3><?= $b['judul_artikel'] ?></h3>
                                     </a>
                                     <p>January 12, 2019</p>

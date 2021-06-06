@@ -336,9 +336,9 @@
                                     <li> <span class="ti-comments"></span>2 Comments</li>
                                     <li> <span class="ti-heart"></span>2k Like</li>
                                 </ul>
-                                <a href="blog.html">
-                                    <h5 class="card-title"><?= $b['judul_artikel'] ?></h5>
-                                </a>
+
+                                <h5 class="card-title"><?= $b['judul_artikel'] ?></h5>
+
                                 <a href="<?= base_url('blog/blog_detail/'); ?><?= $b['id_artikel'] ?>" class="btn_3">read more</a>
                             </div>
                         </div>

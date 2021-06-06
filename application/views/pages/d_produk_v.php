@@ -280,20 +280,11 @@
                         <p class="product-description"><?= $produk['keterangan'] ?></p>
                         <h4 class="price">current price: <span>Rp. <?= $produk['harga'] ?></span></h4>
                         <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
-                        <h5 class="sizes">sizes:
-                            <span class="size" data-toggle="tooltip" title="small">s</span>
-                            <span class="size" data-toggle="tooltip" title="medium">m</span>
-                            <span class="size" data-toggle="tooltip" title="large">l</span>
-                            <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
-                        </h5>
-                        <h5 class="colors">colors:
-                            <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
-                            <span class="color green"></span>
-                            <span class="color blue"></span>
-                        </h5>
+
+
                         <div class="action">
                             <a href="https://api.whatsapp.com/send?phone=+6281321560099&text=Halo%20Rafi%20Utama,%20Saya%20mau%20order%20produk%20ini%20<?= base_url() ?>produk/produk_detail/<?= $produk['slug'] ?>"> <button class="add-to-cart btn btn-default" type="button">Order sekarang</button></a>
-                            <a href=""> <button class="add-to-cart btn btn-danger" style="background:blue;" type="button">Produk Lain</button></a>
+                            <a href="<?= base_url('produk'); ?>"> <button class="add-to-cart btn btn-danger" style="background:blue;" type="button">Produk Lain</button></a>
 
 
                         </div>
@@ -510,134 +501,65 @@
             <div class=" col-lg-4">
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
-                        <form action="#">
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
-                                    <div class="input-group-append">
-                                        <button class="btn" type="button"><i class="ti-search"></i></button>
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="button"><i class="ti-search"></i></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <button class="button rounded-0 primary-bg text-white w-100 btn_1" type="submit">Search</button>
-                        </form>
-                    </aside>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1" type="submit">Search</button>
+                            </form>
+                        </aside>
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Category</h4>
+                            <ul class="list cat-list">
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Konstruksi Las</p>
+                                        <p>(37)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Gorden</p>
+                                        <p>(10)</p>
+                                    </a>
+                                </li>
 
+                            </ul>
+                        </aside>
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Recent Post</h3>
 
+                            <?php foreach ($post as $b) : ?>
 
-                    <aside class="single_sidebar_widget popular_post_widget">
-                        <h3 class="widget_title">Recent Post</h3>
-                        <div class="media post_item">
-                            <img src="<?= base_url(); ?>assets/frontend/img/post/post_1.png" alt="post">
-                            <div class="media-body">
-                                <a href="single-blog.html">
-                                    <h3>From life was you fish...</h3>
-                                </a>
-                                <p>January 12, 2019</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="<?= base_url(); ?>assets/frontend/img/post/post_2.png" alt="post">
-                            <div class="media-body">
-                                <a href="single-blog.html">
-                                    <h3>The Amazing Hubble</h3>
-                                </a>
-                                <p>02 Hours ago</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="<?= base_url(); ?>assets/frontend/img/post/post_3.png" alt="post">
-                            <div class="media-body">
-                                <a href="single-blog.html">
-                                    <h3>Astronomy Or Astrology</h3>
-                                </a>
-                                <p>03 Hours ago</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="<?= base_url(); ?>assets/frontend/img/post/post_4.png" alt="post">
-                            <div class="media-body">
-                                <a href="single-blog.html">
-                                    <h3>Asteroids telescope</h3>
-                                </a>
-                                <p>01 Hours ago</p>
-                            </div>
-                        </div>
-                    </aside>
+                                <div class="media post_item">
+                                    <img style="widht:40px; height:40px;" src="<?= base_url(); ?>assets/frontend/img/upload/blog/<?= $b['gambar'] ?>" alt="post">
+                                    <div class="media-body">
+                                        <a href="<?= base_url('blog/blog_detail/'); ?><?= $b['id_artikel'] ?>">
+                                            <h3><?= $b['judul_artikel'] ?></h3>
+                                        </a>
+                                        <p>January 12, 2019</p>
+                                    </div>
+                                </div>
 
-                    <aside class="single_sidebar_widget tag_cloud_widget">
-                        <h4 class="widget_title">Tag Clouds</h4>
-                        <ul class="list">
-                            <li>
-                                <a href="#">project</a>
-                            </li>
-                            <li>
-                                <a href="#">love</a>
-                            </li>
-                            <li>
-                                <a href="#">technology</a>
-                            </li>
-                            <li>
-                                <a href="#">travel</a>
-                            </li>
-                            <li>
-                                <a href="#">restaurant</a>
-                            </li>
-                            <li>
-                                <a href="#">life style</a>
-                            </li>
-                            <li>
-                                <a href="#">design</a>
-                            </li>
-                            <li>
-                                <a href="#">illustration</a>
-                            </li>
-                        </ul>
-                    </aside>
-                    <aside class="single_sidebar_widget instagram_feeds">
-                        <h4 class="widget_title">Instagram Feeds</h4>
-                        <ul class="instagram_row flex-wrap">
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="<?= base_url(); ?>assets/frontend/img/post/post_5.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="<?= base_url(); ?>assets/frontend/img/post/post_6.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="<?= base_url(); ?>assets/frontend/img/post/post_7.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="<?= base_url(); ?>assets/frontend/img/post/post_8.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="<?= base_url(); ?>assets/frontend/img/post/post_9.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="<?= base_url(); ?>assets/frontend/img/post/post_10.png" alt="">
-                                </a>
-                            </li>
-                        </ul>
-                    </aside>
-                    <aside class="single_sidebar_widget newsletter_widget">
-                        <h4 class="widget_title">Newsletter</h4>
-                        <form action="#">
-                            <div class="form-group">
-                                <input type="email" class="form-control" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                            </div>
-                            <button class="button rounded-0 primary-bg text-white w-100 btn_1" type="submit">Subscribe</button>
-                        </form>
-                    </aside>
+                            <?php endforeach ?>
+
+                        </aside>
+
+                        <aside class="single_sidebar_widget newsletter_widget">
+                            <h4 class="widget_title">Newsletter</h4>
+                            <form action="#">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1" type="submit">Subscribe</button>
+                            </form>
+                        </aside>
                 </div>
             </div>
         </div>
