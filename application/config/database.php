@@ -75,10 +75,19 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'rafi_utama',
+	// Local database ----->
+	// 'hostname' => 'localhost',
+	// 'username' => 'root',
+	// 'password' => '',
+	// 'database' => 'rafi_utama',
+
+	// Server database
+	'hostname' => 'cyrus.jagoanhosting.com',
+	'username' => 'rafiutam_admin',
+	'password' => 'Sukabumi006',
+	'database' => 'rafiutam_basedata',
+
+
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
