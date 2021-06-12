@@ -15,6 +15,7 @@ class Produk extends CI_Controller
             //title Page
             'judul' => 'produk | ' . $this->produk->get_profile('nama_perusahaan'),
             'logo' => $this->produk->get_profile('logo'),
+            'telpon2' => $this->produk->get_profile('no_telpon2'),
         ];
 
         $footer = [
@@ -72,10 +73,11 @@ class Produk extends CI_Controller
 
         // INISIALISASI
         $this->pagination->initialize($config);
+        $data['start'] = $this->uri->segment('3');
 
         $data = [
 
-            'produk' => $this->produk->get_produkLimit($config['per_page'], 0),
+            'produk' => $this->produk->get_produkLimit($config['per_page'], $data['start']),
             'paging' => $this->pagination->create_links(),
         ];
 

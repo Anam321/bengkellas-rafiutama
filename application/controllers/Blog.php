@@ -15,6 +15,7 @@ class Blog extends CI_Controller
             //title Page
             'judul' => 'Blog | ' . $this->blog->get_profile('nama_perusahaan'),
             'logo' => $this->blog->get_profile('logo'),
+            'telpon2' => $this->blog->get_profile('no_telpon2'),
         ];
 
         $footer = [
@@ -72,10 +73,11 @@ class Blog extends CI_Controller
 
         // INISIALISASI
         $this->pagination->initialize($config);
+        $data['start'] = $this->uri->segment('3');
 
         $data = [
 
-            'blog' => $this->blog->get_blogLimit($config['per_page'], 0),
+            'blog' => $this->blog->get_blogLimit($config['per_page'], $data['start']),
             'paging' => $this->pagination->create_links(),
         ];
 
