@@ -94,7 +94,8 @@ class Produk extends CI_Controller
     {
 
         $produk = $this->produk->get_produk_by_slug($slug);
-
+        
+        $image = $produk['group_image'];
 
 
         $data = [
@@ -110,8 +111,8 @@ class Produk extends CI_Controller
             // konten
 
             'produk' => $produk,
+            'image' => $this->produk->get_image($image),
             'post' => $this->produk->get_blogLimit(4, 0),
-
 
         ];
 

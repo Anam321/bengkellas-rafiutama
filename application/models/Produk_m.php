@@ -39,6 +39,8 @@ class Produk_m extends CI_Model
 
     public function get_produkLimit($limit, $start)
     {
+        $this->db->where('main_image =', 1);
+        $this->db->group_by('group_image');
         return $this->db->get('ref_produk', $limit, $start)->result_array();
     }
 
@@ -52,23 +54,23 @@ class Produk_m extends CI_Model
     // DATA PRODUK DETAIL
 
 
-    public function get_kategori()
-    {
-        $query = $this->db->query('select * from ref_kategori');
+    // public function get_kategori()
+    // {
+    //     $query = $this->db->query('select * from ref_kategori');
 
-        $data = array();
-        foreach ($query->result() as $row) {
-            $data[] = array(
-                'id_kategori' => $row->id_kategori,
-                'kategori' => $row->kategori,
-                'slug' => $row->slug,
-                'harga' => $row->harga,
-                'foto' => $row->foto,
+    //     $data = array();
+    //     foreach ($query->result() as $row) {
+    //         $data[] = array(
+    //             'id_kategori' => $row->id_kategori,
+    //             'kategori' => $row->kategori,
+    //             'slug' => $row->slug,
+    //             'harga' => $row->harga,
+    //             'foto' => $row->foto,
 
-            );
-        }
-        return $data;
-    }
+    //         );
+    //     }
+    //     return $data;
+    // }
 
     public function get_produk_by_slug($slug)
     {
@@ -99,6 +101,38 @@ class Produk_m extends CI_Model
         }
         return $data;
     }
+
+public function get_group_image($group_image)
+{
+return $this->db->get_where('ref_produk', ['group_image' => $group_image])->result_array();
+}
+
+
+
+
+
+
+public function get_image($image)
+{
+   $query = $this->db->query("select * from ref_produk where group_image= $image");
+
+   $data = array();
+   foreach ($query->result() as $row) {
+      $data[] = array(
+         'group_image' => $row->group_image,
+         'nama_p' => $row->nama_p,
+         'foto' => $row->foto,
+      );
+   }
+   return $data;
+}
+
+
+
+
+
+
+
 
 
     public function get_product_by_id($id)

@@ -247,21 +247,26 @@
                     <div class="preview col-md-6">
 
                         <div class="preview-pic tab-content">
-                            <div class="tab-pane active" id="pic-1"><img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $produk['foto'] ?>" /></div>
+                             <?php foreach ($image as $img) : ?>
+                            <div class="tab-pane active" id="pic-1"><img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $img['foto'] ?>" /></div>
+                            <?php endforeach ?>
                             <!-- 
                             <div class="tab-pane" id="pic-2"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></div>
                             <div class="tab-pane" id="pic-3"><img src="<?= base_url(); ?>assets/frontend/img/project_3.png" /></div>
                             <div class="tab-pane" id="pic-4"><img src="<?= base_url(); ?>assets/frontend/img/project_1.png" /></div>
                             <div class="tab-pane" id="pic-5"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></div> -->
                         </div>
-                        <!-- 
+                        
                         <ul class="preview-thumbnail nav nav-tabs">
-                            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_1.png" /></a></li>
-                            <li><a data-target="#pic-2" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></a></li>
+
+                        <?php foreach ($image as $img) : ?>
+                            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $img['foto'] ?>" /></a></li>
+                            <?php endforeach ?>
+                            <!-- <li><a data-target="#pic-2" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></a></li>
                             <li><a data-target="#pic-3" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_3.png" /></a></li>
                             <li><a data-target="#pic-4" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_1.png" /></a></li>
-                            <li><a data-target="#pic-5" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></a></li>
-                        </ul> -->
+                            <li><a data-target="#pic-5" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></a></li> -->
+                        </ul>
 
                     </div>
                     <div class="details col-md-6">
