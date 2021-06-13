@@ -76,7 +76,7 @@ class Blog extends CI_Controller
         $data['start'] = $this->uri->segment('3');
 
         $data = [
-
+            'post' => $this->blog->get_blogLimit(4, 0),
             'blog' => $this->blog->get_blogLimit($config['per_page'], $data['start']),
             'paging' => $this->pagination->create_links(),
         ];
