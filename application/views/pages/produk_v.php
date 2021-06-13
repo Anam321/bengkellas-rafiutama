@@ -33,7 +33,7 @@
 
     .img-section img {
         overflow: hidden;
-        
+
         height: 200px;
     }
 
@@ -95,7 +95,7 @@
                                 <div class="col-lg-12 img-section">
                                     <img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $p['foto'] ?>" class="p-0 m-0 res-ponsive">
                                     <!--Ganti Gambar Sendiri/ Script PHP Produk-->
-                                    <span class="badge badge-danger add-sens p-2 rounded-0">NOW</span>
+                                    <span class="badge badge-danger add-sens p-2 rounded-0"><?= $p['kategori'] ?></span>
                                 </div>
                                 <div class="col-lg-12 sectin-title">
                                     <h1 class="pt-2"><?= $p['nama_p'] ?></h1>
@@ -123,7 +123,7 @@
                                 <div class="col-lg-12 pb-2">
                                     <div class="row" style="justify-content: center;">
                                         <div class="col-lg-6">
-                                            <a href="<?= base_url('produk/produk_detail/'); ?><?= $p['slug'] ?>" class="btn btn-danger btn-block btn-sm">VIEW PRODUK</a>
+                                            <a href="<?= base_url('produk/produk_detail/'); ?><?= $p['slug'] ?>" class="btn btn-primary btn-block btn-sm">VIEW PRODUK</a>
                                         </div>
 
                                     </div>

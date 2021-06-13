@@ -31,21 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-md-4">
-                <div class="single-footer-widget footer_2">
-                    <h4>Our Gallery</h4>
-                    <div class="footer_img">
-                        <a href="#"><img src="<?= base_url(); ?>assets/frontend/img/footer_img/footer_1.png" alt=""></a>
-                        <a href="#"><img src="<?= base_url(); ?>assets/frontend/img/footer_img/footer_2.png" alt=""></a>
-                        <a href="#"><img src="<?= base_url(); ?>assets/frontend/img/footer_img/footer_3.png" alt=""></a>
-                        <a href="#"><img src="<?= base_url(); ?>assets/frontend/img/footer_img/footer_4.png" alt=""></a>
-                        <a href="#"><img src="<?= base_url(); ?>assets/frontend/img/footer_img/footer_5.png" alt=""></a>
-                        <a href="#"><img src="<?= base_url(); ?>assets/frontend/img/footer_img/footer_6.png" alt=""></a>
-                        <a href="#"><img src="<?= base_url(); ?>assets/frontend/img/footer_img/footer_7.png" alt=""></a>
-                        <a href="#"><img src="<?= base_url(); ?>assets/frontend/img/footer_img/footer_8.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
+
             <div class="col-xl-3 col-sm-6 col-md-4">
                 <div class="single-footer-widget footer_2">
                     <h4>Contact info</h4>
