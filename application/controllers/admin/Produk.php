@@ -28,140 +28,46 @@ class Produk extends CI_Controller
         $this->load->view('admin/template/footer', $data);
     }
 
-    public function get_thumb_produk($id)
-    {
-        $result = $this->produk_m->get_thumb_produk($id);
-        // echo '<pre>';
-        // print_r($result);
-        // echo '</pre>';
-        if (count($result)) {
-            $data = array();
-            foreach ($result as $row) {
-                $data = '<a href="#" class="user-avatar"><img src="' . base_url() . 'assets/uploads/produk/' . $row->foto . '" alt=""></a>';
-            };
-            return $data;
-        };
-    }
-
-    public function get_list_produk()
+    public function ajax_list()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $list =  $this->produk_m->get_list_produk();
+            $id_skk = $this->input->post('id_skk');
+
+            $list = $this->produk_m->get_datatables($id_skk);
             $data = array();
+            $no = $_POST['start'];
+
             foreach ($list as $dd) {
+                $no++;
+                $row = array();
 
-                $data[] = '<div class="col-lg-6 col-xl-4">
-                                <div class="card card-fluid">
-                                    <div class="card-header border-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <span class="badge bg-muted" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Finished"><span class="sr-only">Finished</span> <i class="fa fa-fw fa-check-circle text-teal"></i></span>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn btn-icon btn-light" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></button>
-                                                <div class="dropdown-menu dropdown-menu-right" style="">
-                                                    <div class="dropdown-arrow"></div>
-                                                    <a href="javascript:void(0)" onclick="detail(' . "'" . $dd->id_kategori . "'" . ')" class="dropdown-item">Lihat Produk</a>
-                                                    <a href="javascript:void(0)" onclick="add_foto(' . "'" . $dd->id_kategori . "'" . ',' . "'" . $dd->nama_p . "'" . ')" class="dropdown-item">Tambah Foto</a>
-                                                    <a href="javascript:void(0)" onclick="edit(' . "'" . $dd->id_kategori . "'" . ')" class="dropdown-item">Edit</a>
-                                                    <a href="javascript:void(0)" onclick="delete_data(' . "'" . $dd->id_kategori . "'" . ')" class="dropdown-item">Hapus</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body text-center">
-                                        <a href="' . base_url() . 'assets/uploads/produk/kategori/' . $dd->foto . '" class="user-avatar user-avatar-xxl mb-3"><img src="' . base_url() . 'assets/uploads/produk/kategori/' . $dd->foto . '" alt=""></a>
-                                        <h5 class="card-title">
-                                            <a target="_blank" href="' . base_url() . 'pages/produk_detail/' . $dd->nama_p . '">' . $dd->nama_p . '</a>
-                                        </h5>
-                                       <!-- <div class="my-3">
-                                            <div class="avatar-group">
-                                                ' . $this->get_thumb_produk($dd->id_kategori) . '
-                                                <a class="tile tile-circle" href="javascript:void(0)" onclick="add_foto(' . "'" . $dd->id_kategori . "'" . ',' . "'" . $dd->nama_p . "'" . ')">+</a>
-                                            </div>
-                                        </div> -->
-                                        <div class="row">
-                                            <div class="col">
-                                                <strong>Harga</strong> <span class="d-block">Rp. ' . number_format($dd->harga) . '</span>
-                                            </div>
-                                            <div class="col">
-                                                <strong>Views</strong> <span class="d-block">' . $dd->nama_p . '</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>';
-            }
-            echo json_encode($data);
-        }
-    }
+                $row[] = $no;
+                $row[] = '<a href="javascript:void(0)" onclick="detail(' . "'" . $dd->id_produk . "'" . ')">' . $dd->nama_produk . ' <i class="fas fa-external-link-alt"></i></a>';
+                $row[] = $dd->kategori;
+                $row[] = 'Rp. ' . number_format($dd->harga);
 
-    public function get_foto_produk()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $this->input->post('id_kategori');
-            $list =  $this->produk_m->get_foto_produk($id);
-            $data = array();
-            foreach ($list as $dd) {
+                $row[] = '<a class="btn btn-sm btn-icon btn-primary" href="javascript:void(0)" onclick="edit(' . "'" . $dd->id_produk . "'" . ')"><i class="fa fa-pencil-alt"></i></a>
+                          <a class="btn btn-sm btn-icon btn-secondary" href="javascript:void(0)" onclick="delete_data(' . "'" . $dd->id_produk . "'" . ')"><i class="far fa-trash-alt text-red"></i></a>';
 
-                $data[] = '<div class="list-group-item">
-                                <div class="list-group-item-figure align-items-start">
-                                    <a href="' . base_url() . 'assets/uploads/produk/' . $dd->foto . '" class="user-avatar user-avatar-xl"><img src="' . base_url() . 'assets/uploads/produk/' . $dd->foto . '" alt="' . $dd->nama_produk . '"></a>
-                                </div>
-                                <div class="list-group-item-body">
-                                    <h4 class="list-group-item-title">
-                                        <a href="#">' . $dd->nama_produk . '</a>
-                                    </h4>
-                                    <p class="list-group-item-text"> ' . $dd->foto . ' </p>
-                                </div>
-                                <div class="list-group-item-figure align-items-start">
-                                    <a class="btn btn-sm btn-icon btn-secondary" href="javascript:void(0)" onclick="delete_foto(' . "'" . $dd->id_produk . "'" . ', ' . "'" . $dd->id_kategori . "'" . ')"><i class="far fa-trash-alt text-red"></i></a>
-                                </div>
-                            </div>';
+                $data[] = $row;
             }
 
-            echo json_encode($data);
+            $output = array(
+                "draw" => $_POST['draw'],
+                "recordsTotal" => $this->produk_m->count_all($id_skk),
+                "recordsFiltered" => $this->produk_m->count_filtered($id_skk),
+                "data" => $data,
+            );
+        } else {
+            $output = array(
+                "draw" => "",
+                "recordsTotal" => "",
+                "recordsFiltered" => "",
+                "data" => 'Not Allowed',
+            );
         }
+        echo json_encode($output);
     }
-
-    // public function ajax_list()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //         $id_skk = $this->input->post('id_skk');
-
-    //         $list = $this->produk_m->get_datatables($id_skk);
-    //         $data = array();
-    //         $no = $_POST['start'];
-
-    //         foreach ($list as $dd) {
-    //             $no++;
-    //             $row = array();
-
-    //             $row[] = $no;
-    //             $row[] = '<a href="javascript:void(0)" onclick="detail(' . "'" . $dd->id_produk . "'" . ')">' . $dd->nama_produk . ' <i class="fas fa-external-link-alt"></i></a>';
-    //             $row[] = $dd->kategori;
-    //             $row[] = 'Rp. ' . number_format($dd->harga);
-
-    //             $row[] = '<a class="btn btn-sm btn-icon btn-primary" href="javascript:void(0)" onclick="edit(' . "'" . $dd->id_produk . "'" . ')"><i class="fa fa-pencil-alt"></i></a>
-    //                       <a class="btn btn-sm btn-icon btn-secondary" href="javascript:void(0)" onclick="delete_data(' . "'" . $dd->id_produk . "'" . ')"><i class="far fa-trash-alt text-red"></i></a>';
-
-    //             $data[] = $row;
-    //         }
-
-    //         $output = array(
-    //             "draw" => $_POST['draw'],
-    //             "recordsTotal" => $this->produk_m->count_all($id_skk),
-    //             "recordsFiltered" => $this->produk_m->count_filtered($id_skk),
-    //             "data" => $data,
-    //         );
-    //     } else {
-    //         $output = array(
-    //             "draw" => "",
-    //             "recordsTotal" => "",
-    //             "recordsFiltered" => "",
-    //             "data" => 'Not Allowed',
-    //         );
-    //     }
-    //     echo json_encode($output);
-    // }
 
     public function ajax_add()
     {
@@ -308,13 +214,6 @@ class Produk extends CI_Controller
             echo $this->produk_m->ajax_delete_foto($id);
         }
     }
-
-    // public function get_kategori()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    //         echo $this->produk_m->get_kategori();
-    //     }
-    // }
 
     public function ajax_edit($id)
     {

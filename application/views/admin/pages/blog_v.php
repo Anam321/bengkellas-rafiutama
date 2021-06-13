@@ -1,99 +1,224 @@
-<main class="app-main">
-   <div class="wrapper">
-      <div class="page">
-         <div class="page-inner">
-            <header class="page-title-bar">
-               <!-- .breadcrumb -->
-               <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                     <li class="breadcrumb-item active">
-                        <a href="<?= base_url('admin/dashboard') ?>"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Dashboard</a>
-                     </li>
-                  </ol>
-               </nav><!-- /.breadcrumb -->
-               <!-- floating action -->
-               <button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button> <!-- /floating action -->
-               <!-- title and toolbar -->
-               <div class="d-md-flex align-items-md-start">
-                  <h1 class="page-title mr-sm-auto"> Blog </h1><!-- .btn-toolbar -->
-                  <div class="dt-buttons btn-group flex-wrap"> <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="myTable" type="button"><span>Copy</span></button> <button class="btn btn-secondary buttons-print" tabindex="0" aria-controls="myTable" type="button"><span>Print</span></button> </div><!-- /.btn-toolbar -->
-               </div><!-- /title and toolbar -->
-            </header>
-            <!-- Modal Here -->
-            <div class="modal fade" id="modal_form_blog" tabindex="-1" role="dialog" aria-hidden="true">
-               <div class="modal-dialog modal-xl" role="document">
-                  <div class="modal-content">
-                     <div class="modal-header">
-                        <h6 id="title" class="modal-title"> </h6>
-                     </div>
-                     <form action="" id="form_blog" enctype="multipart/form-data">
-                        <div class="modal-body">
-                           <input type="hidden" id="id_blog" name="id_blog">
-                           <input type="hidden" id="old_foto" name="old_foto">
-                           <div class="form-row">
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label for="judul_blog">Judul Blog</label>
-                                    <input type="text" id="judul_blog" name="judul_blog" class="form-control" placeholder="Input Nama blog" required>
-                                 </div>
-                              </div>
-                              <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label for="konten">Konten</label>
-                                    <textarea name="konten" data-toggle="summernote" data-placeholder="Write here..." class="form-control" cols="8" placeholder="Input konten blog" required></textarea>
-                                 </div>
-                              </div>
+<script type="text/javascript">
+   var save_method; //for save method string
+   var table;
+
+   var type, msg; // for alert
+
+   function showAlert(type, msg) {
+
+      toastr.options.closeButton = true;
+      toastr.options.progressBar = true;
+      toastr.options.extendedTimeOut = 1000; //1000
+
+      toastr.options.timeOut = 3000;
+      toastr.options.fadeOut = 250;
+      toastr.options.fadeIn = 250;
+
+      toastr.options.positionClass = 'toast-top-full-width';
+      toastr[type](msg);
+   }
+
+   function reload_table() {
+      table.ajax.reload(null, false);;
+   }
+
+   function searchRecords() {
+      $('#table-search').on('keyup change focus', function(e) {
+         // var filterBy = $('#filterBy').val();
+         // var hasFilter = filterBy !== '';
+         var value = $('#table-search').val(); // clear selected rows
+
+         table.search('').columns().search('').draw();
+         table.search(value).draw();
+
+      });
+   }
+   searchRecords();
+
+   $(document).ready(function() {
+      table = $('#myTable').DataTable({
+         "searching": true,
+         //"lengthChange": false,
+         "processing": true, //Feature control the processing indicator.
+         "serverSide": true, //Feature control DataTables' server-side processing mode.
+         "order": [], //Initial no order.
+
+         // Load data for the table's content from an Ajax source
+         "ajax": {
+            "url": "<?php echo site_url('admin/blog/ajax_list') ?>",
+            "type": "POST",
+            "dataType": "json",
+         },
+
+         //Set column definition initialisation properties.
+         "columnDefs": [{
+               "targets": [3], //last column
+               "orderable": false, //set not orderable
+            },
+            // {
+            //     "targets": [1],
+            //     "visible": false,
+            //     "searchable": false
+            // },
+         ],
+      });
+
+   });
+
+   function add_new() {
+      save_method = 'add';
+      $('#form_blog')[0].reset(); // reset form on modals
+      $('#image').empty();
+      $('#modal_form_blog').modal('show'); // show bootstrap modal
+      $('.modal-title').text('Tambah blog'); // Set Title to Bootstrap modal title
+   }
+
+   function edit(id) {
+      save_method = 'update';
+      $('#form_blog')[0].reset(); // reset form on modals
+      $('#image').empty();
+      // $('#modal_form_blog').modal('show');
 
 
-                              <div class="col-md-12">
-                                 <label for="foto">Foto blog</label>
-                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="foto" id="foto" accept="image/x-png,image/gif,image/jpeg" />
-                                    <label class="custom-file-label" for="foto">Upload Foto</label>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="modal-footer">
-                           <button type="submit" id="btnSave" class="btn btn-primary">Simpan</button>
-                           <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                        </div>
-                     </form>
-                  </div>
-               </div>
-            </div>
+      //Ajax Load data from ajax
+      $.ajax({
+         url: "<?php echo site_url('admin/blog/ajax_edit/') ?>" + id,
+         type: "GET",
+         dataType: "JSON",
+         success: function(data) {
+
+            // console.log('edit', data);
+
+            $('[name="id_blog"]').val(data.id_blog);
+            $('[name="judul_blog"]').val(data.judul_blog);
+            $('[name="konten"]').val(data.konten).trigger('change');
+            $('[name="old_foto"]').val(data.foto);
+
+            $('#modal_form_blog').modal('show'); // show bootstrap modal when complete loaded
+            $('.modal-title').text('Edit Hero/Slider'); // Set Title to Bootstrap modal title
+
+         },
+         error: function(jqXHR, textStatus, errorThrown) {
+            alert('Error get data from ajax');
+         }
+      });
+   }
+
+   function detail(id) {
+
+      // $('#modal_detail').empty();
+      //Ajax Load data from ajax
+      $.ajax({
+         url: "<?php echo site_url('admin/blog/ajax_edit/') ?>" + id,
+         type: "GET",
+         dataType: "JSON",
+         success: function(data) {
+
+            // console.log('edit', data);
+            var nama = data.nama_blog;
+            $('#title').val(nama);
+            $('#foto_blog').attr('src', '<?= base_url('assets/uploads/blog/') ?>' + data.foto);
+            $('#detai_desc').html(data.deskripsi);
+
+            $('#modal_detail').modal('show'); // show bootstrap modal when complete loaded
+            $('.modal-title').text('Detail blog ' + nama); // Set Title to Bootstrap modal title
+
+         },
+         error: function(jqXHR, textStatus, errorThrown) {
+            alert('Error get data from ajax');
+         }
+      });
+   }
+
+   function delete_data(id) {
+      if (confirm('Apakah Anda yakin menghapus data ini ?')) {
+         // ajax delete data to database
+         $.ajax({
+            url: "<?php echo site_url('admin/blog/ajax_delete') ?>/" + id,
+            type: "POST",
+            dataType: "JSON",
+            success: function(data) {
+               if (data.status == '00') {
+                  // reload_list_blog();
+                  reload_table();
+                  showAlert(data.type, data.mess);
+               } else {
+                  reload_table();
+                  showAlert(data.type, data.mess);
+               }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+               alert('Error deleting data');
+            }
+         });
+      }
+   }
 
 
-            <button type="button" onclick="add_new()" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button> <!-- /floating action -->
+   // function of form submitted
+   $('#form_blog').submit(function(e) {
+      // alert("Form submitted!");
+      e.preventDefault();
+      // Get form
+      var form = $('#form_blog')[0];
 
-            <div class="page-section">
-               <div class="card card-fluid">
-                  <div class="card-header"> Data Blog </div>
-                  <div class="card-body">
-                     <div class="form-group">
+      // Create an FormData object
+      //var data = new FormData(form);
+      var data = new FormData(form);
+      //var data = $(this).serialize();
 
-                        <div class="input-group has-clearable">
-                           <button id="clear-search" type="button" class="close" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span></button>
-                           <div class="input-group-prepend">
-                              <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
-                           </div><input id="table-search" type="text" class="form-control" placeholder="Cari blog">
-                        </div>
-                     </div>
+      if ($('[name="image"]').val() == '') {
+         alert('Pilih Foto blog Yang Akan di Upload !');
+         return false;
+      }
 
-                     <table id="myTable" class="table">
-                        <thead>
-                           <tr>
-                              <th>No</th>
-                              <th> Judul Blog </th>
-                              <th> Konten </th>
-                              <th style="width:100px; min-width:100px;"> &nbsp; </th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                     </table>
-                  </div><!-- /.card-body -->
-               </div>
-            </div>
-         </div>
-      </div>
+      $('#btnSave').text('Sedang Proses, Mohon tunggu...'); //change button text
+      $('#btnSave').attr('disabled', true); //set button disable 
+
+      // ajax adding data to database
+      // console.log($('#form_blog').serialize());
+      var url;
+
+      if (save_method == 'add') {
+         url = "<?php echo site_url('admin/blog/ajax_add') ?>";
+      } else {
+         url = "<?php echo site_url('admin/blog/ajax_update') ?>";
+      }
+
+      $.ajax({
+         url: url,
+         type: "POST",
+         //contentType: 'multipart/form-data',
+         cache: false,
+         contentType: false,
+         processData: false,
+         method: 'POST',
+         data: data,
+         dataType: "JSON",
+
+         success: function(data) {
+            if (data.status == '00') //if success close modal and reload ajax table
+            {
+               reload_table();
+               showAlert(data.type, data.mess);
+               $('#modal_form_blog').modal('hide');
+            } else {
+               reload_table();
+               showAlert(data.type, data.mess);
+
+            }
+
+            $('#btnSave').text('Simpan'); //change button text
+            $('#btnSave').attr('disabled', false); //set button enable 
+         },
+         error: function(jqXHR, textStatus, errorThrown) {
+            type = 'error';
+            msg = 'Error adding / update data';
+            showAlert(type, msg); //utk show alert
+            $('#btnSave').text('Simpan'); //change button text
+            $('#btnSave').attr('disabled', false); //set button enable 
+         }
+      });
+
+   });
+</script>

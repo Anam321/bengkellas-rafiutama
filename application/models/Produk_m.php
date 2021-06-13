@@ -102,30 +102,23 @@ class Produk_m extends CI_Model
         return $data;
     }
 
-public function get_group_image($group_image)
-{
-return $this->db->get_where('ref_produk', ['group_image' => $group_image])->result_array();
-}
+    public function get_group_image($group_image)
+    {
+        return $this->db->get_where('ref_produk', ['group_image' => $group_image])->result_array();
+    }
 
 
 
 
 
 
-public function get_image($image)
-{
-   $query = $this->db->query("select * from ref_produk where group_image= $image");
+    public function get_image($id_produk)
+    {
+        $query = $this->db->query("select * from ref_produk a left join foto_produk b on a.id_produk=b.id_produk where slug = '$id_produk'");
 
-   $data = array();
-   foreach ($query->result() as $row) {
-      $data[] = array(
-         'group_image' => $row->group_image,
-         'nama_p' => $row->nama_p,
-         'foto' => $row->foto,
-      );
-   }
-   return $data;
-}
+        $data = $query->result();
+        return $data;
+    }
 
 
 
