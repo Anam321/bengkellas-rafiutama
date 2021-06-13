@@ -39,8 +39,8 @@ class Produk_m extends CI_Model
 
     public function get_produkLimit($limit, $start)
     {
-        $this->db->where('main_image =', 1);
-        $this->db->group_by('group_image');
+        // $this->db->where('main_image =', 1);
+        // $this->db->group_by('group_image');
         return $this->db->get('ref_produk', $limit, $start)->result_array();
     }
 
