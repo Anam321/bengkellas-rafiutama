@@ -1,8 +1,4 @@
 <style>
-    img {
-        max-width: 100%;
-    }
-
     .preview {
         display: -webkit-box;
         display: -webkit-flex;
@@ -219,6 +215,23 @@
         }
     }
 
+
+    .img-section {
+        overflow: hidden;
+    }
+
+    .img-section img {
+        overflow: hidden;
+
+        height: 200px;
+    }
+
+    .img-section img:hover {
+        opacity: 0.6;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
     /* breadcubms */
 </style>
 
@@ -244,32 +257,35 @@
                     <div class="preview col-md-6">
 
                         <div class="preview-pic tab-content">
-                            <div class="tab-pane active" id="pic-0"><img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $produk['foto'] ?>" /></div>
+                            <div class="tab-pane active" id="pic-0">
+                                <img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $produk['foto'] ?>" />
+                            </div>
                             <?php $no = 1;
                             // print_r($image);
                             foreach ($image as $img1) : ?>
-                                <div class="tab-pane" id="pic-<?= $no ?>"><img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $img1->file ?>" /></div>
+                                <div class="tab-pane" id="pic-<?= $no ?>">
+                                    <img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $img1->file ?>" />
+                                </div>
                             <?php $no++;
                             endforeach ?>
-                            <!-- 
-                            <div class="tab-pane" id="pic-2"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></div>
-                            <div class="tab-pane" id="pic-3"><img src="<?= base_url(); ?>assets/frontend/img/project_3.png" /></div>
-                            <div class="tab-pane" id="pic-4"><img src="<?= base_url(); ?>assets/frontend/img/project_1.png" /></div>
-                            <div class="tab-pane" id="pic-5"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></div> -->
+
                         </div>
 
                         <ul class="preview-thumbnail nav nav-tabs">
 
-                            <li><a data-target="#pic-0" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $produk['foto'] ?>" /></a></li>
+                            <li>
+                                <a data-target="#pic-0" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $produk['foto'] ?>" /></a>
+                            </li>
+
                             <?php $no = 1;
                             foreach ($image as $img2) : ?>
-                                <li><a data-target="#pic-<?= $no ?>" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $img2->file ?>" /></a></li>
+
+                                <li>
+                                    <a data-target="#pic-<?= $no ?>" data-toggle="tab"><img style="height: 50px;" src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $img2->file ?>" /></a>
+                                </li>
+
                             <?php $no++;
                             endforeach ?>
-                            <!-- <li><a data-target="#pic-2" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></a></li>
-                            <li><a data-target="#pic-3" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_3.png" /></a></li>
-                            <li><a data-target="#pic-4" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_1.png" /></a></li>
-                            <li><a data-target="#pic-5" data-toggle="tab"><img src="<?= base_url(); ?>assets/frontend/img/project_2.png" /></a></li> -->
                         </ul>
 
                     </div>
