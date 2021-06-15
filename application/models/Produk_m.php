@@ -39,6 +39,7 @@ class Produk_m extends CI_Model
 
     public function get_produkLimit($limit, $start)
     {
+
         // $this->db->where('main_image =', 1);
         // $this->db->group_by('group_image');
         return $this->db->get('ref_produk', $limit, $start)->result_array();
@@ -102,10 +103,10 @@ class Produk_m extends CI_Model
         return $data;
     }
 
-    public function get_group_image($group_image)
-    {
-        return $this->db->get_where('ref_produk', ['group_image' => $group_image])->result_array();
-    }
+    // public function get_group_image($group_image)
+    // {
+    //     return $this->db->get_where('ref_produk', ['group_image' => $group_image])->result_array();
+    // }
 
 
 
@@ -115,6 +116,13 @@ class Produk_m extends CI_Model
     public function get_image($id_produk)
     {
         $query = $this->db->query("select * from ref_produk a left join foto_produk b on a.id_produk=b.id_produk where slug = '$id_produk'");
+
+        $data = $query->result();
+        return $data;
+    }
+    public function get_kategori($id_kategori)
+    {
+        $query = $this->db->query("select * from ref_produk a left join ref_kategori b on a.id_kategori=b.id_kategori where slug = '$id_kategori'");
 
         $data = $query->result();
         return $data;

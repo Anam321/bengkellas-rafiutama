@@ -244,7 +244,9 @@
         <div class="row">
             <div class="col-xl-5">
                 <div class="section_tittle">
-                    <h2><?= $produk['kategori'] ?></h2>
+
+                    <!-- <h2><?= $produk['nama_kategori'] ?></h2> -->
+
                 </div>
             </div>
         </div>
@@ -337,7 +339,7 @@
                         </div>
                         <div class="col mt-4">
                             <table>
-                                <tr>
+                                <!-- <tr>
                                     <td>
                                         <h6 style="color: #5c5959c7;">Kategori</h6 style="color: #5c5959c7;">
                                     </td>
@@ -345,7 +347,7 @@
                                         <?= $produk['kategori'] ?>
                                     </td>
 
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td style="padding-top: 20px;">
                                         <h6 style="color: #5c5959c7;">Bahan</h6 style="color: #5c5959c7;">

@@ -9,7 +9,11 @@ class Produk extends CI_Controller
         parent::__construct();
         $this->load->model('Produk_m', 'produk');
     }
+
     public function index()
+
+
+
     {
         $hdr = [
             //title Page
@@ -81,6 +85,7 @@ class Produk extends CI_Controller
             'paging' => $this->pagination->create_links(),
         ];
 
+
         // LOAD VIEW
 
         $this->load->view('layout/header', $hdr);
@@ -111,6 +116,8 @@ class Produk extends CI_Controller
 
             'produk' => $produk,
             'image' => $this->produk->get_image($slug),
+            'kategori' => $this->produk->get_kategori($slug),
+
             'post' => $this->produk->get_blogLimit(4, 0),
 
         ];

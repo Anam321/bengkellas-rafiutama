@@ -95,7 +95,11 @@
                                 <div class="col-lg-12 img-section">
                                     <img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $p['foto'] ?>" class="p-0 m-0 res-ponsive">
                                     <!--Ganti Gambar Sendiri/ Script PHP Produk-->
-                                    <span class="badge badge-danger add-sens p-2 rounded-0"><?= $p['kategori'] ?></span>
+
+
+                                    <!-- <span class="badge badge-danger add-sens p-2 rounded-0"><?= $kategori['nama_kategori'] ?></span> -->
+
+
                                 </div>
                                 <div class="col-lg-12 sectin-title">
                                     <h1 class="pt-2"><?= $p['nama_p'] ?></h1>
