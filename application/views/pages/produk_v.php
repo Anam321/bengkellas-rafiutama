@@ -119,11 +119,7 @@
                                     </div>
                                     <hr>
                                 </div>
-                                <!-- <div class="col-lg-12 section-detail">
-                                    <p class="ml-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor.</p>
-                                    <hr>
-                                </div> -->
+
                                 <div class="col-lg-12 pb-2">
                                     <div class="row" style="justify-content: center;">
                                         <div class="col-lg-6">
