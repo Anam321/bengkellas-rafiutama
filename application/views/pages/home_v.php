@@ -1,128 +1,127 @@
 <style>
+    .content {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
 
-.content {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+    .hero {
+        position: relative;
+        background: #333333;
+        color: white;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
 
-.hero {
-  position: relative;
-  background: #333333;
-  color: white;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
+    .hero h1 {
+        position: relative;
+        z-index: 1;
+        font-size: 4.5rem;
+        margin: 0 0 10px;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.9);
+        z-index: 1;
+    }
 
-.hero h1 {
-  position: relative;
-  z-index: 1;
-  font-size: 4.5rem;
-  margin: 0 0 10px;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.9);
-  z-index: 1;
-}
-
-.hero p {
-  position: relative;
-  z-index: 1;
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.4;
-  z-index: 1;
-}
+    .hero p {
+        position: relative;
+        z-index: 1;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.4;
+        z-index: 1;
+    }
 
 
-.heroText{
-    text-align: center;
-    color: #fff;
-    margin-top: 150px;
-    z-index: 1;
-}
+    .heroText {
+        text-align: center;
+        color: #fff;
+        margin-top: 150px;
+        z-index: 1;
+    }
 
-.heroText h1{
-    font-size: 3em;
-    margin: 0;
-}
+    .heroText h1 {
+        font-size: 3em;
+        margin: 0;
+    }
 
-.heroText button{
-    color: #fff;
-    background: transparent;
-    border: solid 2px #fff;
-    padding: 10px 30px;
-    border-radius: 30px;
-    margin: 5px;
-    font-weight: bold;
-    display: inline-block;
-}
+    .heroText button {
+        color: #fff;
+        background: transparent;
+        border: solid 2px #fff;
+        padding: 10px 30px;
+        border-radius: 30px;
+        margin: 5px;
+        font-weight: bold;
+        display: inline-block;
+    }
 
-.heroText button:hover{
-    cursor: pointer;
-    background: #fff;
-    border: solid 2px #fff;
-    color: #333;
-    
-}
+    .heroText button:hover {
+        cursor: pointer;
+        background: #fff;
+        border: solid 2px #fff;
+        color: #333;
 
-button.joinNow{
-    background: rgb(0, 206, 93);
-    border: solid 2px rgb(0, 206, 93);
-}
+    }
 
-button.joinNow:hover{
-    color: #fff;
-    background: rgb(1, 168, 76);
-    border: solid 2px rgb(1, 168, 76);
-}
+    button.joinNow {
+        background: rgb(0, 206, 93);
+        border: solid 2px rgb(0, 206, 93);
+    }
 
-/* ========================= */
+    button.joinNow:hover {
+        color: #fff;
+        background: rgb(1, 168, 76);
+        border: solid 2px rgb(1, 168, 76);
+    }
 
-.waves {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 250px;
-  background-color: var(--color);
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
-  transition: 500ms;
-}
+    /* ========================= */
 
-.waves::before,
-.waves::after {
-  content: '';
-  position: absolute;
-  width: 300vw;
-  height: 300vw;
-  top: -65vw;
-  left: 50%;
-  transform: translate(-50%, -75%);
-}
+    .waves {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 250px;
+        background-color: var(--color);
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+        transition: 500ms;
+    }
 
-.waves::before {
-  border-radius: 44%;
-  background: #001b5e;
-  animation: waves 8s linear infinite;
-}
+    .waves::before,
+    .waves::after {
+        content: '';
+        position: absolute;
+        width: 300vw;
+        height: 300vw;
+        top: -65vw;
+        left: 50%;
+        transform: translate(-50%, -75%);
+    }
 
-.waves::after {
-  border-radius: 44%;
-  background: #ff5e13;
-  animation: waves 15s linear infinite;
-}
+    .waves::before {
+        border-radius: 44%;
+        background: #001b5e;
+        animation: waves 8s linear infinite;
+    }
 
-@keyframes waves {
-  0% {
-    transform: translate(-50%, -75%) rotate(0deg);
-  }
-  
-  100% {
-    transform: translate(-50%, -75%) rotate(360deg);
-  }
-}
+    .waves::after {
+        border-radius: 44%;
+        background: #ff5e13;
+        animation: waves 15s linear infinite;
+    }
+
+    @keyframes waves {
+        0% {
+            transform: translate(-50%, -75%) rotate(0deg);
+        }
+
+        100% {
+            transform: translate(-50%, -75%) rotate(360deg);
+        }
+    }
 </style>
 
 
@@ -369,7 +368,7 @@ button.joinNow:hover{
                     <?php foreach ($testimoni as $testi) : ?>
 
                         <div class="single_review_part">
-                            <img src="<?= base_url(); ?>assets/frontend/img/testimoni/<?= $testi['foto'] ?>" alt="">
+                            <img src="<?= base_url(); ?>assets/frontend/img/upload/testimoni/<?= $testi['foto'] ?>" alt="">
                             <div class="tour_pack_content">
                                 <p><?= $testi['testimoni'] ?></p>
                                 <h4><?= $testi['nama'] ?></h4>

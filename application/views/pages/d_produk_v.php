@@ -283,7 +283,7 @@
                             foreach ($image as $img2) : ?>
 
                                 <li>
-                                    <a data-target="#pic-<?= $no ?>" data-toggle="tab"><img style="height: 50px;" src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $img2->file ?>" /></a>
+                                    <a data-target="#pic-<?= $no ?>" data-toggle="tab"><img style="height: 50px; width:500px" src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $img2->file ?>" /></a>
                                 </li>
 
                             <?php $no++;
