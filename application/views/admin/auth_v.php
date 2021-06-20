@@ -21,13 +21,13 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">Login #10</h2>
+                    <h2 class="heading-section">Login Page</h2>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
-                        <h3 class="mb-4 text-center">Have an account?</h3>
+                        <h3 class="mb-4 text-center">Form Login Account</h3>
 
 
                         <?= $this->session->flashdata('message'); ?>
@@ -49,7 +49,7 @@
 
 
                             <div class=" form-group">
-                                <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                                <button type="submit" class="form-control btn btn-primary submit px-3">Masuk</button>
                             </div>
 
                         </form>

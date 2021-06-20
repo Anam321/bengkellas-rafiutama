@@ -6,7 +6,7 @@
                 <header class="page-title-bar">
                     <div class="d-flex flex-column flex-md-row">
                         <p class="lead">
-                            <span class="font-weight-bold">Hi,</span> <span class="d-block text-muted">Here’s what’s happening with your business today.</span>
+                            <span class="font-weight-bold">Hi,</span> <span class="d-block text-muted">Inilah yang terjadi dengan bisnis Anda hari ini.</span>
                         </p>
                     </div>
                 </header>

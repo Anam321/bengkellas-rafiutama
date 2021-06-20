@@ -13,7 +13,7 @@
                     <div class="contact_info">
                         <ul>
                             <li>
-                                <a href="#">General Contracting</a>
+                                <a href="<?= base_url('admin/dashboard') ?>">Administrator</a>
                             </li>
                             <li>
                                 <a href="#">Mechanical Engineering</a>
