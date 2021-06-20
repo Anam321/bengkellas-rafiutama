@@ -53,36 +53,6 @@
         });
     }
 
-    // function details_produk(params) {
-    //     $('#v_foto').empty();
-    //     $('#v_produk').empty();
-    //     $('#v_harga').empty();
-    //     $('#v_bahan').empty();
-    //     $('#v_pembuatan').empty();
-    //     $('#v_pemasangan').empty();
-    //     $('#v_keterangan').empty();
-    //     $('#v_deskripsi').empty();
-    //     $('#v_keterangan').empty();
-    //     $.ajax({
-    //         url: "<?php echo site_url('admin/produk/ajax_edit') ?>/" + params,
-    //         type: "GET",
-    //         dataType: "JSON",
-    //         success: function(data) {
-    //             $('#v_foto').html("<a target='_blank' href='<?= base_url() ?>assets/frontend/img/upload/produk/" + data.foto + " class='user-avatar user-avatar-xl'><img src='<?= base_url() ?>assets/frontend/img/upload/produk/" + data.foto + "'></a>");
-    //             $('#v_produk').val(data.nama_p);
-    //             $('#v_harga').text(data.harga);
-    //             $('#v_bahan').val(data.harga);
-    //             $('#v_pembuatan').val(data.pembuatan);
-    //             $('#v_pemasangan').val('data.pemasangan');
-    //             $('#v_keterangan').text(data.keterangan);
-    //             $('#v_deskripsi').html(data.deskripsi);
-    //         },
-    //         error: function(jqXHR, textStatus, errorThrown) {
-    //             alert('Error get data from ajax');
-    //         }
-    //     });
-    // }
-
     function details_produk(params) {
         $('#detail_produk').empty();
         $.ajax({
@@ -130,10 +100,11 @@
         $('.modal-title').text('Tambah Kategori Produk'); // Set Title to Bootstrap modal title
     }
 
-    function add_new_foto_produk() {
+    function add_new_foto_produk(idproduk) {
         save_method = 'add';
         $('#form_foto_produk')[0].reset(); // reset form on modals
         $('#modal_form_foto_produk').modal('show'); // show bootstrap modal
+        $('#idproduk').val(idproduk); // show bootstrap modal
         $('.modal-title').text('Tambah Foto Produk'); // Set Title to Bootstrap modal title
     }
 
@@ -148,10 +119,10 @@
         var data = new FormData(form);
         //var data = $(this).serialize();
 
-        if ($('[name="foto"]').val() == '') {
-            alert('Pilih Foto Produk Yang Akan di Upload !');
-            return false;
-        }
+        // if ($('[name="foto"]').val() == '') {
+        //     alert('Pilih Foto Produk Yang Akan di Upload !');
+        //     return false;
+        // }
 
         $('#btnSave').text('Sedang Proses, Mohon tunggu...'); //change button text
         $('#btnSave').attr('disabled', true); //set button disable 
@@ -182,6 +153,7 @@
                 {
                     get_list_produk();
                     showAlert(data.type, data.mess);
+                    $('#detail_produk').empty();
                     $('#modal_form_produk').modal('hide');
                 } else {
                     get_list_produk();
@@ -202,4 +174,160 @@
         });
 
     });
+
+    $('#form_foto_produk').submit(function(e) {
+        // alert("Form submitted!");
+        e.preventDefault();
+        // Get form
+        var form = $('#form_foto_produk')[0];
+
+        // Create an FormData object
+        //var data = new FormData(form);
+        var data = new FormData(form);
+        //var data = $(this).serialize();
+
+        if ($('[name="foto_produk"]').val() == '') {
+            alert('Pilih Foto Produk Yang Akan di Upload !');
+            return false;
+        }
+
+        id = $('#idproduk').val();
+
+        $('#btnSaveFoto').text('Sedang Proses, Mohon tunggu...'); //change button text
+        $('#btnSaveFoto').attr('disabled', true); //set button disable 
+
+        // ajax adding data to database
+        // console.log($('#form_produk').serialize());
+        var url;
+
+        if (save_method == 'add') {
+            url = "<?php echo site_url('admin/produk/ajax_add_foto') ?>";
+        } else {
+            url = "<?php echo site_url('admin/produk/ajax_update_foto') ?>";
+        }
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            //contentType: 'multipart/form-data',
+            cache: false,
+            contentType: false,
+            processData: false,
+            method: 'POST',
+            data: data,
+            dataType: "JSON",
+
+            success: function(data) {
+                if (data.status == '00') //if success close modal and reload ajax table
+                {
+                    get_list_produk();
+                    showAlert(data.type, data.mess);
+                    get_foto_produk(id);
+                    $('#modal_form_foto_produk').modal('hide');
+                } else {
+                    get_list_produk();
+                    showAlert(data.type, data.mess);
+
+                }
+
+                $('#btnSaveFoto').text('Simpan'); //change button text
+                $('#btnSaveFoto').attr('disabled', false); //set button enable 
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                type = 'error';
+                msg = 'Error adding / update data';
+                showAlert(type, msg); //utk show alert
+                $('#btnSaveFoto').text('Simpan'); //change button text
+                $('#btnSaveFoto').attr('disabled', false); //set button enable 
+            }
+        });
+
+    });
+
+    function edit(id) {
+        save_method = 'update';
+        $('#form_produk')[0].reset(); // reset form on modals
+        $('#deskripsi').summernote('code', '');
+        // $('#modal_form_produk').modal('show');
+
+
+        //Ajax Load data from ajax
+        $.ajax({
+            url: "<?php echo site_url('admin/produk/ajax_edit/') ?>" + id,
+            type: "GET",
+            dataType: "JSON",
+            success: function(data) {
+
+                $('[name="id_produk"]').val(data.id_produk);
+                $('[name="nama_p"]').val(data.nama_p);
+                $('[name="id_kategori"]').val(data.id_kategori);
+                $('[name="pembuatan"]').val(data.pembuatan);
+                $('[name="pemasangan"]').val(data.pemasangan);
+                $('[name="keterangan"]').val(data.keterangan);
+                $('#deskripsi').summernote('code', data.deskripsi);
+                $('[name="harga"]').val(data.harga);
+                $('[name="bahan"]').val(data.bahan);
+
+                $('[name="old_foto"]').val(data.foto);
+
+                $('#modal_form_produk').modal('show'); // show bootstrap modal when complete loaded
+                $('.modal-title').text('Edit Data Produk'); // Set Title to Bootstrap modal title
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Error get data from ajax');
+            }
+        });
+    }
+
+    function hapus(id) {
+        if (confirm('Apakah Anda yakin menghapus data ini ?')) {
+            // ajax delete data to database
+            $.ajax({
+                url: "<?php echo site_url('admin/produk/ajax_delete') ?>/" + id,
+                type: "POST",
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status == '00') {
+                        // reload_list_produk();
+                        get_list_produk();
+                        showAlert(data.type, data.mess);
+                        $('#detail_produk').empty();
+                    } else {
+                        get_list_produk();
+                        showAlert(data.type, data.mess);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error deleting data');
+                }
+            });
+        }
+    }
+
+    function delete_foto(id, idproduk) {
+        if (confirm('Apakah Anda yakin menghapus data ini ?')) {
+            // ajax delete data to database
+            $.ajax({
+                url: "<?php echo site_url('admin/produk/ajax_delete_foto') ?>/" + id,
+                type: "POST",
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status == '00') {
+                        // reload_list_produk();
+                        get_list_produk();
+                        showAlert(data.type, data.mess);
+                        get_foto_produk(idproduk);
+                    } else {
+                        get_list_produk();
+                        showAlert(data.type, data.mess);
+                        get_foto_produk(id);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error deleting data');
+                }
+            });
+        }
+    }
 </script>

@@ -50,6 +50,23 @@ class Produk_model extends CI_Model
         return $res;
     }
 
+    public function save_foto($data)
+    {
+        // var_dump($data);
+        $r = $this->db->insert('foto_produk', $data);
+
+        if ($r) {
+            $res['status'] = '00';
+            $res['type'] = 'success';
+            $res['mess'] = 'Data produk berhasil di simpan';
+        } else {
+            $res['status'] = '01';
+            $res['type'] = 'warning';
+            $res['mess'] = 'Data produk gagal di simpan';
+        }
+        return $res;
+    }
+
     public function get_by_id($id)
     {
         $this->db->start_cache();
@@ -71,7 +88,7 @@ class Produk_model extends CI_Model
 
     public function update($where, $data)
     {
-        $r = $this->db->update('ref_kategori', $data, $where);
+        $r = $this->db->update('ref_produk', $data, $where);
         if ($r) {
             $res['status'] = '00';
             $res['type'] = 'success';
@@ -90,13 +107,27 @@ class Produk_model extends CI_Model
         $foto = $q->foto;
 
         // var_dump($foto);
-        $path = 'assets/uploads/produk/kategori/';
+        $path = './assets/frontend/img/upload/produk/';
         //hapus file
         if (file_exists($path . $foto)) {
             unlink($path . $foto);
         }
+
+        $q2 = $this->db->query("select * from foto_produk where id_produk = '$id'")->result();
+        foreach ($q2 as $dd) {
+            $foto2 = $dd->file;
+            $path2 = './assets/frontend/img/upload/produk/';
+            //hapus file
+            if (file_exists($path2 . $foto2)) {
+                unlink($path2 . $foto2);
+            }
+        }
+
         $this->db->where('id_produk', $id);
         $r = $this->db->delete('ref_produk');
+
+        $this->db->where('id_produk', $id);
+        $r2 = $this->db->delete('foto_produk');
 
         if ($r) {
             $res['status'] = '00';
@@ -106,6 +137,32 @@ class Produk_model extends CI_Model
             $res['status'] = '01';
             $res['type'] = 'warning';
             $res['mess'] = 'Gagal Hapus Data';
+        }
+        return json_encode($res);
+    }
+
+    public function ajax_delete_foto($id)
+    {
+        $q = $this->db->query("select * from foto_produk where id = '$id'")->row();
+        $foto = $q->file;
+
+        // var_dump($foto);
+        $path = './assets/frontend/img/upload/produk/';
+        //hapus file
+        if (file_exists($path . $foto)) {
+            unlink($path . $foto);
+        }
+        $this->db->where('id', $id);
+        $r = $this->db->delete('foto_produk');
+
+        if ($r) {
+            $res['status'] = '00';
+            $res['type'] = 'success';
+            $res['mess'] = 'Berhasil Hapus foto';
+        } else {
+            $res['status'] = '01';
+            $res['type'] = 'warning';
+            $res['mess'] = 'Gagal Hapus foto';
         }
         return json_encode($res);
     }
