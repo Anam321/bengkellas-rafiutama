@@ -6,17 +6,17 @@
             <!-- .btn-account -->
             <button class="btn-account" type="button" data-toggle="collapse" data-target="#dropdown-aside">
                 <span class="user-avatar user-avatar-lg">
-                    <img src="<?= base_url() ?>assets/backend/dashboard/images/avatars/profile.jpg" alt="">
+                    <img src="<?= base_url() ?>assets/frontend/img/upload/logo/2.png" alt="">
                 </span>
                 <span class="account-icon">
                     <span class="fa fa-caret-down fa-lg"></span>
                 </span>
                 <span class="account-summary">
                     <span class="account-name">
-                        <?= $user->username ?>
+                        Rafiutama.com
                     </span>
                     <span class="account-description">
-                        <?= $user->email ?>
+                        Administrator
                     </span>
                 </span>
             </button> <!-- /.btn-account -->
@@ -41,9 +41,9 @@
                     <li class="menu-item">
                         <a href="<?= base_url('admin/set_profile') ?>" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Setting Profile</span></a>
                     </li>
-                    <li class="menu-item">
+                    <!-- <li class="menu-item">
                         <a href="<?= base_url('admin/set_hero') ?>" class="menu-link"><span class="menu-icon oi oi-browser"></span> <span class="menu-text">Set Hero</span></a>
-                    </li>
+                    </li> -->
 
                     <li class="menu-header">Konten Website </li>
                     <!-- .menu-item -->

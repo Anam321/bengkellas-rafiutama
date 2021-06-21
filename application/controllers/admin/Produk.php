@@ -29,6 +29,34 @@ class Produk extends CI_Controller
         $this->load->view('admin/template/footer', $data);
     }
 
+    function waktu_lalu($timestamp)
+    {
+        $selisih = time() - strtotime($timestamp);
+        $detik = $selisih;
+        $menit = round($selisih / 60);
+        $jam = round($selisih / 3600);
+        $hari = round($selisih / 86400);
+        $minggu = round($selisih / 604800);
+        $bulan = round($selisih / 2419200);
+        $tahun = round($selisih / 29030400);
+        if ($detik <= 60) {
+            $waktu = $detik . ' detik yang lalu';
+        } else if ($menit <= 60) {
+            $waktu = $menit . ' menit yang lalu';
+        } else if ($jam <= 24) {
+            $waktu = $jam . ' jam yang lalu';
+        } else if ($hari <= 7) {
+            $waktu = $hari . ' hari yang lalu';
+        } else if ($minggu <= 4) {
+            $waktu = $minggu . ' minggu yang lalu';
+        } else if ($bulan <= 12) {
+            $waktu = $bulan . ' bulan yang lalu';
+        } else {
+            $waktu = $tahun . ' tahun yang lalu';
+        }
+        return $waktu;
+    }
+
     public function get_list_produk()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -39,11 +67,14 @@ class Produk extends CI_Controller
                 $data[] = '<div class="list-group-item" onclick="details_produk(' . "'" . $dd->id_produk . "'" . ')" data-toggle="sidebar" data-sidebar="show">
                             <a href="#" class="stretched-link"></a>
                             <div class="list-group-item-figure">
-                                <a href="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->foto . '" class="user-avatar"><img src="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->foto . '" alt=""></a>
+                                <a href="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->foto . '" class="user-avatar user-avatar-lg"><img src="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->foto . '" alt=""></a>
                             </div>
                             <div class="list-group-item-body">
                                 <h4 class="list-group-item-title"> ' . $dd->nama_p . ' </h4>
                                 <p class="list-group-item-text"> Rp. ' . number_format($dd->harga) . ' </p>
+                                <div class="d-sm-block">
+                                    <span class="timeline-date">Ditambahkan ' . $this->waktu_lalu($dd->created_at) . '</span>
+                                </div>
                             </div>
                         </div>';
             }
@@ -61,7 +92,7 @@ class Produk extends CI_Controller
 
                 $data[] = '<div class="list-group-item">
                                 <div class="list-group-item-figure align-items-start">
-                                    <a target="_blank" href="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->file . '" class="user-avatar user-avatar-xl"><img src="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->file . '"></a>
+                                    <a target="_blank" href="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->file . '" class="user-avatar user-avatar-xxl"><img src="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->file . '"></a>
                                 </div>
                                 <div class="list-group-item-body">
                                     <h4 class="list-group-item-title">
@@ -83,6 +114,11 @@ class Produk extends CI_Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $list =  $this->produk_m->get_by_id($id);
+            if ($list->update_at == "") {
+                $tgl_update = "-";
+            } else {
+                $tgl_update = date("d/m/Y H:i", strtotime($list->update_at));
+            }
 
             $data = '<header class="sidebar-header d-xl-none">
                         <nav aria-label="breadcrumb">
@@ -103,6 +139,9 @@ class Produk extends CI_Controller
                                     <h2 class="page-title"> ' . $list->nama_p . ' </h2>
                                 </h4>
                                 <p class="text-muted"> Rp. ' . number_format($list->harga) . ',00 </p>
+                                <div class="d-sm-block">
+                                    <span class="timeline-date">Ditambahkan pada : ' . date("d/m/Y H:i", strtotime($list->created_at)) . ' Terakhir diupdate : ' . $tgl_update . ' </span>
+                                </div>
                             </div>
                         </div>
 
@@ -263,6 +302,7 @@ class Produk extends CI_Controller
                     'harga'         => $this->input->post('harga'),
                     'bahan'         => $this->input->post('bahan'),
                     'foto'          => $image_data['file_name'],
+                    'created_at'    => date("Y-m-d H:i:s"),
 
                 );
                 // print_r($data);
@@ -346,6 +386,7 @@ class Produk extends CI_Controller
                         'harga'         => $this->input->post('harga'),
                         'bahan'         => $this->input->post('bahan'),
                         'foto'          => $image_data['file_name'],
+                        'update_at'    => date("Y-m-d H:i:s"),
                     );
                 }
             } else {
@@ -361,6 +402,7 @@ class Produk extends CI_Controller
                     'deskripsi'     => $this->input->post('deskripsi'),
                     'harga'         => $this->input->post('harga'),
                     'bahan'         => $this->input->post('bahan'),
+                    'update_at'    => date("Y-m-d H:i:s"),
                 );
             }
 

@@ -1,224 +1,186 @@
-<script type="text/javascript">
-   var save_method; //for save method string
-   var table;
+<main class="app-main">
+   <div class="wrapper">
+      <div class="page has-sidebar has-sidebar-fluid has-sidebar-expand-xl">
+         <div class="page-inner page-inner-fill position-relative">
+            <header class="page-navs bg-light shadow-sm">
+               <div class="input-group has-clearable">
+                  <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span></button>
+                  <label class="input-group-prepend" for="searchClients"><span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span></label>
+                  <input type="text" class="form-control" id="searchClients" data-filter=".board .list-group-item" placeholder="Pencarian produk">
+               </div>
+            </header>
+            <button type="button" class="btn btn-primary btn-floated position-absolute" onclick="add_new()" title="Add new client"><i class="fa fa-plus"></i></button>
 
-   var type, msg; // for alert
+            <div class="board p-0 perfect-scrollbar">
+               <!-- list produk in here process with ajax -->
+               <div id="list_produk" class="list-group list-group-flush list-group-divider border-top" data-toggle="radiolist"> </div>
+               <!-- # list produk in here process with ajax  -->
+            </div>
 
-   function showAlert(type, msg) {
+         </div>
 
-      toastr.options.closeButton = true;
-      toastr.options.progressBar = true;
-      toastr.options.extendedTimeOut = 1000; //1000
+         <!-- Keep in mind that modals should be placed outsite of page sidebar detail produk -->
+         <div id="detail_produk" class="page-sidebar bg-light"></div>
+         <!-- Keep in mind that modals should be placed outsite of page sidebar detail produk -->
 
-      toastr.options.timeOut = 3000;
-      toastr.options.fadeOut = 250;
-      toastr.options.fadeIn = 250;
+         <form id="form_produk" method="POST">
+            <div class="modal fade" id="modal_form_produk" tabindex="-1" role="dialog" aria-labelledby="modal_form_produkLabel" aria-hidden="true">
 
-      toastr.options.positionClass = 'toast-top-full-width';
-      toastr[type](msg);
-   }
+               <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h6 id="modal_form_produkLabel" class="modal-title inline-editable">
+                           Tambah Produk Baru
+                        </h6>
+                     </div>
 
-   function reload_table() {
-      table.ajax.reload(null, false);;
-   }
+                     <div class="modal-body">
+                        <input type="hidden" id="id_produk" name="id_produk">
+                        <input type="hidden" id="old_foto" name="old_foto">
+                        <div class="form-row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label for="nama_p">Nama Produk</label>
+                                 <input type="text" id="nama_p" name="nama_p" class="form-control" placeholder="Input nama produk" required>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="harga">Harga</label>
+                                 <div class="input-group">
+                                    <label class="input-group-prepend" for="harga"><span class="badge">Rp. </span></label>
+                                    <input type="number" class="form-control" name="harga" id="harga" placeholder="Input Harga Produk (per meter)" required>
+                                    <label class="input-group-append"><span class="badge">.00</span></label>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label class="d-flex justify-content-between" for="id_kategori"><span>Kategori</span>
+                                    <a href="#" onclick="add_new_kategori()"><i class="fa fa-plus"></i> <span> Tambah Kategori</span></a>
+                                 </label>
+                                 <select id="id_kategori" name="id_kategori" class="custom-select d-block w-100" required></select>
+                              </div>
+                           </div>
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label for="deskripsi">Deskripsi</label>
+                                 <textarea cols="8" id="deskripsi" name="deskripsi" data-toggle="summernote" data-placeholder="Tulis deskripsi..." class="form-control" placeholder="Input Deskripsi Produk" required></textarea>
+                              </div>
+                           </div>
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label for="keterangan">Keterangan</label>
+                                 <textarea cols="8" id="keterangan" name="keterangan" class="form-control" placeholder="Input Deskripsi (opsional)"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <hr>
+                        <legend>Spesifikasi</legend>
+                        <div class="form-row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label for="bahan">Bahan</label>
+                                 <input type="text" id="bahan" class="form-control" name="bahan" placeholder="contoh : 1 alderon dll.." required>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="pembuatan">Pembuatan</label>
+                                 <input type="text" id="pembuatan" class="form-control" name="pembuatan" placeholder="contoh : 1 minggu" required>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="pemasangan">Pemasangan</label>
+                                 <input type="text" id="pemasangan" class="form-control" name="pemasangan" placeholder="contoh : 2 hari" required>
+                              </div>
+                           </div>
+                           <div class="col-md-12">
+                              <label for="harga">Foto Produk</label>
+                              <div class="custom-file">
+                                 <input type="file" class="custom-file-input" name="foto" id="foto" accept="image/x-png,image/gif,image/jpeg" />
+                                 <label class="custom-file-label" for="foto">Upload Foto</label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
 
-   function searchRecords() {
-      $('#table-search').on('keyup change focus', function(e) {
-         // var filterBy = $('#filterBy').val();
-         // var hasFilter = filterBy !== '';
-         var value = $('#table-search').val(); // clear selected rows
+                     <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button> <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </form>
 
-         table.search('').columns().search('').draw();
-         table.search(value).draw();
+         <form id="form_kategori" method="POST">
+            <div class="modal fade" id="modal_form_kategori" tabindex="-1" role="dialog" aria-labelledby="clientBillingEditModalLabel" aria-hidden="true">
 
-      });
-   }
-   searchRecords();
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
 
-   $(document).ready(function() {
-      table = $('#myTable').DataTable({
-         "searching": true,
-         //"lengthChange": false,
-         "processing": true, //Feature control the processing indicator.
-         "serverSide": true, //Feature control DataTables' server-side processing mode.
-         "order": [], //Initial no order.
+                     <div class="modal-header">
+                        <h6 class="modal-title inline-editable"> Judul </h6>
+                     </div>
 
-         // Load data for the table's content from an Ajax source
-         "ajax": {
-            "url": "<?php echo site_url('admin/blog/ajax_list') ?>",
-            "type": "POST",
-            "dataType": "json",
-         },
+                     <div class="modal-body">
+                        <div class="form-row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label for="nama_kategori">Kategori Produk</label>
+                                 <input type="text" id="nama_kategori" name="nama_kategori" class="form-control" placeholder="Input kategori baru" required>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
 
-         //Set column definition initialisation properties.
-         "columnDefs": [{
-               "targets": [3], //last column
-               "orderable": false, //set not orderable
-            },
-            // {
-            //     "targets": [1],
-            //     "visible": false,
-            //     "searchable": false
-            // },
-         ],
-      });
+                     <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button> <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </form>
 
-   });
-
-   function add_new() {
-      save_method = 'add';
-      $('#form_blog')[0].reset(); // reset form on modals
-      $('#image').empty();
-      $('#modal_form_blog').modal('show'); // show bootstrap modal
-      $('.modal-title').text('Tambah blog'); // Set Title to Bootstrap modal title
-   }
-
-   function edit(id) {
-      save_method = 'update';
-      $('#form_blog')[0].reset(); // reset form on modals
-      $('#image').empty();
-      // $('#modal_form_blog').modal('show');
-
-
-      //Ajax Load data from ajax
-      $.ajax({
-         url: "<?php echo site_url('admin/blog/ajax_edit/') ?>" + id,
-         type: "GET",
-         dataType: "JSON",
-         success: function(data) {
-
-            // console.log('edit', data);
-
-            $('[name="id_blog"]').val(data.id_blog);
-            $('[name="judul_blog"]').val(data.judul_blog);
-            $('[name="konten"]').val(data.konten).trigger('change');
-            $('[name="old_foto"]').val(data.foto);
-
-            $('#modal_form_blog').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Hero/Slider'); // Set Title to Bootstrap modal title
-
-         },
-         error: function(jqXHR, textStatus, errorThrown) {
-            alert('Error get data from ajax');
-         }
-      });
-   }
-
-   function detail(id) {
-
-      // $('#modal_detail').empty();
-      //Ajax Load data from ajax
-      $.ajax({
-         url: "<?php echo site_url('admin/blog/ajax_edit/') ?>" + id,
-         type: "GET",
-         dataType: "JSON",
-         success: function(data) {
-
-            // console.log('edit', data);
-            var nama = data.nama_blog;
-            $('#title').val(nama);
-            $('#foto_blog').attr('src', '<?= base_url('assets/uploads/blog/') ?>' + data.foto);
-            $('#detai_desc').html(data.deskripsi);
-
-            $('#modal_detail').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Detail blog ' + nama); // Set Title to Bootstrap modal title
-
-         },
-         error: function(jqXHR, textStatus, errorThrown) {
-            alert('Error get data from ajax');
-         }
-      });
-   }
-
-   function delete_data(id) {
-      if (confirm('Apakah Anda yakin menghapus data ini ?')) {
-         // ajax delete data to database
-         $.ajax({
-            url: "<?php echo site_url('admin/blog/ajax_delete') ?>/" + id,
-            type: "POST",
-            dataType: "JSON",
-            success: function(data) {
-               if (data.status == '00') {
-                  // reload_list_blog();
-                  reload_table();
-                  showAlert(data.type, data.mess);
-               } else {
-                  reload_table();
-                  showAlert(data.type, data.mess);
-               }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-               alert('Error deleting data');
-            }
-         });
-      }
-   }
+         <div class="modal fade" id="modal_form_foto_produk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+               <form id="form_foto_produk" method="POST" enctype="multipart/form-data" class="modal-content">
+                  <div class="modal-header">
+                     <h6 class="modal-title"> </h6>
+                  </div>
+                  <div class="modal-body">
+                     <input type="hidden" value="" name="id">
+                     <input type="hidden" value="" id="idproduk" name="idproduk">
+                     <input type="hidden" value="" name="old_file">
+                     <div class="alert alert-success alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert">×</button> <strong>Informasi !</strong> Mohon Upload foto dengan resolusi <b>bagus</b>, jangan yang buriq ! :D
+                     </div>
+                     <div class="form-row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <label for="file_name">Nama Foto</label>
+                              <input type="text" id="file_name" name="file_name" class="form-control" placeholder="Input nama foto" required>
+                           </div>
+                        </div>
+                        <div class="col-md-12">
+                           <label for="harga">Foto Produk</label>
+                           <div class="custom-file">
+                              <input type="file" class="custom-file-input" name="file" id="file" accept="image/x-png,image/gif,image/jpeg" />
+                              <label class="custom-file-label" for="file">Upload Foto</label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="submit" id="btnSaveFoto" class="btn btn-primary">Simpan</button>
+                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+               </form>
+            </div>
+         </div>
 
 
-   // function of form submitted
-   $('#form_blog').submit(function(e) {
-      // alert("Form submitted!");
-      e.preventDefault();
-      // Get form
-      var form = $('#form_blog')[0];
-
-      // Create an FormData object
-      //var data = new FormData(form);
-      var data = new FormData(form);
-      //var data = $(this).serialize();
-
-      if ($('[name="image"]').val() == '') {
-         alert('Pilih Foto blog Yang Akan di Upload !');
-         return false;
-      }
-
-      $('#btnSave').text('Sedang Proses, Mohon tunggu...'); //change button text
-      $('#btnSave').attr('disabled', true); //set button disable 
-
-      // ajax adding data to database
-      // console.log($('#form_blog').serialize());
-      var url;
-
-      if (save_method == 'add') {
-         url = "<?php echo site_url('admin/blog/ajax_add') ?>";
-      } else {
-         url = "<?php echo site_url('admin/blog/ajax_update') ?>";
-      }
-
-      $.ajax({
-         url: url,
-         type: "POST",
-         //contentType: 'multipart/form-data',
-         cache: false,
-         contentType: false,
-         processData: false,
-         method: 'POST',
-         data: data,
-         dataType: "JSON",
-
-         success: function(data) {
-            if (data.status == '00') //if success close modal and reload ajax table
-            {
-               reload_table();
-               showAlert(data.type, data.mess);
-               $('#modal_form_blog').modal('hide');
-            } else {
-               reload_table();
-               showAlert(data.type, data.mess);
-
-            }
-
-            $('#btnSave').text('Simpan'); //change button text
-            $('#btnSave').attr('disabled', false); //set button enable 
-         },
-         error: function(jqXHR, textStatus, errorThrown) {
-            type = 'error';
-            msg = 'Error adding / update data';
-            showAlert(type, msg); //utk show alert
-            $('#btnSave').text('Simpan'); //change button text
-            $('#btnSave').attr('disabled', false); //set button enable 
-         }
-      });
-
-   });
-</script>
+      </div>
+   </div>
+</main>

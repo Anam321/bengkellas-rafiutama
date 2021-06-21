@@ -2,8 +2,6 @@
 <html lang="en">
 
 
-<!-- Mirrored from technext.github.io/pexcon/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 25 May 2021 19:22:50 GMT -->
-<!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
 <head>
@@ -165,7 +163,7 @@
 
 <body>
 
-<a href="https://api.whatsapp.com/send?phone=<?= $telpon2 ?>&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan" target="_blank" class="cs-demo-switcher">
+    <a href="https://api.whatsapp.com/send?phone=<?= $telpon2 ?>&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan" target="_blank" class="cs-demo-switcher">
         <div class="cs-demo-switcher-inner bg-success" data-toggle="tooltip" data-placement="left" title="Hubungi ahh..">
             <img src="<?= base_url('assets/frontend/fonts/Whatsapp_icon-icons.com_66931.png'); ?>" alt="">
         </div>
