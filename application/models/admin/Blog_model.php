@@ -3,16 +3,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Blog_model extends CI_Model
 {
-    var $table = 'ref_produk';
-    var $column_order = array('', 'nama_produk', 'harga', 'kategori');
-    var $column_search = array('nama_produk', 'harga', 'kategori');
-    var $order = array('id_produk' => 'desc'); // default order 
 
-    public function get_list_produk()
+    public function ajax_list()
+    {
+        $this->db->from('blog')
+            ->order_by('id_artikel', 'desc');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_by_id_label($id = null)
+    {
+        $this->db->from('blog_label');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function ajax_list_label()
     {
         $this->db->start_cache();
-        $this->db->from('ref_produk')
-            ->order_by('id_produk', 'desc');
+        $this->db->from('blog_label')
+            ->order_by('id', 'desc');
         $this->db->stop_cache();
         $query = $this->db->get();
         $this->db->flush_cache();
@@ -36,33 +48,33 @@ class Blog_model extends CI_Model
     public function save($data)
     {
         // var_dump($data);
-        $r = $this->db->insert('ref_produk', $data);
+        $r = $this->db->insert('blog', $data);
 
         if ($r) {
             $res['status'] = '00';
             $res['type'] = 'success';
-            $res['mess'] = 'Data produk berhasil di simpan';
+            $res['mess'] = 'Blog berhasil di posting';
         } else {
             $res['status'] = '01';
             $res['type'] = 'warning';
-            $res['mess'] = 'Data produk gagal di simpan';
+            $res['mess'] = 'Blog gagal di posting. Kesalahan saat menyimpan data !';
         }
         return $res;
     }
 
-    public function save_foto($data)
+    public function save_label($data)
     {
         // var_dump($data);
-        $r = $this->db->insert('foto_produk', $data);
+        $r = $this->db->insert('blog_label', $data);
 
         if ($r) {
             $res['status'] = '00';
             $res['type'] = 'success';
-            $res['mess'] = 'Data produk berhasil di simpan';
+            $res['mess'] = 'Data label berhasil di simpan';
         } else {
             $res['status'] = '01';
             $res['type'] = 'warning';
-            $res['mess'] = 'Data produk gagal di simpan';
+            $res['mess'] = 'Data label gagal di simpan';
         }
         return $res;
     }
@@ -70,8 +82,8 @@ class Blog_model extends CI_Model
     public function get_by_id($id)
     {
         $this->db->start_cache();
-        $this->db->from('ref_produk');
-        $this->db->where('id_produk', $id);
+        $this->db->from('blog');
+        $this->db->where('id_artikel', $id);
         $this->db->stop_cache();
         $query = $this->db->get();
         $this->db->flush_cache();
@@ -81,14 +93,14 @@ class Blog_model extends CI_Model
     public function get_foto_produk($id)
     {
         $this->db->from('foto_produk');
-        $this->db->where('id_produk', $id);
+        $this->db->where('id_artikel', $id);
         $query = $this->db->get();
         return $query->result();
     }
 
     public function update($where, $data)
     {
-        $r = $this->db->update('ref_produk', $data, $where);
+        $r = $this->db->update('blog', $data, $where);
         if ($r) {
             $res['status'] = '00';
             $res['type'] = 'success';
@@ -103,66 +115,34 @@ class Blog_model extends CI_Model
 
     public function delete_by_id($id)
     {
-        $q = $this->db->query("select foto from ref_produk where id_produk = '$id'")->row();
-        $foto = $q->foto;
-
-        // var_dump($foto);
-        $path = './assets/frontend/img/upload/produk/';
-        //hapus file
-        if (file_exists($path . $foto)) {
-            unlink($path . $foto);
-        }
-
-        $q2 = $this->db->query("select * from foto_produk where id_produk = '$id'")->result();
-        foreach ($q2 as $dd) {
-            $foto2 = $dd->file;
-            $path2 = './assets/frontend/img/upload/produk/';
-            //hapus file
-            if (file_exists($path2 . $foto2)) {
-                unlink($path2 . $foto2);
-            }
-        }
-
-        $this->db->where('id_produk', $id);
-        $r = $this->db->delete('ref_produk');
-
-        $this->db->where('id_produk', $id);
-        $r2 = $this->db->delete('foto_produk');
+        $this->db->where('id_artikel', $id);
+        $r = $this->db->delete('blog');
 
         if ($r) {
             $res['status'] = '00';
             $res['type'] = 'success';
-            $res['mess'] = 'Berhasil Hapus Data';
+            $res['mess'] = 'Postingan berhasil dihapus';
         } else {
             $res['status'] = '01';
             $res['type'] = 'warning';
-            $res['mess'] = 'Gagal Hapus Data';
+            $res['mess'] = 'Postingan gagal dihapus';
         }
         return json_encode($res);
     }
 
-    public function ajax_delete_foto($id)
+    public function ajax_delete_label($id)
     {
-        $q = $this->db->query("select * from foto_produk where id = '$id'")->row();
-        $foto = $q->file;
-
-        // var_dump($foto);
-        $path = './assets/frontend/img/upload/produk/';
-        //hapus file
-        if (file_exists($path . $foto)) {
-            unlink($path . $foto);
-        }
         $this->db->where('id', $id);
-        $r = $this->db->delete('foto_produk');
+        $r = $this->db->delete('blog_label');
 
         if ($r) {
             $res['status'] = '00';
             $res['type'] = 'success';
-            $res['mess'] = 'Berhasil Hapus foto';
+            $res['mess'] = 'Berhasil Hapus label';
         } else {
             $res['status'] = '01';
             $res['type'] = 'warning';
-            $res['mess'] = 'Gagal Hapus foto';
+            $res['mess'] = 'Gagal Hapus label';
         }
         return json_encode($res);
     }

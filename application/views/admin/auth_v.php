@@ -4,7 +4,7 @@
 <!-- Mirrored from preview.colorlib.com/theme/bootstrap/login-form-20/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 31 May 2021 19:52:33 GMT -->
 
 <head>
-    <title>Login 10</title>
+    <title>Login Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
-                        <h3 class="mb-4 text-center">Form Login Account</h3>
+                        <h3 class="mb-4 text-center">Form Login Administrator</h3>
 
 
                         <?= $this->session->flashdata('message'); ?>

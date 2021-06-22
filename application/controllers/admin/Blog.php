@@ -7,15 +7,15 @@ class Blog extends CI_Controller
    {
       parent::__construct();
       is_logged_in();
-      $this->load->model('admin/Produk_model', 'produk_m');
+      $this->load->model('admin/Blog_model', 'blog_m');
       // $this->user = $this->ion_auth->user()->row();
    }
 
-   public function index()
+   public function index($label = null)
    {
       $data = [
          // 'user' => $this->user,
-         'judul' => 'Halaman Produk',
+         'judul' => 'Posting artikel/blog',
       ];
 
       $this->load->view('admin/template/header', $data);
@@ -25,6 +25,28 @@ class Blog extends CI_Controller
       $this->load->view('admin/pages/blog_v', $data);
       // $this->load->view('js/produk_js');
       $this->load->view('js/blog_js');
+
+      $this->load->view('admin/template/footer', $data);
+   }
+
+   public function post($id = null)
+   {
+      if ($id == "") {
+         $judul = "New post";
+      } else {
+         $judul = "Edit post";
+      }
+      $data = [
+         // 'user' => $this->user,
+         'judul' => 'Posting : ' . $judul,
+      ];
+
+      $this->load->view('admin/template/header', $data);
+      $this->load->view('admin/template/topbar', $data);
+      // $this->load->view('admin/template/sidebar', $data);
+
+      $this->load->view('admin/pages/blog_add_v', $data);
+      $this->load->view('js/blog_add_js');
 
       $this->load->view('admin/template/footer', $data);
    }
@@ -57,205 +79,91 @@ class Blog extends CI_Controller
       return $waktu;
    }
 
-   public function get_list_produk()
+   public function ajax_list()
    {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-         $list =  $this->produk_m->get_list_produk();
+         $list =  $this->blog_m->ajax_list();
          $data = array();
          foreach ($list as $dd) {
 
-            $data[] = '<div class="list-group-item" onclick="details_produk(' . "'" . $dd->id_produk . "'" . ')" data-toggle="sidebar" data-sidebar="show">
-                            <a href="#" class="stretched-link"></a>
-                            <div class="list-group-item-figure">
-                                <a href="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->foto . '" class="user-avatar user-avatar-lg"><img src="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->foto . '" alt=""></a>
-                            </div>
-                            <div class="list-group-item-body">
-                                <h4 class="list-group-item-title"> ' . $dd->nama_p . ' </h4>
-                                <p class="list-group-item-text"> Rp. ' . number_format($dd->harga) . ' </p>
-                                <div class="d-sm-block">
-                                    <span class="timeline-date">Ditambahkan ' . $this->waktu_lalu($dd->created_at) . '</span>
-                                </div>
-                            </div>
+            $data_list = '<div class="list-group-item mb-2">
+                        <div class="list-group-item-figure">
+                           <a href="javascript:void(0)" class="tile tile-circle bg-indigo text-white mr-1">' . strtoupper(substr($dd->judul, 0, 1)) . '</a>
+                        </div>
+                        <div class="list-group-item-body">
+                           <div class="d-sm-flex justify-content-sm-between align-items-sm-center">
+                              <div class="team">
+                                 <h4 class="list-group-item-title">
+                                    <a href="' . base_url() . 'admin/blog/post/' . $dd->id_artikel . '">' . $dd->judul . '</a> 
+                                 </h4>
+                                 <span class="timeline-date">
+                                    <span class="text-muted">' . date("M d, Y H:i", strtotime($dd->created_at)) . ' </span> <span class="mx-1">·</span> <span class="due-date"><i class="far fa-fw fa-clock"></i> ' . $this->waktu_lalu($dd->created_at) . '</span>';
+
+            $src = explode(",", $dd->id_label);
+            for ($x = 0; $x < sizeof($src); $x++) {
+
+               $result = $this->blog_m->get_by_id_label($src[$x]);
+               $label = "";
+               if (count($result)) {
+                  $row = $result->label;
+                  $data_list .= '<a href="' . base_url() . 'admin/blog/index/' . $result->label . '" class="mention ml-1">' . $result->label . '</a>';
+               }
+            }
+
+            $data_list .=  '</span>
+                              </div>
+                              <ul class="list-inline text-muted mb-0">
+                                 <li class="list-inline-item mr-3">
+                                    <i class="oi oi-eye"></i> ' . $dd->views . '
+                                 </li>
+                                 <li class="list-inline-item">
+                                    <i class="oi oi-comment-square"></i> 15 
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="list-group-item-figure">
+                           <a href="' . base_url() . 'admin/blog/post/' . $dd->id_artikel . '" class="btn btn-sm btn-icon btn-light mr-2" data-todoid="1"><i class="oi oi-pencil text-primary"></i></a>
+                           <button class="btn btn-sm btn-icon btn-light mr-2" onclick="hapus(' . "'" . $dd->id_artikel . "'" . ')" data-todoid="1"><i class="oi oi-trash text-danger"></i></a>
+                        </div>
+                     </div>';
+
+            $data[] = $data_list;
+         }
+         echo json_encode($data);
+      }
+   }
+
+   public function ajax_list_label()
+   {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+         $list =  $this->blog_m->ajax_list_label();
+         $data = array();
+         $value = "";
+         $id = $this->input->post('id');
+         if ($id) {
+            $rsc = $this->blog_m->get_by_id($id);
+            $src = explode(",", $rsc->id_label);
+            for ($x = 0; $x < sizeof($src); $x++) {
+               $value = $src[$x];
+            }
+         }
+
+         foreach ($list as $dd) {
+            $checked = "";
+            if ($dd->id == $value) {
+               $checked = "checked";
+            }
+            $data[] = '<div class="todo">
+                           <div class="custom-control custom-checkbox">
+                                 <input type="checkbox" name="id_labels[]" value="' . $dd->id . '" class="custom-control-input" id="ckb' . $dd->id . '" ' . $checked . '>
+                                 <label class="custom-control-label" for="ckb' . $dd->id . '"><span> ' . $dd->label . '</span></label>
+                           </div>
+                           <div class="todo-actions d-block">
+                                 <a onclick="hapus_label(' . "'" . $dd->id . "'" . ')" class="btn btn-sm btn-icon btn-light" data-todoid="2"><i class="fa fa-trash-alt"></i></a>
+                           </div>
                         </div>';
          }
-         echo json_encode($data);
-      }
-   }
-
-   public function get_foto_produk()
-   {
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-         $id = $this->input->post('id_produk');
-         $list =  $this->produk_m->get_foto_produk($id);
-         $data = array();
-         foreach ($list as $dd) {
-
-            $data[] = '<div class="list-group-item">
-                                <div class="list-group-item-figure align-items-start">
-                                    <a target="_blank" href="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->file . '" class="user-avatar user-avatar-xxl"><img src="' . base_url() . 'assets/frontend/img/upload/produk/' . $dd->file . '"></a>
-                                </div>
-                                <div class="list-group-item-body">
-                                    <h4 class="list-group-item-title">
-                                        <a href="#">' . $dd->file_name . '</a>
-                                    </h4>
-                                    <p class="list-group-item-text"> ' . $dd->file . ' </p>
-                                </div>
-                                <div class="list-group-item-figure align-items-start">
-                                    <a class="btn btn-sm btn-icon btn-secondary" href="javascript:void(0)" onclick="delete_foto(' . "'" . $dd->id . "'" . ', ' . "'" . $dd->id_produk . "'" . ')"><i class="far fa-trash-alt text-red"></i></a>
-                                </div>
-                            </div>';
-         }
-
-         echo json_encode($data);
-      }
-   }
-
-   public function details_produk($id)
-   {
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-         $list =  $this->produk_m->get_by_id($id);
-         if ($list->update_at == "") {
-            $tgl_update = "-";
-         } else {
-            $tgl_update = date("d/m/Y H:i", strtotime($list->update_at));
-         }
-
-         $data = '<header class="sidebar-header d-xl-none">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item active">
-                                    <a href="#" onclick="Looper.toggleSidebar()"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Back</a>
-                                </li>
-                            </ol>
-                        </nav>
-                    </header>
-                    <div class="sidebar-section sidebar-section-fill">
-                        <div class="list-group-item bg-secondary">
-                            <div class="list-group-item-figure align-items-start">
-                                <a target="_blank" href="' . base_url() . 'assets/frontend/img/upload/produk/' . $list->foto . '" class="user-avatar user-avatar-xl"><img src="' . base_url() . 'assets/frontend/img/upload/produk/' . $list->foto . '"></a>
-                            </div>
-                            <div class="list-group-item-body">
-                                <h4 class="list-group-item-title">
-                                    <h2 class="page-title"> ' . $list->nama_p . ' </h2>
-                                </h4>
-                                <p class="text-muted"> Rp. ' . number_format($list->harga) . ',00 </p>
-                                <div class="d-sm-block">
-                                    <span class="timeline-date">Ditambahkan pada : ' . date("d/m/Y H:i", strtotime($list->created_at)) . ' Terakhir diupdate : ' . $tgl_update . ' </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="nav-scroller border-bottom">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active show" data-toggle="tab" href="#client-billing-contact">Overview</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#client-invoices">Deskripsi</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" onclick="get_foto_produk(' . "'" . $list->id_produk . "'" . ')" href="#client-expenses">Foto Produk</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#aksi">Pilihan (Opsi)</a>
-                            </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content pt-4" id="clientDetailsTabs">
-                            <div class="tab-pane fade show active" id="client-billing-contact" role="tabpanel" aria-labelledby="client-billing-contact-tab">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h2 id="client-billing-contact-tab" class="card-title"> Spesifikasi </h2>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="bahan">Bahan</label>
-                                                    <input type="text" id="bahan" class="form-control" name="bahan" value="' . $list->bahan . '" placeholder="contoh : 1 alderon dll.." disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="pembuatan">Pembuatan</label>
-                                                    <input type="text" id="pembuatan" class="form-control" name="pembuatan" value="' . $list->pembuatan . '" placeholder="contoh : 1 minggu" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="pemasangan">Pemasangan</label>
-                                                    <input type="text" id="pemasangan" class="form-control" name="pemasangan" value="' . $list->pemasangan . '" placeholder="contoh : 2 hari" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card mt-4">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h2 id="client-billing-contact-tab" class="card-title"> Keterangan </h2>
-                                        </div>
-                                        ' . $list->keterangan . '
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="tab-pane fade" id="client-invoices" role="tabpanel" aria-labelledby="client-invoices-tab">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h2 id="client-billing-contact-tab" class="card-title"> Deskripsi Produk </h2>
-                                        </div>
-                                        ' . $list->deskripsi . '
-                                     </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="client-expenses" role="tabpanel" aria-labelledby="client-expenses-tab">
-
-                                <div class="card">
-                                    <div class="card-header d-flex">
-                                        <h2 class="card-title mt-2">List Foto Produk</h2>
-                                        <button id="client-expenses-tab" type="button" onclick="add_new_foto_produk(' . "'" . $list->id_produk . "'" . ')" class="btn btn-primary ml-auto">Tambah Foto</button>
-                                    </div>
-
-                                    <!-- foto produk here -->
-                                    <div id="list_foto_produk"></div>
-                                    <!-- #foto produk here -->
-
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="aksi" role="tabpanel" aria-labelledby="client-expenses-tab">
-
-                                <div class="card">
-                                    <div class="card-header">
-                                    <ul class="nav nav-tabs card-header-tabs">
-                                        <li class="nav-item">
-                                            <a class="nav-link show active" data-toggle="tab" href="#edit-tab"><span class="text-primary">Edit Produk</span></a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#hapus-tab"><span class="text-danger">Hapus Produk</span></a>
-                                        </li>
-                                    </ul>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="myTabCard" class="tab-content">
-                                            <div class="tab-pane fade active show" id="edit-tab">
-                                                <h5 class="card-title"> Informasi </h5>
-                                                <p class="card-text"> Klik tombol di bawah untuk mulai mengedit data. </p>
-                                                <a href="#" onclick="edit(' . "'" . $list->id_produk . "'" . ')" class="btn btn-primary">Yes Edit</a>
-                                            </div>
-                                            <div class="tab-pane fade" id="hapus-tab">
-                                                <h5 class="card-title"> Peringatan </h5>
-                                                <p class="card-text"> Pastikan dulu sebelum menghapus data. Karena data yang sudah di hapus tidak akan bisa di kembalikan lagi. </p>
-                                                <a href="#" onclick="hapus(' . "'" . $list->id_produk . "'" . ')" class="btn btn-danger">Yes Hapus</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>';
          echo json_encode($data);
       }
    }
@@ -263,83 +171,33 @@ class Blog extends CI_Controller
    public function getKategori()
    {
       if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-         echo $this->produk_m->getKategori();
+         echo $this->blog_m->getKategori();
       }
    }
 
-   public function ajax_add()
+   public function ajax_save()
    {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-         $slug = str_replace(' ', '-', $this->input->post('nama_p'));
-
-         $config['upload_path'] = './assets/frontend/img/upload/produk/';
-         $config['allowed_types'] = 'gif|jpg|jpeg|png';
-         $config['file_name'] = strtolower($slug) . '-' . time();
-         $config['overwrite'] = true;
-         $config['max_size'] = 3024; // 1MB
-
-         $this->load->library('upload', $config);
-         $this->upload->initialize($config);
-         if (!$this->upload->do_upload('foto')) {
-            $insert['status'] = '01';
-            $insert['type'] = 'error';
-            $insert['mess'] = $this->upload->display_errors();
-            echo json_encode($insert);
-         } else {
-            $image_data = $this->upload->data();
-
-            $data = array(
-               'nama_p'        => $this->input->post('nama_p'),
-               'slug'          => strtolower($slug),
-               'id_kategori'   => $this->input->post('id_kategori'),
-               // 'filter'        => $this->input->post('filter'),
-               // 'jenis_p'       => $this->input->post('jenis_p'),
-               'pembuatan'     => $this->input->post('pembuatan'),
-               'pemasangan'    => $this->input->post('pemasangan'),
-               'keterangan'    => $this->input->post('keterangan'),
-               'deskripsi'     => $this->input->post('deskripsi'),
-               'harga'         => $this->input->post('harga'),
-               'bahan'         => $this->input->post('bahan'),
-               'foto'          => $image_data['file_name'],
-               'created_at'    => date("Y-m-d H:i:s"),
-
-            );
-            // print_r($data);
-            $insert = $this->produk_m->save($data);
-            echo json_encode($insert);
+         $checbok = "";
+         $input_cebok = $this->input->post('id_labels');
+         if ($input_cebok !== NULL) {
+            $checbok = implode(",", $input_cebok);
          }
-      }
-   }
+         $data = array(
+            'judul'        => $this->input->post('judul'),
+            'konten'       => $this->input->post('konten'),
+            'slug'         => strtolower($this->input->post('slug')),
+            'created_at'   => date("Y-m-d H:i:s"),
+            'user_post'    => 'Admin',
+            'views'        => '0',
+            'id_label'     => $checbok,
 
-   public function ajax_add_foto()
-   {
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-         $config['upload_path'] = './assets/frontend/img/upload/produk/';
-         $config['allowed_types'] = 'gif|jpg|jpeg|png';
-         $config['file_name'] = time();
-         $config['overwrite'] = true;
-         $config['max_size'] = 3024; // 1MB
-
-         $this->load->library('upload', $config);
-         $this->upload->initialize($config);
-         if (!$this->upload->do_upload('file')) {
-            $insert['status'] = '01';
-            $insert['type'] = 'error';
-            $insert['mess'] = $this->upload->display_errors();
-            echo json_encode($insert);
-         } else {
-            $image_data = $this->upload->data();
-            $data = array(
-               'file_name' => $this->input->post('file_name'),
-               'file' => $image_data['file_name'],
-               'id_produk' => $this->input->post('idproduk'),
-            );
-            // print_r($data);
-            $insert = $this->produk_m->save_foto($data);
-            echo json_encode($insert);
-         }
+         );
+         // echo "<pre>";
+         // print_r($data);
+         $insert = $this->blog_m->save($data);
+         echo json_encode($insert);
       }
    }
 
@@ -347,88 +205,59 @@ class Blog extends CI_Controller
    {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-         $slug = str_replace(' ', '-', $this->input->post('nama_p'));
-
-         if (!empty($_FILES["foto"]["name"])) {
-            $config['upload_path'] = './assets/frontend/img/upload/produk/';
-            $config['file_name'] = strtolower($slug) . '-' . time();
-            $config['allowed_types'] = 'gif|jpg|jpeg|png';
-            $config['overwrite'] = true;
-            $config['max_size'] = 3024; // 1MB
-
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
-            if (!$this->upload->do_upload('foto')) {
-               $insert['status'] = '01';
-               $insert['type'] = 'error';
-               $insert['mess'] = $this->upload->display_errors();
-               echo json_encode($insert);
-            } else {
-               $image_data = $this->upload->data();
-               //direktori file
-               $path = 'assets/frontend/img/upload/produk/';
-               $filename = $this->input->post('old_foto');
-               //hapus file
-               if (file_exists($path . $filename)) {
-                  unlink($path . $filename);
-               }
-
-               $data = array(
-                  'nama_p'        => $this->input->post('nama_p'),
-                  'slug'          => strtolower($slug),
-                  'id_kategori'   => $this->input->post('id_kategori'),
-                  // 'filter'        => $this->input->post('filter'),
-                  // 'jenis_p'       => $this->input->post('jenis_p'),
-                  'pembuatan'     => $this->input->post('pembuatan'),
-                  'pemasangan'    => $this->input->post('pemasangan'),
-                  'keterangan'    => $this->input->post('keterangan'),
-                  'deskripsi'     => $this->input->post('deskripsi'),
-                  'harga'         => $this->input->post('harga'),
-                  'bahan'         => $this->input->post('bahan'),
-                  'foto'          => $image_data['file_name'],
-                  'update_at'    => date("Y-m-d H:i:s"),
-               );
-            }
-         } else {
-            $data = array(
-               'nama_p'        => $this->input->post('nama_p'),
-               'slug'          => strtolower($slug),
-               'id_kategori'   => $this->input->post('id_kategori'),
-               // 'filter'        => $this->input->post('filter'),
-               // 'jenis_p'       => $this->input->post('jenis_p'),
-               'pembuatan'     => $this->input->post('pembuatan'),
-               'pemasangan'    => $this->input->post('pemasangan'),
-               'keterangan'    => $this->input->post('keterangan'),
-               'deskripsi'     => $this->input->post('deskripsi'),
-               'harga'         => $this->input->post('harga'),
-               'bahan'         => $this->input->post('bahan'),
-               'update_at'    => date("Y-m-d H:i:s"),
-            );
+         $checbok = "";
+         $input_cebok = $this->input->post('id_labels');
+         if ($input_cebok !== NULL) {
+            $checbok = implode(",", $input_cebok);
          }
+         $data = array(
+            'judul'        => $this->input->post('judul'),
+            'konten'       => $this->input->post('konten'),
+            'slug'         => strtolower($this->input->post('slug')),
+            'update_at'   => date("Y-m-d H:i:s"),
+            'user_post'    => 'Admin',
+            'views'        => '0',
+            'id_label'     => $checbok,
 
-         $update = $this->produk_m->update(array('id_produk' => $this->input->post('id_produk')), $data);
+         );
+         // echo "<pre>";
+         // print_r($data);
+         $update = $this->blog_m->update(array('id_artikel' => $this->input->post('id_artikel')), $data);
          echo json_encode($update);
+      }
+   }
+
+   public function ajax_add_label()
+   {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+         $data = array(
+            'label' => $this->input->post('nama_label'),
+         );
+         // print_r($data);
+         $insert = $this->blog_m->save_label($data);
+         echo json_encode($insert);
       }
    }
 
    public function ajax_delete($id)
    {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-         echo $this->produk_m->delete_by_id($id);
+         echo $this->blog_m->delete_by_id($id);
       }
    }
 
-   public function ajax_delete_foto($id)
+   public function ajax_delete_label($id)
    {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-         echo $this->produk_m->ajax_delete_foto($id);
+         echo $this->blog_m->ajax_delete_label($id);
       }
    }
 
    public function ajax_edit($id)
    {
       if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-         $data = $this->produk_m->get_by_id($id);
+         $data = $this->blog_m->get_by_id($id);
          echo json_encode($data);
       }
    }
