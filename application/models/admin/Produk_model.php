@@ -67,6 +67,23 @@ class Produk_model extends CI_Model
         return $res;
     }
 
+    public function save_kategori($data)
+    {
+        // var_dump($data);
+        $r = $this->db->insert('ref_kategori', $data);
+
+        if ($r) {
+            $res['status'] = '00';
+            $res['type'] = 'success';
+            $res['mess'] = 'Kategori berhasil di simpan';
+        } else {
+            $res['status'] = '01';
+            $res['type'] = 'warning';
+            $res['mess'] = 'Kategori gagal di simpan';
+        }
+        return $res;
+    }
+
     public function get_by_id($id)
     {
         $this->db->start_cache();

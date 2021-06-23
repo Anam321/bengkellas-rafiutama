@@ -18,87 +18,12 @@
       toastr[type](msg);
    }
 
-   function reload_table() {
-      table.ajax.reload(null, false);;
-   }
-
-   function searchRecords() {
-      $('#table-search').on('keyup change focus', function(e) {
-         // var filterBy = $('#filterBy').val();
-         // var hasFilter = filterBy !== '';
-         var value = $('#table-search').val(); // clear selected rows
-
-         table.search('').columns().search('').draw();
-         table.search(value).draw();
-
-      });
-   }
-   searchRecords();
-
-
    $(document).ready(function() {
-      table = $('#myTableacc').DataTable({
-         "searching": true,
-         //"lengthChange": false,
-         "processing": true, //Feature control the processing indicator.
-         "serverSide": true, //Feature control DataTables' server-side processing mode.
-         "order": [], //Initial no order.
 
-         // Load data for the table's content from an Ajax source
-         "ajax": {
-            "url": "<?php echo site_url('admin/testimoni/ajax_listacc') ?>",
-            "type": "POST",
-            "dataType": "json",
-         },
 
-         //Set column definition initialisation properties.
-         "columnDefs": [{
-               "targets": [5], //last column
-               "orderable": false, //set not orderable
-            },
-            // {
-            //     "targets": [1],
-            //     "visible": false,
-            //     "searchable": false
-            // },
-         ],
-      });
 
    });
 
-
-
-
-
-   $(document).ready(function() {
-      table = $('#myTable').DataTable({
-         "searching": true,
-         //"lengthChange": false,
-         "processing": true, //Feature control the processing indicator.
-         "serverSide": true, //Feature control DataTables' server-side processing mode.
-         "order": [], //Initial no order.
-
-         // Load data for the table's content from an Ajax source
-         "ajax": {
-            "url": "<?php echo site_url('admin/testimoni/ajax_list') ?>",
-            "type": "POST",
-            "dataType": "json",
-         },
-
-         //Set column definition initialisation properties.
-         "columnDefs": [{
-               "targets": [5], //last column
-               "orderable": false, //set not orderable
-            },
-            // {
-            //     "targets": [1],
-            //     "visible": false,
-            //     "searchable": false
-            // },
-         ],
-      });
-
-   });
 
    function add_new() {
       save_method = 'add';
@@ -176,13 +101,10 @@
 
 
    // edit data
-
    function edit(id) {
       save_method = 'update';
       $('#form_acc')[0].reset(); // reset form on modals
       $('#image').empty();
-      // $('#modal_form_produk').modal('show');
-
 
       //Ajax Load data from ajax
       $.ajax({
@@ -235,71 +157,21 @@
             }
          });
       }
+   }
 
-      $('#form_acc').submit(function(e) {
-         // alert("Form submitted!");
-         e.preventDefault();
-         // Get form
-         var form = $('#form_acc')[0];
-
-         // Create an FormData object
-         //var data = new FormData(form);
-         var data = new FormData(form);
-         //var data = $(this).serialize();
-
-         if ($('[name="image"]').val() == '') {
-            alert('Pilih Foto Testimoni Yang Akan di Upload !');
-            return false;
+   function ajax_list() {
+      $('#list_data').empty();
+      $.ajax({
+         url: "<?php echo site_url('admin/blog/ajax_list') ?>",
+         type: "POST",
+         dataType: "JSON",
+         success: function(data) {
+            $('#list_data').html(data);
+         },
+         error: function(jqXHR, textStatus, errorThrown) {
+            alert('Error get data from ajax');
          }
-
-         $('#btnSave').text('Sedang Proses, Mohon tunggu...'); //change button text
-         $('#btnSave').attr('disabled', true); //set button disable 
-
-         // ajax adding data to database
-         // console.log($('#form_produk').serialize());
-         var url;
-
-         if (save_method == 'add') {
-            url = "<?php echo site_url('admin/testimoni/ajax_add') ?>";
-         } else {
-            url = "<?php echo site_url('admin/testimoni/ajax_update') ?>";
-         }
-
-         $.ajax({
-            url: url,
-            type: "POST",
-            //contentType: 'multipart/form-data',
-            cache: false,
-            contentType: false,
-            processData: false,
-            method: 'POST',
-            data: data,
-            dataType: "JSON",
-
-            success: function(data) {
-               if (data.status == '00') //if success close modal and reload ajax table
-               {
-                  reload_table();
-                  showAlert(data.type, data.mess);
-                  $('#modal_form_acc').modal('hide');
-               } else {
-                  reload_table();
-                  showAlert(data.type, data.mess);
-
-               }
-
-               $('#btnSave').text('Simpan'); //change button text
-               $('#btnSave').attr('disabled', false); //set button enable 
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-               type = 'error';
-               msg = 'Error adding / update data';
-               showAlert(type, msg); //utk show alert
-               $('#btnSave').text('Simpan'); //change button text
-               $('#btnSave').attr('disabled', false); //set button enable 
-            }
-         });
-
       });
    }
+   ajax_list();
 </script>

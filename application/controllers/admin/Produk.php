@@ -343,6 +343,19 @@ class Produk extends CI_Controller
         }
     }
 
+    public function ajax_add_kategori()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $data = array(
+                'nama_kategori' => $this->input->post('nama_kategori'),
+            );
+            // print_r($data);
+            $insert = $this->produk_m->save_kategori($data);
+            echo json_encode($insert);
+        }
+    }
+
     public function ajax_update()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

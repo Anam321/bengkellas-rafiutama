@@ -27,6 +27,13 @@
         ajax_list_label(parameter);
     } else {
         ajax_list_label();
+
+        $("#judul").on("keyup change", function(e) {
+            str = $(this).val().replace(/(\.|\s)|(\,)/g, (m, p1, p2) => p1 ? "-" : "-");
+            slu = str.replace("/", "-");
+            slug = slu.replace("--", "-");
+            $("#slug").val(slug);
+        });
     }
 
     function get_data(id) {
@@ -76,13 +83,6 @@
         $('#modal_form_label').modal('show'); // show bootstrap modal
         $('.modal-title').text('Tambah Label Baru'); // Set Title to Bootstrap modal title
     }
-
-    $("#judul").on("keyup change", function(e) {
-        str = $(this).val().replace(/(\.|\s)|(\,)/g, (m, p1, p2) => p1 ? "-" : "-");
-        slu = str.replace("/", "-");
-        slug = slu.replace("--", "-");
-        $("#slug").val(slug);
-    });
 
     $('#form_label').submit(function(e) {
         // alert("Form submitted!");

@@ -24,7 +24,7 @@
             <div id="dropdown-aside" class="dropdown-aside collapse">
                 <!-- dropdown-items -->
                 <div class="pb-3">
-                    <a class="dropdown-item" href="user-profile.html"><span class="dropdown-icon oi oi-person"></span> Profile</a> <a class="dropdown-item" href="auth-signin-v1.html"><span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
+                    <a class="dropdown-item" href="user-profile.html"><span class="dropdown-icon oi oi-person"></span> Profile</a> <a class="dropdown-item" href="<?= base_url('admin/auth/logout') ?>"><span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
                 </div><!-- /dropdown-items -->
             </div><!-- /.dropdown-aside -->
         </header><!-- /.aside-header -->

@@ -244,6 +244,67 @@
 
     });
 
+    $('#form_kategori').submit(function(e) {
+        // alert("Form submitted!");
+        e.preventDefault();
+        // Get form
+        var form = $('#form_kategori')[0];
+
+        // Create an FormData object
+        //var data = new FormData(form);
+        var data = new FormData(form);
+        //var data = $(this).serialize();
+
+        $('#btnSaveKat').text('Sedang Proses, Mohon tunggu...'); //change button text
+        $('#btnSaveKat').attr('disabled', true); //set button disable 
+
+        // ajax adding data to database
+        // console.log($('#form_produk').serialize());
+        var url;
+
+        if (save_method == 'add') {
+            url = "<?php echo site_url('admin/produk/ajax_add_kategori') ?>";
+        } else {
+            url = "<?php echo site_url('admin/produk/ajax_update_kategori') ?>";
+        }
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            //contentType: 'multipart/form-data',
+            cache: false,
+            contentType: false,
+            processData: false,
+            method: 'POST',
+            data: data,
+            dataType: "JSON",
+
+            success: function(data) {
+                if (data.status == '00') //if success close modal and reload ajax table
+                {
+                    get_list_produk();
+                    showAlert(data.type, data.mess);
+                    $('#modal_form_kategori').modal('hide');
+                } else {
+                    get_list_produk();
+                    showAlert(data.type, data.mess);
+
+                }
+
+                $('#btnSaveKat').text('Simpan'); //change button text
+                $('#btnSaveKat').attr('disabled', false); //set button enable 
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                type = 'error';
+                msg = 'Error adding / update data';
+                showAlert(type, msg); //utk show alert
+                $('#btnSaveKat').text('Simpan'); //change button text
+                $('#btnSaveKat').attr('disabled', false); //set button enable 
+            }
+        });
+
+    });
+
     function edit(id) {
         save_method = 'update';
         $('#form_produk')[0].reset(); // reset form on modals

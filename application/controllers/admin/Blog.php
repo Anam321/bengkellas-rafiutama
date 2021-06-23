@@ -213,7 +213,7 @@ class Blog extends CI_Controller
          $data = array(
             'judul'        => $this->input->post('judul'),
             'konten'       => $this->input->post('konten'),
-            'slug'         => strtolower($this->input->post('slug')),
+            // 'slug'         => strtolower($this->input->post('slug')),
             'update_at'   => date("Y-m-d H:i:s"),
             'user_post'    => 'Admin',
             'views'        => '0',
