@@ -55,11 +55,11 @@
                     </li>
                     <li class="menu-header">Feedback </li>
                     <li class="menu-item">
-                        <a href="<?= base_url('admin/Testimoni') ?>" class="menu-link"><span class="menu-icon fa fa-comment"></span> <span class="menu-text">Testimoni</span></a>
+                        <a href="<?= base_url('admin/testimoni') ?>" class="menu-link"><span class="menu-icon fa fa-comment"></span> <span class="menu-text">Testimoni</span></a>
                     </li>
-                    <li class="menu-item">
-                        <a href="<?= base_url('admin/Kontak') ?>" class="menu-link"><span class="menu-icon fab fa-telegram-plane"></span> <span class="menu-text">Kontak </span></a>
-                    </li>
+                    <!-- <li class="menu-item">
+                        <a href="<?= base_url('admin/kontak') ?>" class="menu-link"><span class="menu-icon fab fa-telegram-plane"></span> <span class="menu-text">Kontak </span></a>
+                    </li> -->
                 </ul><!-- /.menu -->
             </nav><!-- /.stacked-menu -->
         </div><!-- /.aside-menu -->
