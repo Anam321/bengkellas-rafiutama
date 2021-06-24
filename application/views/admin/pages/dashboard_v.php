@@ -6,7 +6,7 @@
                 <header class="page-title-bar">
                     <div class="d-flex flex-column flex-md-row">
                         <p class="lead">
-                            <span class="font-weight-bold">Hi,</span> <span class="d-block text-muted">Inilah yang terjadi dengan bisnis Anda hari ini.</span>
+                            <span class="font-weight-bold">Hi, Administrator !</span> <span class="d-block text-muted">Inilah yang terjadi dengan bisnis Anda hari ini.</span>
                         </p>
                     </div>
                 </header>
@@ -20,7 +20,7 @@
                                         <a href="<?= base_url('admin/produk') ?>" class="metric metric-bordered align-items-center">
                                             <h2 class="metric-label"> Produk </h2>
                                             <p class="metric-value h3">
-                                                <sub><i class="fab fa-accusoft"></i></sub> <span class="value">8</span>
+                                                <sub><i class="fab fa-accusoft"></i></sub> <span id="produk" class="value">8</span>
                                             </p>
                                         </a>
                                     </div>
@@ -29,7 +29,7 @@
                                         <a href="<?= base_url('admin/blog') ?>" class="metric metric-bordered align-items-center">
                                             <h2 class="metric-label"> Posts </h2>
                                             <p class="metric-value h3">
-                                                <sub><i class="fas fa-newspaper"></i></sub> <span class="value">12</span>
+                                                <sub><i class="fas fa-newspaper"></i></sub> <span id="posts" class="value">12</span>
                                             </p>
                                         </a>
                                     </div>
@@ -38,7 +38,7 @@
                                         <a href="<?= base_url('admin/testimoni') ?>" class="metric metric-bordered align-items-center">
                                             <h2 class="metric-label"> Testimoni </h2>
                                             <p class="metric-value h3">
-                                                <sub><i class="fa fa-comment"></i></sub> <span class="value">64</span>
+                                                <sub><i class="fa fa-comment"></i></sub> <span id="testi" class="value">64</span>
                                             </p>
                                         </a>
                                     </div>
@@ -47,10 +47,10 @@
                             <div class="col-lg-3">
                                 <a href="user-tasks.html" class="metric metric-bordered">
                                     <div class="metric-badge">
-                                        <span class="badge badge-lg badge-success"><span class="oi oi-media-record pulse mr-1"></span> PESAN PELANGGAN </span>
+                                        <span class="badge badge-lg badge-success"><span class="oi oi-media-record pulse mr-1"></span> PESAN WHATSAPP </span>
                                     </div>
                                     <p class="metric-value h3">
-                                        <sub><i class="fa fa-envelope"></i></sub> <span class="value">8</span>
+                                        <i class="fab fa-whatsapp text-success"></i> <span class="value">8</span>
                                     </p>
                                 </a>
                             </div>
@@ -156,7 +156,7 @@
                     <div class="card card-fluid">
                         <!-- .card-body -->
                         <div class="card-body">
-                            <h3 class="card-title mb-4"> Viewers </h3>
+                            <h3 class="card-title mb-4"> Pengunjung </h3>
                             <div class="chartjs" style="height: 292px">
                                 <canvas id="completion-tasks"></canvas>
                             </div>

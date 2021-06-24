@@ -6,6 +6,6 @@ class Sitemap_model extends CI_Model
 
     function create()
     {
-        return $this->db->order_by('id_kategori', 'desc')->get('ref_kategori')->result_array();
+        return $this->db->order_by('id_produk', 'desc')->get('ref_produk')->result_array();
     }
 }
