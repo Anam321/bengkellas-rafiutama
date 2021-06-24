@@ -40,7 +40,7 @@ class Home extends CI_Controller
 
 
 
-            'produk' => $this->home->get_produkLimit(3, 0),
+            'produk' => $this->home->get_produkLimit(8, 0),
             'blog' => $this->home->get_blogLimit(3, 0),
 
             // 'projek' => $this->home->get_projek(),

@@ -52,8 +52,9 @@ class Home_m extends CI_Model
 
     public function get_produkLimit($limit, $start)
     {
-        return $this->db->get('ref_produk', $limit, $start)->result_array();
+        return $this->db->order_by('id_produk', 'DESC')->get('ref_produk', $limit, $start)->result_array();
     }
+
     public function get_blogLimit($limit, $start)
     {
         return $this->db->get('blog', $limit, $start)->result_array();

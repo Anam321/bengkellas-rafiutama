@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/style.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/font-awesome-ie7.c">
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/font-awesome-ie7.css">
 
 
     <style>
@@ -141,23 +141,6 @@
             box-shadow: 0px 10px 15px 0px rgba(30, 33, 44, 0.10);
         }
     </style>
-
-    <!-- Google Tag Manager -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TELR8LCJQB"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-TELR8LCJQB');
-    </script>
-
-
-
 
 </head>
 

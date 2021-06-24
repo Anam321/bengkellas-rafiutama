@@ -238,7 +238,7 @@
 
 
 
-<section class="our_project section_padding" id="portfolio">
+<section class="our_project" id="portfolio">
     <div class="container">
 
         <div class="row">
@@ -301,7 +301,7 @@
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
                             </div>
-                            <h2><?= $produk['slug'] ?></h2>
+                            <h2><?= $produk['nama_p'] ?></h2>
                             <span class="review-no">41 reviews</span>
                         </div>
                         <p class="product-description"><?= $produk['keterangan'] ?></p>
@@ -325,7 +325,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-lg-8 mb-5 mb-lg-0">
                 <div class="blog_left_sidebar">
@@ -337,7 +337,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col mt-4">
+                        <div class="col">
                             <table>
                                 <!-- <tr>
                                     <td>
@@ -396,9 +396,7 @@
                     </div>
                     <div class="blog_details">
 
-
-
-                        <div id="disqus_thread"></div>
+                        <!-- <div id="disqus_thread"></div>
                         <script>
                             /**
                              *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -417,7 +415,7 @@
                                 (d.head || d.body).appendChild(s);
                             })();
                         </script>
-                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
 
 
                         <div class="comment-form">
@@ -457,7 +455,7 @@
             <div class=" col-lg-4">
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
-                        <aside class="single_sidebar_widget search_widget">
+                        <!-- <aside class="single_sidebar_widget search_widget">
                             <form action="#">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
@@ -469,7 +467,7 @@
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1" type="submit">Search</button>
                             </form>
-                        </aside>
+                        </aside> -->
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Category</h4>
                             <ul class="list cat-list">
@@ -488,7 +486,7 @@
 
                             </ul>
                         </aside>
-                        <aside class="single_sidebar_widget popular_post_widget">
+                        <!-- <aside class="single_sidebar_widget popular_post_widget">
                             <h3 class="widget_title">Recent Post</h3>
 
                             <?php foreach ($post as $b) : ?>
@@ -515,7 +513,7 @@
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1" type="submit">Subscribe</button>
                             </form>
-                        </aside>
+                        </aside> -->
                 </div>
             </div>
         </div>

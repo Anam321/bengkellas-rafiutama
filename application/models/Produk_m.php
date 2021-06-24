@@ -42,7 +42,17 @@ class Produk_m extends CI_Model
 
         // $this->db->where('main_image =', 1);
         // $this->db->group_by('group_image');
-        return $this->db->get('ref_produk', $limit, $start)->result_array();
+        // return $this->db->get('ref_produk', $limit, $start)->result_array();
+        $sql = $this->db->query("select * from ref_produk a left join ref_kategori b on a.id_kategori=b.id_kategori order by id_produk desc");
+        $query = $sql->result_array();
+        return $query;
+    }
+
+    public function getKategoriProduk()
+    {
+        $sql = $this->db->query("select * from ref_kategori");
+        $query = $sql->result_array();
+        return $query;
     }
 
     public function get_countProdukLimit()

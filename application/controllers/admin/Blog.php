@@ -104,7 +104,7 @@ class Blog extends CI_Controller
 
                $result = $this->blog_m->get_by_id_label($src[$x]);
                $label = "";
-               if (count($result)) {
+               if (sizeof($result)) {
                   $row = $result->label;
                   $data_list .= '<a href="' . base_url() . 'admin/blog/index/' . $result->label . '" class="mention ml-1">' . $result->label . '</a>';
                }

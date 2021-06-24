@@ -122,6 +122,12 @@
             transform: translate(-50%, -75%) rotate(360deg);
         }
     }
+
+    .card-img-top {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
 </style>
 
 
@@ -270,15 +276,20 @@
                 <div class="filters portfolio-filter project_menu_item">
                     <ul>
 
+                        <li> <a class="text-warning" href="<?= base_url('produk') ?>"> Lihat selengkapnya</a> </li>
+
+                    </ul>
+                    <!-- <ul>
+
                         <li data-filter=".K_las">Kontruksi Las</li>
                         <li data-filter=".Gorden">Gorden</li>
 
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
 
-        <div class="filters-content">
+        <!-- <div class="filters-content">
             <div class="row justify-content-between portfolio-grid">
 
                 <?php foreach ($produk as $p) : ?>
@@ -300,6 +311,49 @@
 
 
             </div>
+        </div> -->
+        <div class="row">
+
+            <?php foreach ($produk as $p) : ?>
+                <div class="col-md-3 mb-4">
+                    <a href="<?= base_url() ?>produk/produk_detail/<?= $p['slug'] ?>" class="card shadow-sm">
+                        <img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $p['foto'] ?>" class="card-img-top mx-auto d-block" alt="Gambar Foto <?= $p['nama_p'] ?>">
+
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $p['nama_p'] ?></h5>
+                            <h4 class="card-title" style="color:#fa591d;">Rp <?= number_format($p['harga'], 0, ',', '.') ?></h4>
+                            <p class="card-text"><small class="text-muted">Last updated
+                                    <?php $selisih = time() - strtotime($p['update_at']);
+                                    $detik = $selisih;
+                                    $menit = round($selisih / 60);
+                                    $jam = round($selisih / 3600);
+                                    $hari = round($selisih / 86400);
+                                    $minggu = round($selisih / 604800);
+                                    $bulan = round($selisih / 2419200);
+                                    $tahun = round($selisih / 29030400);
+                                    if ($detik <= 60) {
+                                        $waktu = $detik . ' detik yang lalu';
+                                    } else if ($menit <= 60) {
+                                        $waktu = $menit . ' menit yang lalu';
+                                    } else if ($jam <= 24) {
+                                        $waktu = $jam . ' jam yang lalu';
+                                    } else if ($hari <= 7) {
+                                        $waktu = $hari . ' hari yang lalu';
+                                    } else if ($minggu <= 4) {
+                                        $waktu = $minggu . ' minggu yang lalu';
+                                    } else if ($bulan <= 12) {
+                                        $waktu = $bulan . ' bulan yang lalu';
+                                    } else {
+                                        $waktu = $tahun . ' tahun yang lalu';
+                                    }
+                                    echo $waktu;
+                                    ?>
+                                </small></p>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach ?>
+
         </div>
     </div>
 
@@ -308,7 +362,7 @@
 <!-- our_project part end-->
 
 <!-- member_counter counter start -->
-<section class="member_counter padding_bottom">
+<!-- <section class="member_counter padding_bottom">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-sm-6">
@@ -349,7 +403,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- member_counter counter end -->
 
 <!-- review part start-->
@@ -388,7 +442,7 @@
 
 
 
-        <div class=" col-lg-4">
+        <!-- <div class=" col-lg-4">
             <div class="blog_right_sidebar">
 
                 <aside class="single_sidebar_widget popular_post_widget">
@@ -438,7 +492,7 @@
 
 
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 <!-- review part end-->
@@ -449,30 +503,29 @@
         <div class="row ">
             <div class="col-xl-5">
                 <div class="section_tittle ">
-                    <h2>BERITA BARU</h2>
+                    <h2>BLOG</h2>
                 </div>
             </div>
         </div>
         <div class="row">
 
+
             <?php foreach ($blog as $b) : ?>
-
-                <div class="col-sm-6 col-lg-4 col-xl-4">
-                    <div class="single-home-blog">
-                        <div class="card">
-                            <img src="<?= base_url(); ?>assets/frontend/img/upload/blog/<?= $b['gambar'] ?>" class="card-img-top" alt="blog">
-                            <div class="card-body">
-                                <ul>
-                                    <li> <span class="ti-comments"></span>2 Comments</li>
-                                    <li> <span class="ti-heart"></span>2k Like</li>
-                                </ul>
-
-                                <h5 class="card-title"><?= $b['judul_artikel'] ?></h5>
-
-                                <a href="<?= base_url('blog/blog_detail/'); ?><?= $b['id_artikel'] ?>" class="btn_3">read more</a>
-                            </div>
+                <div class="blog_left_sidebar">
+                    <article class="blog_item">
+                        <div class="blog_details">
+                            <p>Posetd By : <?= $b['user_post'] ?></p>
+                            <a class="d-inline-block" href="<?= base_url('blog/') ?><?= $b['slug'] ?>">
+                                <h2><?= $b['judul'] ?></h2>
+                            </a>
+                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                                he earth it first without heaven in place seed it second morning saying.</p>
+                            <ul class="blog-info-link">
+                                <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
+                                <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
+                            </ul>
                         </div>
-                    </div>
+                    </article>
                 </div>
             <?php endforeach ?>
 

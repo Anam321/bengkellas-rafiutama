@@ -39,7 +39,7 @@ class Produk extends CI_Controller
 
         $config['base_url'] = base_url('produk/index');
         $config['total_rows'] = $this->produk->get_CountProdukLimit();
-        $config['per_page'] = 8;
+        $config['per_page'] = 12;
         $config['num_links'] = 3;
 
         // var_dump($config['total_rows']); 
@@ -83,6 +83,7 @@ class Produk extends CI_Controller
 
             'produk' => $this->produk->get_produkLimit($config['per_page'], $data['start']),
             'paging' => $this->pagination->create_links(),
+            'kategori' => $this->produk->getKategoriProduk(),
         ];
 
 
