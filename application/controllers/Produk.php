@@ -116,7 +116,7 @@ class Produk extends CI_Controller
 
             'produk' => $produk,
             'image' => $this->produk->get_image($slug),
-            'kategori' => $this->produk->get_kategori($slug),
+
 
             'post' => $this->produk->get_blogLimit(4, 0),
 

@@ -120,13 +120,13 @@ class Produk_m extends CI_Model
         $data = $query->result();
         return $data;
     }
-    public function get_kategori($id_kategori)
-    {
-        $query = $this->db->query("select * from ref_produk a left join ref_kategori b on a.id_kategori=b.id_kategori where slug = '$id_kategori'");
+    // public function get_kategori($id_kategori)
+    // {
+    //     $query = $this->db->query("select * from ref_produk a left join ref_kategori b on a.id_kategori=b.id_kategori where slug = '$id_kategori'");
 
-        $data = $query->result();
-        return $data;
-    }
+    //     $data = $query->result();
+    //     return $data;
+    // }
 
 
 
