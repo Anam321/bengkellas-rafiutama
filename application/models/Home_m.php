@@ -24,7 +24,12 @@ class Home_m extends CI_Model
         return $data;
     }
 
-
+    public function getKategoriProduk()
+    {
+        $sql = $this->db->query("select * from ref_kategori");
+        $query = $sql->result_array();
+        return $query;
+    }
 
     public function get_produk($limit, $start)
     {

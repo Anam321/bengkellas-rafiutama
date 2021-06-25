@@ -9,6 +9,7 @@ class Blog extends CI_Controller
         parent::__construct();
         $this->load->model('Blog_m', 'blog');
     }
+
     public function index()
     {
         $hdr = [
@@ -35,7 +36,7 @@ class Blog extends CI_Controller
 
         $config['base_url'] = base_url('blog/index');
         $config['total_rows'] = $this->blog->get_CountblogLimit();
-        $config['per_page'] = 4;
+        $config['per_page'] = 12;
         $config['num_links'] = 3;
 
         // var_dump($config['total_rows']); 
@@ -79,6 +80,7 @@ class Blog extends CI_Controller
             'post' => $this->blog->get_blogLimit(4, 0),
             'blog' => $this->blog->get_blogLimit($config['per_page'], $data['start']),
             'paging' => $this->pagination->create_links(),
+            'kategori' => $this->blog->getKategoriProduk(),
         ];
 
         // LOAD VIEW
@@ -90,16 +92,16 @@ class Blog extends CI_Controller
 
 
 
-    public function blog_detail($id_artikel)
+    public function read($slug)
     {
 
-        $blog = $this->blog->get_blog_by_id($id_artikel);
-
+        $blog = $this->blog->get_blog_by_slug($slug);
+        $judul = $blog['judul'];
 
 
         $data = [
             //title Page
-            'judul' => 'Blog Detail',
+            'judul' => $judul,
             'perusahaan' => $this->blog->get_profile('nama_perusahaan'),
             'telpon' => $this->blog->get_profile('no_telpon'),
             'telpon2' => $this->blog->get_profile('no_telpon2'),
@@ -110,6 +112,7 @@ class Blog extends CI_Controller
             // konten
             'post' => $this->blog->get_blogLimit(4, 0),
             'blog' => $blog,
+            'kategori' => $this->blog->getKategoriProduk(),
 
 
 

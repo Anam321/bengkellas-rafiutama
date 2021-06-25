@@ -17,7 +17,7 @@ class Produk extends CI_Controller
     {
         $hdr = [
             //title Page
-            'judul' => 'produk | ' . $this->produk->get_profile('nama_perusahaan'),
+            'judul' => 'Produk dan Service | ' . $this->produk->get_profile('nama_perusahaan'),
             'logo' => $this->produk->get_profile('logo'),
             'telpon2' => $this->produk->get_profile('no_telpon2'),
         ];
@@ -100,12 +100,12 @@ class Produk extends CI_Controller
     {
 
         $produk = $this->produk->get_produk_by_slug($slug);
-        // $id_produk = $produk->id_produk;
+        $judul = $produk['nama_p'];
 
 
         $data = [
             //title Page
-            'judul' => 'Jasa Pembuatan & Pemasangan ',
+            'judul' => 'Jasa Pembuatan & Pemasangan ' . $judul,
             'perusahaan' => $this->produk->get_profile('nama_perusahaan'),
             'telpon' => $this->produk->get_profile('no_telpon'),
             'telpon2' => $this->produk->get_profile('no_telpon2'),
@@ -120,6 +120,7 @@ class Produk extends CI_Controller
 
 
             'post' => $this->produk->get_blogLimit(4, 0),
+            'kategori' => $this->produk->getKategoriProduk(),
 
         ];
 

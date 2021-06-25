@@ -16,7 +16,7 @@ class About extends CI_Controller
 
         $data = [
             //title Page
-            'judul' => 'about | ' . $this->about->get_profile('nama_perusahaan'),
+            'judul' => 'About Rafi Utama | ' . $this->about->get_profile('nama_perusahaan'),
             'perusahaan' => $this->about->get_profile('nama_perusahaan'),
             'telpon' => $this->about->get_profile('no_telpon'),
             'telpon2' => $this->about->get_profile('no_telpon2'),
@@ -27,6 +27,7 @@ class About extends CI_Controller
             'deskripsi' => $this->about->get_profile('deskripsi'),
             'visi' => $this->about->get_profile('visi'),
             'misi' => $this->about->get_profile('misi'),
+            'kategori' => $this->about->getKategoriProduk(),
 
             // konten
 

@@ -59,7 +59,7 @@
             </div>
             <div class="col-md-6 col-lg-6">
                 <div class="about_part_img">
-                    <img src="<?= base_url(); ?>assets/frontend/img/upload/profile/experiance_img.png" alt="">
+                    <img src="<?= base_url(); ?>assets/frontend/img/upload/logo/1.png" alt="">
                 </div>
             </div>
         </div>

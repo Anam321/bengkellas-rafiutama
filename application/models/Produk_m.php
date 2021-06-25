@@ -85,7 +85,11 @@ class Produk_m extends CI_Model
 
     public function get_produk_by_slug($slug)
     {
-        return $this->db->get_where('ref_produk', ['slug' => $slug])->row_array();
+        $this->db->query("update ref_produk set dilihat = dilihat + 1 where slug = '$slug'");
+
+        $query = $this->db->get_where('ref_produk', ['slug' => $slug])->row_array();
+
+        return  $query;
     }
 
     public function get_produk_detail($idkat)

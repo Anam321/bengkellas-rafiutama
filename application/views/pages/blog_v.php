@@ -6,19 +6,12 @@
 
                      <?php foreach ($blog as $b) : ?>
                          <article class="blog_item">
-                             <div class="blog_item_img">
-                                 <img class="card-img rounded-0" src="<?= base_url(); ?>assets/frontend/img/upload/blog/<?= $b['gambar'] ?>" alt="">
-                                 <a href="#" class="blog_item_date">
-                                     <h3><?= $b['time'] ?></h3>
-
-                                 </a>
-                             </div>
-
                              <div class="blog_details">
-                                 <a class="d-inline-block" href="<?= base_url('blog/blog_detail/'); ?><?= $b['id_artikel'] ?>">
-                                     <h2><?= $b['judul_artikel'] ?></h2>
+                                 <p>Posted By : <?= $b['user_post'] ?></p>
+                                 <a class="d-inline-block" href="<?= base_url('blog/read/'); ?><?= $b['slug'] ?>">
+                                     <h2><?= $b['judul'] ?></h2>
                                  </a>
-                                 <p><?= $b['konten'] ?></p>
+                                 <p><?= preg_replace('#</?(p|img).*?>#is', '', $b['konten']);  ?></p>
                                  <ul class="blog-info-link">
                                      <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
                                      <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
@@ -48,22 +41,33 @@
                              <button class="button rounded-0 primary-bg text-white w-100 btn_1" type="submit">Search</button>
                          </form>
                      </aside>
-                     <aside class="single_sidebar_widget post_category_widget">
-                         <h4 class="widget_title">Category</h4>
-                         <ul class="list cat-list">
+                     <aside class="single_sidebar_widget tag_cloud_widget">
+                         <h4 class="widget_title">Labels Clouds</h4>
+                         <ul class="list">
                              <li>
-                                 <a href="#" class="d-flex">
-                                     <p>Konstruksi Las</p>
-                                     <p>(37)</p>
-                                 </a>
+                                 <a href="#">project</a>
                              </li>
                              <li>
-                                 <a href="#" class="d-flex">
-                                     <p>Gorden</p>
-                                     <p>(10)</p>
-                                 </a>
+                                 <a href="#">love</a>
                              </li>
-
+                             <li>
+                                 <a href="#">technology</a>
+                             </li>
+                             <li>
+                                 <a href="#">travel</a>
+                             </li>
+                             <li>
+                                 <a href="#">restaurant</a>
+                             </li>
+                             <li>
+                                 <a href="#">life style</a>
+                             </li>
+                             <li>
+                                 <a href="#">design</a>
+                             </li>
+                             <li>
+                                 <a href="#">illustration</a>
+                             </li>
                          </ul>
                      </aside>
                      <aside class="single_sidebar_widget popular_post_widget">
@@ -72,12 +76,11 @@
                          <?php foreach ($post as $b) : ?>
 
                              <div class="media post_item">
-                                 <img style="widht:40px; height:40px;" src="<?= base_url(); ?>assets/frontend/img/upload/blog/<?= $b['gambar'] ?>" alt="post">
                                  <div class="media-body">
-                                     <a href="<?= base_url('blog/blog_detail/'); ?><?= $b['id_artikel'] ?>">
-                                         <h3><?= $b['judul_artikel'] ?></h3>
+                                     <a href="<?= base_url('blog/read/'); ?><?= $b['slug'] ?>">
+                                         <h3><?= $b['judul'] ?></h3>
                                      </a>
-                                     <p><?= $b['id_artikel'] ?></p>
+                                     <p><?= date('M d, Y', strtotime($b['created_at'])) ?></p>
                                  </div>
                              </div>
 

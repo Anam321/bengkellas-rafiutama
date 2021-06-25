@@ -34,4 +34,11 @@ class Contact_m extends CI_Model
 
         $this->db->insert('set_contact', $data);
     }
+
+    public function getKategoriProduk()
+    {
+        $sql = $this->db->query("select * from ref_kategori");
+        $query = $sql->result_array();
+        return $query;
+    }
 }

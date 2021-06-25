@@ -46,6 +46,7 @@ class Home extends CI_Controller
             // 'projek' => $this->home->get_projek(),
             // 'hero' => $this->home->get_hero(),
             'testimoni' => $this->home->get_testimoni(),
+            'kategori' => $this->home->getKategoriProduk(),
         ];
 
 
@@ -118,6 +119,7 @@ class Home extends CI_Controller
             'testimoni' => $testimoni,
             'foto' => $foto,
             'activasi' => 0,
+            'date_post' => date("Y-m-d H:i:s"),
         );
         $this->home->inputtesti($data, 'testimoni');
         redirect(base_url('home'));

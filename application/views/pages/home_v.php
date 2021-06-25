@@ -254,7 +254,7 @@
             </div>
             <div class="col-md-6 col-lg-6">
                 <div class="about_part_img">
-                    <img src="<?= base_url(); ?>assets/frontend/img/upload/profile/<?= $foto_2 ?>" alt="">
+                    <img src="<?= base_url(); ?>assets/frontend/img/upload/logo/1.png" alt="">
                 </div>
             </div>
         </div>
@@ -406,14 +406,56 @@
 </section> -->
 <!-- member_counter counter end -->
 
+<div class="modal fade" id="modaltesti" tabindex="-1" role="dialog" aria-labelledby="modaltestiLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Form testimoni</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php echo form_open_multipart(base_url('home/inputtesti')); ?>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+
+                            <textarea class="form-control w-100" id="testmoni" name="testimoni" rows="4" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukan penilaian anda terhadap kinerja kami ..'" placeholder='Masukan penilaian anda terhadap kinerja kami ..' required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input class="form-control" id="nama" name="nama" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama lengkap'" placeholder='Nama lengkap'>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input class="form-control" id="foto" name="foto" type="file" placeholder="pilih foto anda" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-success">Submit testimoni</button>
+            </div>
+            <?php echo form_close(); ?>
+        </div>
+    </div>
+</div>
+
 <!-- review part start-->
 <section class="review_part section_padding">
     <div class="container-fluid">
         <div class="row align-items-center justify-content-end">
             <div class="col-lg-5 col-xl-4">
                 <div class="tour_pack_text">
-                    <h2>Beberapa Umpan Balik Dari Klien</h2>
-
+                    <h2>Testimoni</h2>
+                    <p class="mb-3">Anda sudah jadi bagian dari pelanggan kami ? berikan ulasanmu terhadap hasil pekerjaan kami :)</p>
+                    <?= $this->session->flashdata('message'); ?>
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#modaltesti" class="btn_3">Beri penilaian</a>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12">
@@ -498,12 +540,21 @@
 <!-- review part end-->
 
 <!--::blog_part start::-->
-<section class="blog_part section_padding">
+<section class="our_project section_padding">
     <div class="container">
-        <div class="row ">
-            <div class="col-xl-5">
-                <div class="section_tittle ">
+        <div class="row justify-content-between">
+            <div class="col-lg-5 col-sm-10">
+                <div class="section_tittle">
                     <h2>BLOG</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-10">
+                <div class="filters portfolio-filter project_menu_item">
+                    <ul>
+
+                        <li> <a class="text-warning" href="<?= base_url('blog') ?>"> Baca selengkapnya</a> </li>
+
+                    </ul>
                 </div>
             </div>
         </div>
@@ -514,12 +565,11 @@
                 <div class="blog_left_sidebar">
                     <article class="blog_item">
                         <div class="blog_details">
-                            <p>Posetd By : <?= $b['user_post'] ?></p>
-                            <a class="d-inline-block" href="<?= base_url('blog/') ?><?= $b['slug'] ?>">
+                            <p>Posted By : <?= $b['user_post'] ?></p>
+                            <a class="d-inline-block" href="<?= base_url('blog/read/') ?><?= $b['slug'] ?>">
                                 <h2><?= $b['judul'] ?></h2>
                             </a>
-                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                he earth it first without heaven in place seed it second morning saying.</p>
+                            <p><?= preg_replace('#</?(p|img).*?>#is', '', $b['konten']);  ?></p>
                             <ul class="blog-info-link">
                                 <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
                                 <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>

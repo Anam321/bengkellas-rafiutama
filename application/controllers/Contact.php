@@ -27,6 +27,7 @@ class Contact extends CI_Controller
             'logo' => $this->kontak->get_profile('logo'),
             'tittle' => $this->kontak->get_profile('tittle'),
             'deskripsi' => $this->kontak->get_profile('deskripsi'),
+            'kategori' => $this->kontak->getKategoriProduk(),
 
         ];
 

@@ -21,42 +21,8 @@
  <section class="contact-section section_padding">
      <div class="container">
          <div class="d-none d-sm-block mb-5 pb-4">
-             <div id="map" style="height: 480px;"></div>
-             <script>
-                 function initMap() {
-                     var uluru = {
-                         lat: -25.363,
-                         lng: 131.044
-                     };
-                     var grayStyles = [{
-                             featureType: "all",
-                             stylers: [{
-                                     saturation: -90
-                                 },
-                                 {
-                                     lightness: 50
-                                 }
-                             ]
-                         },
-                         {
-                             elementType: 'labels.text.fill',
-                             stylers: [{
-                                 color: '#ccdee9'
-                             }]
-                         }
-                     ];
-                     var map = new google.maps.Map(document.getElementById('map'), {
-                         center: {
-                             lat: -31.197,
-                             lng: 150.744
-                         },
-                         zoom: 9,
-                         styles: grayStyles,
-                         scrollwheel: false
-                     });
-                 }
-             </script>
-             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&amp;callback=initMap"></script>
+             <div style="width: 100%"><iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Duren%20Mekar,%20Kec.%20Bojongsari,%20Kota%20Depok,%20Jawa%20Barat,%20Indonesia+(https://www.google.com/maps/place/Depok,+Duren+Mekar,+Kec.+Bojongsari,+Kota+Depok,+Jawa+Barat,+Indonesia/@-6.4127142,106.7467403,19z/data=!4m9!1m3!11m2!2sHCrN9mqFR9bG0n7xs2O34CTAft6AwA!3e2!3m4!1s0x2e69e8ed34aeedf7:0xd4287d7007cd5a84!8m2!3d-6.4127235!4d106.7470809?hl=id-ID)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
+
 
          </div>
 
@@ -123,14 +89,14 @@
                  <div class="media contact-info">
                      <span class="contact-info__icon"><i class="ti-home"></i></span>
                      <div class="media-body">
-                         <h3>Indonesi</h3>
+                         <h3>Depok</h3>
                          <p><?= $alamat ?></p>
                      </div>
                  </div>
                  <div class="media contact-info">
                      <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                      <div class="media-body">
-                         <h3>+62 <?= $telpon ?></h3>
+                         <h3>Phone number</h3>
                          <p>+62 <?= $telpon2 ?></p>
                      </div>
                  </div>

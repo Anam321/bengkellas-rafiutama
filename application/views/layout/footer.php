@@ -15,18 +15,11 @@
                             <li>
                                 <a href="<?= base_url('admin/dashboard') ?>">Administrator</a>
                             </li>
-                            <li>
-                                <a href="#">Mechanical Engineering</a>
-                            </li>
-                            <li>
-                                <a href="#">Civil Engineering</a>
-                            </li>
-                            <li>
-                                <a href="#">Bridge Construction</a>
-                            </li>
-                            <li>
-                                <a href="#">Electrical Engineering</a>
-                            </li>
+                            <?php foreach ($kategori as $kat) : ?>
+                                <li>
+                                    <a href="#"><?= $kat['nama_kategori'] ?></a>
+                                </li>
+                            <?php endforeach ?>
                         </ul>
                     </div>
                 </div>

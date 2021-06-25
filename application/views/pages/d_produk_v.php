@@ -245,7 +245,6 @@
             <div class="col-xl-5">
                 <div class="section_tittle">
 
-                    <!-- <h2><?= $produk['nama_kategori'] ?></h2> -->
 
                 </div>
             </div>
@@ -302,11 +301,11 @@
                                 <span class="fa fa-star"></span>
                             </div>
                             <h2><?= $produk['nama_p'] ?></h2>
-                            <span class="review-no">41 reviews</span>
+                            <span class="review-no"><?= $produk['dilihat'] ?> kali dilihat</span>
                         </div>
                         <p class="product-description"><?= $produk['keterangan'] ?></p>
-                        <h4 class="price">current price: <span>Rp. <?= $produk['harga'] ?></span></h4>
-                        <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+                        <h4 class="price"><span>Rp <?= number_format($produk['harga'], 0, '.', '.') ?></span></h4>
+                        <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(<?= $produk['dilihat'] / 2; ?> votes)</strong></p>
 
 
                         <div class="action">
@@ -471,7 +470,15 @@
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Category</h4>
                             <ul class="list cat-list">
-                                <li>
+                                <?php foreach ($kategori as $kat) : ?>
+                                    <li>
+                                        <a href="#" class="d-flex">
+                                            <p><?= $kat['nama_kategori'] ?></p>
+                                            <!-- <p>(37)</p> -->
+                                        </a>
+                                    </li>
+                                <?php endforeach ?>
+                                <!-- <li>
                                     <a href="#" class="d-flex">
                                         <p>Konstruksi Las</p>
                                         <p>(37)</p>
@@ -482,7 +489,7 @@
                                         <p>Gorden</p>
                                         <p>(10)</p>
                                     </a>
-                                </li>
+                                </li> -->
 
                             </ul>
                         </aside>

@@ -1,4 +1,4 @@
-<!-- breadcrumb start-->
+<!-- breadcrumb start 
 <section class="breadcrumb breadcrumb_bg align-items-center">
     <div class="container">
         <div class="row align-items-center justify-content-between">
@@ -15,7 +15,7 @@
         </div>
     </div>
 </section>
-<!-- breadcrumb start-->
+breadcrumb start-->
 
 <!--================Blog Area =================-->
 <section class="blog_area single-post-area section_padding">
@@ -30,7 +30,7 @@
                         <img class="img-fluid" src="<?= base_url(); ?>assets/frontend/img/upload/blog/<?= $blog['gambar'] ?>" alt="">
                     </div>
                     <div class="blog_details">
-                        <h2><?= $blog['judul_artikel'] ?>
+                        <h2><?= $blog['judul'] ?>
                         </h2>
                         <ul class="blog-info-link mt-3 mb-4">
                             <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
@@ -100,32 +100,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div id="disqus_thread"></div>
-                <script>
-                    /**
-                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                    /*
-                    var disqus_config = function () {
-                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                    };
-                    */
-                    (function() { // DON'T EDIT BELOW THIS LINE
-                        var d = document,
-                            s = d.createElement('script');
-                        s.src = 'https://bengkel-las-rafi-utama.disqus.com/embed.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
-
-
 
                 <div class="comment-form">
                     <h4>Leave a Reply</h4>
@@ -201,12 +175,11 @@
                         <?php foreach ($post as $b) : ?>
 
                             <div class="media post_item">
-                                <img style="widht:40px; height:40px;" src="<?= base_url(); ?>assets/frontend/img/upload/blog/<?= $b['gambar'] ?>" alt="post">
                                 <div class="media-body">
-                                    <a href="<?= base_url('blog/blog_detail/'); ?><?= $b['id_artikel'] ?>">
-                                        <h3><?= $b['judul_artikel'] ?></h3>
+                                    <a href="<?= base_url('blog/read/'); ?><?= $b['slug'] ?>">
+                                        <h3><?= $b['judul'] ?></h3>
                                     </a>
-                                    <p>January 12, 2019</p>
+                                    <p><?= date('M d, Y', strtotime($b['created_at'])) ?></p>
                                 </div>
                             </div>
 
