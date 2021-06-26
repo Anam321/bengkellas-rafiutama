@@ -4,7 +4,7 @@
             <div class="col-sm-6 col-md-4 col-xl-3">
                 <div class="single-footer-widget footer_1">
                     <a href="#"> <img src="<?= base_url(); ?>assets/frontend/img/upload/logo/<?= $logo ?>" alt=""> </a>
-                    <p>So seed seed green that winged cattle in Gahesd thing made fly you're no divided deep move lan Gathering thing us land years living on floor me the cavaty do buty fresh</p>
+                    <p><b>BENGKEL LAS RAFI UTAMA</b> BERDIRI TAHUN 1999 dengan modal pengalaman kami di bidang bengkel las selama puluhan tahun, dan didukung dengan tenaga kerja yang profesional dan ahli dibidangnya, kami yakin akan bisa mengerjakan kebutuhan perlengkapan rumah anda dengan hasil yang maksimal, karena motto kami adalah "kepuasan konsumen adalah kebahagian kami" sehingga hasil akhir dari setiap pengerjaan akan kami jaga kualitasnya.</p>
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 col-md-4">
@@ -50,7 +50,7 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="#" target="_blank">AnbomekerDev</a>
+                                </script> All rights reserved | Rafiutama.com by <a href="#" target="_blank">AnbomekerDev</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
