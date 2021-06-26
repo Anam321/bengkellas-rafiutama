@@ -100,9 +100,9 @@ class Home extends CI_Controller
         } else {
             $config['upload_path'] = './assets/frontend/img/upload/testimoni/';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 1000;
-            $config['max_width']            = 1500;
-            $config['max_height']           = 1500;
+            $config['max_size']             = 3024;
+            // $config['max_width']            = 1500;
+            // $config['max_height']           = 1500;
 
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('foto')) {

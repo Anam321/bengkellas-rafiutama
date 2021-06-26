@@ -309,7 +309,7 @@
 
 
                         <div class="action">
-                            <a href="https://api.whatsapp.com/send?phone=+6281321560099&text=Halo%20Rafi%20Utama,%20Saya%20mau%20order%20produk%20ini%20<?= base_url() ?>produk/produk_detail/<?= $produk['slug'] ?>"> <button class="add-to-cart btn btn-default" type="button">Order sekarang</button></a>
+                            <a href="https://api.whatsapp.com/send?phone=<?= $telpon2 ?>&text=Halo%20Rafi%20Utama,%20Saya%20mau%20order%20produk%20ini%20<?= base_url() ?>produk/produk_detail/<?= $produk['slug'] ?>"> <button class="add-to-cart btn btn-default" type="button">Order sekarang</button></a>
                             <a href="<?= base_url('produk'); ?>"> <button class="add-to-cart btn btn-danger" style="background:blue;" type="button">Produk Lain</button></a>
 
 
