@@ -20,9 +20,38 @@
  <!-- ================ contact section start ================= -->
  <section class="contact-section section_padding">
      <div class="container">
-         <div class="d-none d-sm-block mb-5 pb-4">
-             <div style="width: 100%"><iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Duren%20Mekar,%20Kec.%20Bojongsari,%20Kota%20Depok,%20Jawa%20Barat,%20Indonesia+(https://www.google.com/maps/place/Depok,+Duren+Mekar,+Kec.+Bojongsari,+Kota+Depok,+Jawa+Barat,+Indonesia/@-6.4127142,106.7467403,19z/data=!4m9!1m3!11m2!2sHCrN9mqFR9bG0n7xs2O34CTAft6AwA!3e2!3m4!1s0x2e69e8ed34aeedf7:0xd4287d7007cd5a84!8m2!3d-6.4127235!4d106.7470809?hl=id-ID)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>
-
+         <div class="d-sm-block mb-5 pb-4">
+             <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+                 <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div>
+                 <script>
+                     (function() {
+                         var setting = {
+                             "height": 540,
+                             "width": '100%',
+                             "zoom": 17,
+                             "queryString": "Bengkel Las Rafi Utama, Pondok Petir, Depok City, West Java, Indonesia",
+                             "place_id": "ChIJ3T-2_VDvaS4R1bD4J6NBojQ",
+                             "satellite": false,
+                             "centerCoord": [-6.3757588906131515, 106.7316891609245],
+                             "cid": "0x34a241a327f8b0d5",
+                             "lang": "en",
+                             "cityUrl": "/indonesia/jakarta",
+                             "cityAnchorText": "Map of Jakarta, Java, Indonesia",
+                             "id": "map-9cd199b9cc5410cd3b1ad21cab2e54d3",
+                             "embed_id": "534520"
+                         };
+                         var d = document;
+                         var s = d.createElement('script');
+                         s.src = 'https://1map.com/js/script-for-user.js?embed_id=534520';
+                         s.async = true;
+                         s.onload = function(e) {
+                             window.OneMap.initMap(setting)
+                         };
+                         var to = d.getElementsByTagName('script')[0];
+                         to.parentNode.insertBefore(s, to);
+                     })();
+                 </script>
+             </div>
 
          </div>
 
@@ -97,7 +126,7 @@
                      <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                      <div class="media-body">
                          <h3>Phone number</h3>
-                         <p>+62 <?= $telpon2 ?></p>
+                         <p><a href="https://api.whatsapp.com/send?phone=082124899677&amp;text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan" target="_blank">0821-2489-9677</a></p>
                      </div>
                  </div>
                  <div class="media contact-info">
