@@ -2,33 +2,73 @@
 <html lang="en">
 
 
-<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bengkel Las Kanopi Depok Rafi Utama</title>
 
-    <title><?= $judul ?></title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Bengkel Las Handal Melayani Pembuatan Pagar Rumah, Kanopi, Railling Tangga, Balkon, Teralis, Stainless, Kontruksi Baja, gorden, folding gate, dll. Kontruksi Bangunan Di Jakarta, Bogor, Depok, Tangerang gratis survey dan konsultasi 100%">
+    <meta name="keywords" content="Bengkel las kanopi, jasa, Teralis, Pagar, Canopy, Reling Tangga, Gorden, Balkon, Folding Gate, di, depok, jabodetabek">
+    <meta name="author" content="Rafi Utama">
+    <meta name="title" content=" Rafi Utama Bengkel Las Kanopi Depok">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rafiutama.com/">
+    <meta property="og:title" content="Bengkel Las Rafi Utama">
+    <meta property="og:description" content="Bengkel Las Handal Melayani Pembuatan Pagar Rumah, Kanopi, Railling Tangga, Balkon, Teralis, Stainless, Kontruksi Baja, gorden, folding gate, dll. Kontruksi Bangunan Di Jakarta, Bogor, Depok, Tangerang gratis survey dan konsultasi 100%">
+    <meta property="og:image" content="">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rafiutama.com/">
+    <meta property="twitter:title" content="Bengkel Las Rafi Utama">
+    <meta property="twitter:description" content="Bengkel Las Handal Melayani Pembuatan Pagar Rumah, Kanopi, Railling Tangga, Balkon, Teralis, Stainless, Kontruksi Baja, gorden, folding gate, dll. Kontruksi Bangunan Di Jakarta, Bogor, Depok, Tangerang gratis survey dan konsultasi 100%">
+    <meta property="twitter:image" content="">
+    <meta name="google-site-verification" content="WiqnZVxBQdP_y4w4c0KgGIdyVAQVqPOaOVfhqUoMlLs" />
+    <script type="application/ld+json">
+        {
+            "name": "Bengkel Las Rafi Utama",
+            "description": "Bengkel Las Handal Melayani Pembuatan Pagar Rumah, Kanopi, Railling Tangga, Balkon, Teralis, Stainless, Kontruksi Baja, gorden, folding gate, dll. Kontruksi Bangunan Di Jakarta, Bogor, Depok, Tangerang gratis survey dan konsultasi 100%",
+            "author": {
+                "@type": "Person",
+                "name": "Sandi Gordon"
+            },
+            "@type": "WebSite",
+            "url": "",
+            "headline": "<?= $title ?>",
+            "@context": "http://schema.org"
+        }
+    </script>
+    <!-- End SEO tag -->
 
     <link rel="icon" href="<?= base_url(); ?>assets/frontend/img/upload/logo/<?= $logo ?>">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/bootstrap.min.css">
-    <!-- animate CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/animate.css">
-    <!-- owl carousel CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/owl.carousel.min.css">
-    <!-- themify CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/themify-icons.css">
-    <!-- flaticon CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/flaticon.css">
-    <!-- font awesome CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/magnific-popup.css">
-    <!-- swiper CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/slick.css">
-    <!-- style CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/style.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/font-awesome-ie7.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDTKQ2NKKJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LDTKQ2NKKJ');
+    </script>
 
 
     <style>
