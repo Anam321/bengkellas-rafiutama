@@ -36,11 +36,11 @@
             "description": "Bengkel Las Handal Melayani Pembuatan Pagar Rumah, Kanopi, Railling Tangga, Balkon, Teralis, Stainless, Kontruksi Baja, gorden, folding gate, dll. Kontruksi Bangunan Di Jakarta, Bogor, Depok, Tangerang gratis survey dan konsultasi 100%",
             "author": {
                 "@type": "Person",
-                "name": "Sandi Gordon"
+                "name": "Rafi Utama"
             },
             "@type": "WebSite",
             "url": "",
-            "headline": "<?= $title ?>",
+            "headline": "Bengkel las kanopi",
             "@context": "http://schema.org"
         }
     </script>
