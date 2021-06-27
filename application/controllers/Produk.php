@@ -20,6 +20,7 @@ class Produk extends CI_Controller
             'judul' => 'Produk dan Service | ' . $this->produk->get_profile('nama_perusahaan'),
             'logo' => $this->produk->get_profile('logo'),
             'telpon2' => $this->produk->get_profile('no_telpon2'),
+            'telpon' => $this->produk->get_profile('no_telpon'),
         ];
 
         $footer = [
