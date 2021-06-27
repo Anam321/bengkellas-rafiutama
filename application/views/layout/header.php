@@ -29,7 +29,9 @@
     <meta property="twitter:title" content="Bengkel Las Rafi Utama">
     <meta property="twitter:description" content="Bengkel Las Handal Melayani Pembuatan Pagar Rumah, Kanopi, Railling Tangga, Balkon, Teralis, Stainless, Kontruksi Baja, gorden, folding gate, dll. Kontruksi Bangunan Di Jakarta, Bogor, Depok, Tangerang gratis survey dan konsultasi 100%">
     <meta property="twitter:image" content="">
-    <meta name="google-site-verification" content="s-8zuagtE7ZhM0_DdTP1E9U_b3LnPAfV0iJvyluQaPY" />
+
+    <!-- reset meta tag -->
+
     <script type="application/ld+json">
         {
             "name": "Bengkel Las Rafi Utama",
