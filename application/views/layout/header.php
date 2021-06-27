@@ -6,6 +6,7 @@
 
 <head>
     <!-- Required meta tags -->
+    <meta name="google-site-verification" content="WiqnZVxBQdP_y4w4c0KgGIdyVAQVqPOaOVfhqUoMlLs" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bengkel Las Kanopi Depok Rafi Utama</title>
@@ -29,8 +30,6 @@
     <meta property="twitter:title" content="Bengkel Las Rafi Utama">
     <meta property="twitter:description" content="Bengkel Las Handal Melayani Pembuatan Pagar Rumah, Kanopi, Railling Tangga, Balkon, Teralis, Stainless, Kontruksi Baja, gorden, folding gate, dll. Kontruksi Bangunan Di Jakarta, Bogor, Depok, Tangerang gratis survey dan konsultasi 100%">
     <meta property="twitter:image" content="">
-
-    <!-- reset meta tag -->
 
     <script type="application/ld+json">
         {
