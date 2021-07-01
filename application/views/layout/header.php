@@ -3,9 +3,11 @@
 
 
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<script src="https://www.googleoptimize.com/optimize.js?id=OPT-MNTP3VB"></script>
 
 <head>
     <!-- Required meta tags -->
+    <meta name="google-site-verification" content="WiqnZVxBQdP_y4w4c0KgGIdyVAQVqPOaOVfhqUoMlLs" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bengkel Las Kanopi Depok Rafi Utama</title>
@@ -29,7 +31,7 @@
     <meta property="twitter:title" content="Bengkel Las Rafi Utama">
     <meta property="twitter:description" content="Bengkel Las Handal Melayani Pembuatan Pagar Rumah, Kanopi, Railling Tangga, Balkon, Teralis, Stainless, Kontruksi Baja, gorden, folding gate, dll. Kontruksi Bangunan Di Jakarta, Bogor, Depok, Tangerang gratis survey dan konsultasi 100%">
     <meta property="twitter:image" content="">
-    <meta name="google-site-verification" content="WiqnZVxBQdP_y4w4c0KgGIdyVAQVqPOaOVfhqUoMlLs" />
+
     <script type="application/ld+json">
         {
             "name": "Bengkel Las Rafi Utama",
@@ -56,32 +58,6 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/slick.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/style.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/font-awesome-ie7.css">
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDTKQ2NKKJ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-LDTKQ2NKKJ');
-    </script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-200633772-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-200633772-1');
-    </script>
 
 
     <style>
@@ -195,6 +171,19 @@
         }
     </style>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-200633772-1">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-200633772-1');
+    </script>
 </head>
 
 <body>
