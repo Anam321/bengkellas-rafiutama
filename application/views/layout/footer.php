@@ -33,7 +33,7 @@
                         <p><span> Address :</span> </p>
                         <p>INDONESIA</p>
                         <p><?= $alamat ?></p>
-                        <p><span> Phone :</span> <?= $telpon2 ?></p>
+                        <p><span> Phone :</span> <a href="tel:+6282124899677">+6282124899677</a></p>
 
 
                         <p><span> Email : </span> <?= $email ?> </p>
@@ -50,11 +50,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <p class="footer-text m-0">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>
                                     document.write(new Date().getFullYear());
                                 </script> All rights reserved | Rafiutama.com by <a href="#" target="_blank">AnbomekerDev</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
                     </div>

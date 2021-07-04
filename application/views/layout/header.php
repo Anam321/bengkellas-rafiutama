@@ -188,7 +188,7 @@
 
 <body>
 
-    <a href="https://api.whatsapp.com/send?phone=<?= $telpon2 ?>&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan" target="_blank" class="cs-demo-switcher">
+    <a href="https://api.whatsapp.com/send?phone=+6282124899677&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan" target="_blank" class="cs-demo-switcher">
         <div class="cs-demo-switcher-inner bg-success" data-toggle="tooltip" data-placement="left" title="Hubungi ahh..">
             <img src="<?= base_url('assets/frontend/fonts/Whatsapp_icon-icons.com_66931.png'); ?>" alt="">
         </div>
@@ -225,7 +225,7 @@
                                     <a class="nav-link" href="<?= base_url('contact'); ?>">CONTACT</a>
                                 </li>
                                 <li class="d-none d-lg-block">
-                                    <a class="btn_1" href="https://api.whatsapp.com/send?phone=<?= $telpon2 ?>&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan">Hubungi Kami</a>
+                                    <a class="btn_1" target="_blank" href="https://api.whatsapp.com/send?phone=+6282124899677&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan">Hubungi Kami</a>
                                 </li>
                             </ul>
                         </div>
