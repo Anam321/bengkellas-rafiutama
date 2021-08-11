@@ -3,11 +3,10 @@
 
 
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<script src="https://www.googleoptimize.com/optimize.js?id=OPT-MNTP3VB"></script>
 
 <head>
     <!-- Required meta tags -->
-    <meta name="google-site-verification" content="WiqnZVxBQdP_y4w4c0KgGIdyVAQVqPOaOVfhqUoMlLs" />
+    <meta name="google-site-verification" content="AYVgDx7uGCR0QHnyOmLcSYvPMw1J14DUMEPJyGr2x9Q" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bengkel Las Kanopi Depok Rafi Utama</title>
@@ -172,18 +171,7 @@
     </style>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-200633772-1">
-    </script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-200633772-1');
-    </script>
 </head>
 
 <body>
