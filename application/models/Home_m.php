@@ -14,15 +14,23 @@ class Home_m extends CI_Model
     }
 
 
+    public function get_hero()
+   {
+      $query = $this->db->query('select * from set_hero');
 
-    public function get_hero_f($f_hero)
-    {
-        $query = $this->db->get('set_hero')->row();
-        // $result = $query;
-        $data = $query->$f_hero;
+      $data = array();
+      foreach ($query->result() as $row) {
+         $data[] = array(
+            'id_hero' => $row->id_hero,
+            'tittle' => $row->tittle,
+            'deskripsi' => $row->deskripsi,
+            
+            'foto' => $row->foto,
+         );
+      }
+      return $data;
+   }
 
-        return $data;
-    }
 
     public function getKategoriProduk()
     {

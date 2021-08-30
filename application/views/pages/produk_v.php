@@ -1,4 +1,4 @@
-<style>
+ <style>
     .main-section {
         margin-top: 20px;
     }
@@ -51,50 +51,34 @@
         object-fit: cover;
     }
 </style>
-<!-- <section class="breadcrumb breadcrumb_bg align-items-center">
-    <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-sm-6">
-                <div class="breadcrumb_tittle text-left">
-                    <h2>Produk</h2>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="breadcrumb_content text-right">
-                    <p>Home<span>/</span>Produk</p>
-                </div>
-            </div>
+
+
+ <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <p>Check our Portfolio</p>
         </div>
-    </div>
-</section> -->
 
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
 
-<section class="our_project mt-4 mb-4" id="portfolio">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-lg-5 col-sm-10">
-                <div class="section_tittle">
-                    <h2>Our Produk</h2>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-10">
-                <div class="filters portfolio-filter project_menu_item">
-                    <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <?php foreach ($kategori as $kat) : ?>
-                            <li data-filter=".<?= $kat['id_kategori'] ?>"><?= $kat['nama_kategori'] ?></li>
-                        <?php endforeach ?>
-
-                    </ul>
-                </div>
-            </div>
+               <?php foreach ($kategori as $kat) : ?>
+              <li data-filter=".<?= $kat['id_kategori'] ?>"><?= $kat['nama_kategori'] ?></li>
+               <?php endforeach ?>
+           
+            </ul>
+          </div>
         </div>
-        <div class="filters-content">
-            <div class="row justify-content-between portfolio-grid">
 
-                <?php foreach ($produk as $p) : ?>
-                    <div class="col-md-3 mb-4 all <?= $p['id_kategori'] ?>">
-                        <a href="<?= base_url() ?>produk/produk_detail/<?= $p['slug'] ?>" class="card shadow-sm">
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+        <?php foreach ($produk as $p) : ?>
+          <div class="col-lg-4 col-md-6 portfolio-item <?= $kat['id_kategori'] ?>">
+             <a href="<?= base_url() ?>produk/produk_detail/<?= $p['slug'] ?>" class="card shadow-sm">
                             <img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $p['foto'] ?>" class="card-img-top mx-auto d-block" alt="Gambar Foto <?= $p['nama_p'] ?>">
 
                             <div class="card-body">
@@ -129,66 +113,13 @@
                                     </small></p>
                             </div>
                         </a>
-                    </div>
-                <?php endforeach ?>
-
-            </div>
+          </div>
+        <?php endforeach ?>
+        
         </div>
 
-        <!-- <div class="filters-content">
-            <div class="row justify-content-between portfolio-grid">
+      </div>
+      <?php echo $paging ?>
 
-                <?php // foreach ($produk as $p) :
-                ?>
-
-                    <div class="col-lg-3 mb-5 col-sm-6 all <?= $p['filter'] ?>">
-                        <div class="section border bg-white rounded p-2">
-                            <div class="row">
-                                <div class="col-lg-12 img-section">
-
-
-
-
-                                </div>
-                                <div class="col-lg-12 sectin-title">
-                                    <h1 class="pt-2"><?= $p['nama_p'] ?></h1>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="row">
-                                        <div class="col-lg-2">
-                                            <span class="badge badge-success p-2">Rp <?= $p['harga'] ?></span>
-                                        </div>
-                                        <div class="col-lg-10 text-right">
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star-half-alt"></i></span><br>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-
-                                <div class="col-lg-12 pb-2">
-                                    <div class="row" style="justify-content: center;">
-                                        <div class="col-lg-6">
-                                            <a href="<?= base_url('produk/produk_detail/'); ?><?= $p['slug'] ?>" class="btn btn-primary btn-block btn-sm">VIEW PRODUK</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <?php // endforeach
-                ?>
-
-            </div>
-        </div> -->
-    </div>
-
-    <?php echo $paging ?>
-
-
-</section>
+    </section>
+    

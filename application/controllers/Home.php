@@ -32,12 +32,9 @@ class Home extends CI_Controller
 
             'visi' => $this->home->get_profile('visi'),
             'misi' => $this->home->get_profile('misi'),
-            'foto' => $this->home->get_profile('foto'),
-            'foto_2' => $this->home->get_profile('foto'),
-            'foto_h' => $this->home->get_hero_f('foto'),
+           'hero' => $this->home->get_hero(),
 
             'keterangan_p' => $this->home->get_profile('keterangan_perusahaan'),
-
 
 
             'produk' => $this->home->get_produkLimit(8, 0),

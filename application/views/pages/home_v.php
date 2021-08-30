@@ -1,320 +1,291 @@
-<style>
-    .content {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
+ <section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
-    .hero {
-        position: relative;
-        background: #333333;
-        color: white;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-    }
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
-    .hero h1 {
-        position: relative;
-        z-index: 1;
-        font-size: 4.5rem;
-        margin: 0 0 10px;
-        line-height: 1;
-        color: rgba(255, 255, 255, 0.9);
-        z-index: 1;
-    }
+      <div class="carousel-inner" role="listbox">
 
-    .hero p {
-        position: relative;
-        z-index: 1;
-        font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.5);
-        line-height: 1.4;
-        z-index: 1;
-    }
-
-
-    .heroText {
-        text-align: center;
-        color: #fff;
-        margin-top: 150px;
-        z-index: 1;
-    }
-
-    .heroText h1 {
-        font-size: 3em;
-        margin: 0;
-    }
-
-    .heroText button {
-        color: #fff;
-        background: transparent;
-        border: solid 2px #fff;
-        padding: 10px 30px;
-        border-radius: 30px;
-        margin: 5px;
-        font-weight: bold;
-        display: inline-block;
-    }
-
-    .heroText button:hover {
-        cursor: pointer;
-        background: #fff;
-        border: solid 2px #fff;
-        color: #333;
-
-    }
-
-    button.joinNow {
-        background: rgb(0, 206, 93);
-        border: solid 2px rgb(0, 206, 93);
-    }
-
-    button.joinNow:hover {
-        color: #fff;
-        background: rgb(1, 168, 76);
-        border: solid 2px rgb(1, 168, 76);
-    }
-
-    /* ========================= */
-
-    .waves {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 250px;
-        background-color: var(--color);
-        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
-        transition: 500ms;
-    }
-
-    .waves::before,
-    .waves::after {
-        content: '';
-        position: absolute;
-        width: 300vw;
-        height: 300vw;
-        top: -65vw;
-        left: 50%;
-        transform: translate(-50%, -75%);
-    }
-
-    .waves::before {
-        border-radius: 44%;
-        background: #001b5e;
-        animation: waves 8s linear infinite;
-    }
-
-    .waves::after {
-        border-radius: 44%;
-        background: #ff5e13;
-        animation: waves 15s linear infinite;
-    }
-
-    @keyframes waves {
-        0% {
-            transform: translate(-50%, -75%) rotate(0deg);
-        }
-
-        100% {
-            transform: translate(-50%, -75%) rotate(360deg);
-        }
-    }
-
-    .card-img-top {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-    }
-</style>
-
-
-
-
-
-
-<section class="hero" style="background-image: url(<?= base_url(); ?>assets/frontend/img/upload/hero/<?= $foto_h ?>);">
-    <div class=" content">
-        <div class="heroText">
-            <h1><span>Berkomitmen </span><?= $tittle ?></h1>
-            <p>Push yourself, no one else is going to do it for you.</p>
-            <a href="#" class="btn_1">View project </a>
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url(<?= base_url() ; ?>assets/frontend/img/upload/produk/IMG-20210521-WA0027.jpg)">
+          <div class="carousel-container">
+            <div class="container">
+              <h2 class="animate__animated animate__fadeInDown">Selamat Datang Di WEb <br> <span>Rafiutama.com</span></h2>
+              <p class="animate__animated animate__fadeInUp">Nikmati kemudahan Dalam Transaksi, dan dapatkan Hasil produk yang bermutu dan berkualitas. Apa yang anda impikan kami siap mewujudkan. kepuasan pelanggan kepuasan kami juga.</p>
+              <a href="<?= base_url('produk') ?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+            </div>
+          </div>
         </div>
 
-    </div>
-    <div class="waves"></div>
-
-    </div>
-</section>
-
-<!-- banner part start-->
-
-<!-- about part start-->
-<section class="about_part section_padding">
-    <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-md-6 col-lg-6">
-                <div class="about_part_img">
-                    <img src="<?= base_url(); ?>assets/frontend/img/upload/profile/visi.jpg" alt="">
-                </div>
+        <?php foreach ($hero as $heros) : ?>
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url(<?= base_url() ; ?>assets/frontend/img/upload/hero/<?= $heros['foto'] ?>)">
+          <div class="carousel-container">
+            <div class="container">
+              <h2 class="animate__animated animate__fadeInDown"><?= $heros['tittle'] ?></h2>
+              <p class="animate__animated animate__fadeInUp"><?= $heros['deskripsi'] ?></p>
+              <a href="<?= base_url('produk') ?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
-            <div class="col-md-6 col-lg-5">
-                <div class="about_part_text">
-                    <h2>Rancang Impian Anda Bersama Kami</h2>
-                    <p><?= $keterangan_p ?></p>
-                    <ul>
-                        <li>
-                            <span class="flaticon-drop"></span>
-                            <h3>VISI</h3>
-                            <p><?= $visi ?> </p>
-                        </li>
-                        <li>
-                            <span class="flaticon-ui"></span>
-                            <h3>MISI</h3>
-                            <p><?= $misi ?> </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
-</section>
-<!-- about part end-->
 
-<!-- our_service start-->
-<section class="our_service padding_top">
-    <div class="container">
+        <?php endforeach ?>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About</h2>
+          <p>Rancang Impian Anda Bersama Kami</p>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <p>
+             <?= $keterangan_p ?>
+            </p>
+           
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            
+            <ul>
+              <li><i class="ri-check-double-line"></i>
+              <h2>VISI</h2>
+              <p><?= $visi ?></p>
+            </li>
+               
+            <ul>
+              <li><i class="ri-check-double-line"></i>
+              <h2>MISI</h2>
+              <p><?= $misi ?></p>
+            </li>
+            </ul>
+
+           
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row no-gutters">
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Happy Clients</strong> consequuntur quae qui deca rode</p>
+              <a href="#">Find out more &raquo;</a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-journal-richtext"></i>
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Projects</strong> adipisci atque cum quia aut numquam delectus</p>
+              <a href="#">Find out more &raquo;</a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-headset"></i>
+              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Hours Of Support</strong> aut commodi quaerat. Aliquam ratione</p>
+              <a href="#">Find out more &raquo;</a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-people"></i>
+              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Hard Workers</strong> rerum asperiores dolor molestiae doloribu</p>
+              <a href="#">Find out more &raquo;</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us section-bg">
+      <div class="container-fluid" data-aos="fade-up">
+
         <div class="row">
-            <div class="col-xl-5">
-                <div class="section_tittle">
-                    <h2>PELAYANAN KAMI</h2>
-                </div>
+
+          <div class="col-lg-5 align-items-stretch video-box" style='background-image: url("<?= base_url() ; ?>assets/frontend/img/upload/profile/visi.jpg");' data-aos="zoom-in" data-aos-delay="100">
+            
+          </div>
+
+          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
+
+            <div class="content">
+              <h3><strong>Kami Berpengalaman dalam Pengerjaan</strong></h3>
+             
             </div>
+
+            <div class="accordion-list">
+              <ul>
+                <li>
+                  <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"> Pengenalan Perusahaan <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                    <p>
+                      <?= $deskripsi ?>
+                    </p>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+
         </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>PELAYANAN KAMI</p>
+        </div>
+
         <div class="row">
-            <div class="col-sm-6 col-xl-4">
-                <div class="single_feature">
-                    <div class="single_service">
-                        <span class="flaticon-ui"></span>
-                        <h4>Pengerjaan Cepat Dan Tepat</h4>
-                        <p>Kami selalu mengerjakan dengan cepat, akurat dan tepat. Tentu nya dengan hasil yang baik. kami selalu teliti dengan pengerjaan kami, keselamatan dalam ruang lingkup kerja selalu di prioritaskan</p>
-                        <a href="#" class="btn_3">read more</a>
-                    </div>
-                </div>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4><a href="">Konstruksi</a></h4>
+              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
             </div>
-            <div class="col-sm-6 col-xl-4">
-                <div class="single_feature">
-                    <div class="single_service">
-                        <span class="flaticon-ui"></span>
-                        <h4>Bahan Berkualitas</h4>
-                        <p>Produk kami selalu mengguakan bahan-bahan yag berkualitas, kepuasan pelanggan adalah ke utamaan kami</p>
-                        <br><br>
-                        <a href="#" class="btn_3">read more</a>
-                    </div>
-                </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Perbaikan</a></h4>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
             </div>
-            <div class="col-sm-6 col-xl-4">
-                <div class="single_feature">
-                    <div class="single_service single_service_2">
-                        <span class="flaticon-ui"></span>
-                        <h4>Good Service</h4>
-                        <p>service kami selalu yang terbaik, pelayanan yang ter aplikasi kan dengan sangat sempurna</p>
-                        <br><br><br><br>
-                        <a href="#" class="btn_3">read more</a>
-                    </div>
-                </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="">Interior</a></h4>
+              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
             </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-arch"></i></div>
+              <h4><a href="">Gorden</a></h4>
+              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+            </div>
+          </div>
+
         </div>
-    </div>
-</section>
-<!-- our_service part end-->
+
+      </div>
+    </section><!-- End Services Section -->
 
 
-<!-- about part start-->
-<section class="about_part experiance_part section_padding">
-    <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-md-6 col-lg-6">
-                <div class="about_part_text">
-                    <h2>Kami Berpengalaman dalam Pengerjaan</h2>
 
-                    <p><?= $deskripsi ?></p>
 
-                    <div class="about_text_iner">
-                        <div class="about_text_counter">
-                            <h2>10</h2>
-                        </div>
-                        <div class="about_iner_content">
-                            <h3>Tahun <span>Kami Berdiri</span></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6">
-                <div class="about_part_img">
-                    <img src="<?= base_url(); ?>assets/frontend/img/upload/logo/1.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- about part end-->
-
-<!-- our_project part start-->
-<section class="our_project section_padding" id="portfolio">
-    <div class="container">
-
-        <div class="row justify-content-between">
-            <div class="col-lg-5 col-sm-10">
-                <div class="section_tittle">
-                    <h2>PRODUK KAMI</h2>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-10">
-                <div class="filters portfolio-filter project_menu_item">
-                    <ul>
-
-                        <li> <a class="text-warning" href="<?= base_url('produk') ?>"> Lihat selengkapnya</a> </li>
-
-                    </ul>
-                    <!-- <ul>
-
-                        <li data-filter=".K_las">Kontruksi Las</li>
-                        <li data-filter=".Gorden">Gorden</li>
-
-                    </ul> -->
-                </div>
+    <section id="skills" class="skills">
+      <div class="container">
+        <div class="section-title">
+            <p>Produk Kami</p> 
+            <div class="mt-5">
+                <h2><a href="<?= base_url('produk') ?>">Lihat Selengkapnya</a></h2>   
             </div>
         </div>
 
-        <!-- <div class="filters-content">
-            <div class="row justify-content-between portfolio-grid">
 
+                <style>
+                    .main-section {
+                        margin-top: 20px;
+                    }
+
+                    .add-sens {
+                        position: absolute;
+                        top: 0px;
+                        right: 50px;
+                    }
+
+                    .img-section {
+                        overflow: hidden;
+                    }
+
+                    .img-section img {
+                        overflow: hidden;
+
+                        height: 200px;
+                    }
+
+                    .img-section img:hover {
+                        opacity: 0.6;
+                        transition: 0.5s;
+                        cursor: pointer;
+                    }
+
+                    .sectin-title h1 {
+                        font-weight: 700;
+                        font-size: 23px;
+                        color: #ff5e13;
+                    }
+
+                    .section-detail p {
+                        color: #756d6d;
+                        letter-spacing: 1px;
+                    }
+
+                    .fa-star,
+                    .fa-star-half-alt {
+                        color: #ff5e13;
+                    }
+
+                    .fa-star-half-alt {
+                        margin-right: 10px;
+                    }
+
+                    .card-img-top {
+                        width: 100%;
+                        height: 250px;
+                        object-fit: cover;
+                    }
+                </style>
+
+
+
+        <div class="row skills-content">
                 <?php foreach ($produk as $p) : ?>
-
-                    <div class="col-lg-4 col-sm-6 mb-4 all <?= $p['filter'] ?>">
-                        <div class="single_our_project">
-                            <div class="single_offer">
-                                <img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $p['foto'] ?>" alt="offer_img_1">
-                                <div class="hover_text">
-                                    <p><?= $p['nama_p'] ?></p>
-                                    <a href="#" class="btn_1">View produk </a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <?php endforeach ?>
-
-
-            </div>
-        </div> -->
-        <div class="row">
-
-            <?php foreach ($produk as $p) : ?>
                 <div class="col-md-3 mb-4">
                     <a href="<?= base_url() ?>produk/produk_detail/<?= $p['slug'] ?>" class="card shadow-sm">
                         <img src="<?= base_url(); ?>assets/frontend/img/upload/produk/<?= $p['foto'] ?>" class="card-img-top mx-auto d-block" alt="Gambar Foto <?= $p['nama_p'] ?>">
@@ -353,233 +324,64 @@
                     </a>
                 </div>
             <?php endforeach ?>
-
-        </div>
-    </div>
-
-
-</section>
-<!-- our_project part end-->
-
-<!-- member_counter counter start -->
-<!-- <section class="member_counter padding_bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_counter_icon">
-                    <img src="<?= base_url(); ?>assets/frontend/img/icon/Icon_1.svg" alt="">
-                </div>
-                <div class="single_member_counter">
-                    <span class="counter">60</span>
-                    <h4> <span>Satisfied</span> Client</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_counter_icon">
-                    <img src="<?= base_url(); ?>assets/frontend/img/icon/Icon_2.svg" alt="">
-                </div>
-                <div class="single_member_counter">
-                    <span class="counter">10</span>
-                    <h4> <span>Worldwide</span> Branches</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_counter_icon">
-                    <img src="<?= base_url(); ?>assets/frontend/img/icon/Icon_3.svg" alt="">
-                </div>
-                <div class="single_member_counter">
-                    <span class="counter">80</span>
-                    <h4> <span>Total</span> Projects</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_counter_icon">
-                    <img src="<?= base_url(); ?>assets/frontend/img/icon/Icon_4.svg" alt="">
-                </div>
-                <div class="single_member_counter">
-                    <span class="counter">24</span>
-                    <h4> <span>Work</span> Finished</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-<!-- member_counter counter end -->
-
-<div class="modal fade" id="modaltesti" tabindex="-1" role="dialog" aria-labelledby="modaltestiLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Form testimoni</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <?php echo form_open_multipart(base_url('home/inputtesti')); ?>
-            <div class="modal-body">
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group">
-
-                            <textarea class="form-control w-100" id="testmoni" name="testimoni" rows="4" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukan penilaian anda terhadap kinerja kami ..'" placeholder='Masukan penilaian anda terhadap kinerja kami ..' required></textarea>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <input class="form-control" id="nama" name="nama" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama lengkap'" placeholder='Nama lengkap'>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <input class="form-control" id="foto" name="foto" type="file" placeholder="pilih foto anda" required>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-success">Submit testimoni</button>
-            </div>
-            <?php echo form_close(); ?>
-        </div>
-    </div>
-</div>
-
-<!-- review part start-->
-<section class="review_part section_padding">
-    <div class="container-fluid">
-        <div class="row align-items-center justify-content-end">
-            <div class="col-lg-5 col-xl-4">
-                <div class="tour_pack_text">
-                    <h2>Testimoni</h2>
-                    <p class="mb-3">Anda sudah jadi bagian dari pelanggan kami ? berikan ulasanmu terhadap hasil pekerjaan kami :)</p>
-                    <?= $this->session->flashdata('message'); ?>
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#modaltesti" class="btn_3">Beri penilaian</a>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-12">
-                <div class="review_part_cotent owl-carousel">
-
-                    <?php foreach ($testimoni as $testi) : ?>
-
-                        <div class="single_review_part">
-                            <img src="<?= base_url(); ?>assets/frontend/img/upload/testimoni/<?= $testi['foto'] ?>" alt="">
-                            <div class="tour_pack_content">
-                                <p><?= $testi['testimoni'] ?></p>
-                                <h4><?= $testi['nama'] ?></h4>
-                            </div>
-                        </div>
-
-                    <?php endforeach ?>
-
-
-
-
-                </div>
-            </div>
         </div>
 
+      </div>
+    </section>
 
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
 
-
-
-        <!-- <div class=" col-lg-4">
-            <div class="blog_right_sidebar">
-
-                <aside class="single_sidebar_widget popular_post_widget">
-                    <div class="col-12">
-                        <h2 class="contact-title">Get in Testimoni</h2>
-                    </div>
-                    <div class="col-12">
-                        <?= $this->session->flashdata('message'); ?>
-                    </div>
-                    <div class="col-lg-10">
-
-
-                        <?php echo form_open_multipart(base_url('home/inputtesti')); ?>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-
-                                    <textarea class="form-control w-100" id="testmoni" name="testimoni" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder='Enter Message' required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input class="form-control" id="nama" name="nama" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'name'" placeholder='name'>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input class="form-control" id="foto" name="foto" type="file">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group mt-3">
-
-                            <button type="submit" class="button button-contactForm btn_1">Send Message</button>
-                        </div>
-
-
-                        <?php echo form_close(); ?>
-
-
-                    </div>
-
-                </aside>
-
-
-
-            </div>
-        </div> -->
-    </div>
-</section>
-<!-- review part end-->
-
-<!--::blog_part start::-->
-<section class="our_project section_padding">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-lg-5 col-sm-10">
-                <div class="section_tittle">
-                    <h2>BLOG</h2>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-10">
-                <div class="filters portfolio-filter project_menu_item">
-                    <ul>
-
-                        <li> <a class="text-warning" href="<?= base_url('blog') ?>"> Baca selengkapnya</a> </li>
-
-                    </ul>
-                </div>
-            </div>
+        <div class="text-center">
+          <h3>Call To Action</h3>
+          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <a class="cta-btn" href="https://api.whatsapp.com/send?phone=+6282124899677&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan">Call To Action</a>
         </div>
-        <div class="row">
 
+      </div>
+    </section>
 
-            <?php foreach ($blog as $b) : ?>
-                <div class="blog_left_sidebar">
-                    <article class="blog_item">
-                        <div class="blog_details">
-                            <p>Posted By : <?= $b['user_post'] ?></p>
-                            <a class="d-inline-block" href="<?= base_url('blog/read/') ?><?= $b['slug'] ?>">
-                                <h2><?= $b['judul'] ?></h2>
-                            </a>
-                            <p><?= preg_replace('#</?(p|img).*?>#is', '', $b['konten']);  ?></p>
-                            <ul class="blog-info-link">
-                                <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
-                                <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
-                            </ul>
-                        </div>
-                    </article>
-                </div>
-            <?php endforeach ?>
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container" data-aos="fade-up">
 
-
+        <div class="section-title">
+          <h2>Testimonials</h2>
+          <p>Testimonials</p>
         </div>
-    </div>
-</section>
+
+        <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+
+           <?php foreach ($testimoni as $testi) : ?>
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="<?= base_url(); ?>assets/frontend/img/upload/testimoni/<?= $testi['foto'] ?>" class="testimonial-img" alt="">
+                  <h3><?= $testi['nama'] ?></h3>
+                 
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  <?= $testi['testimoni'] ?>
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          <?php endforeach ?>
+
+           
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section>
+  
+
+   
+
+  </main>

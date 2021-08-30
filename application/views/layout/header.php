@@ -31,6 +31,9 @@
     <meta property="twitter:description" content="Bengkel Las Handal Melayani Pembuatan Pagar Rumah, Kanopi, Railling Tangga, Balkon, Teralis, Stainless, Kontruksi Baja, gorden, folding gate, dll. Kontruksi Bangunan Di Jakarta, Bogor, Depok, Tangerang gratis survey dan konsultasi 100%">
     <meta property="twitter:image" content="">
 
+    <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
     <script type="application/ld+json">
         {
             "name": "Bengkel Las Rafi Utama",
@@ -47,16 +50,26 @@
     </script>
     <!-- End SEO tag -->
 
-    <link rel="icon" href="<?= base_url(); ?>assets/frontend/img/upload/logo/<?= $logo ?>">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/animate.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/themify-icons.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/flaticon.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/magnific-popup.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/slick.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/style.css">
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/font-awesome-ie7.css">
+  <link href="<?= base_url() ; ?>assets/frontend/img/favicon.png" rel="icon">
+  <link href="<?= base_url() ; ?>assets/frontend/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="<?= base_url() ; ?>assets/frontend/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="<?= base_url() ; ?>assets/frontend/vendor/aos/aos.css" rel="stylesheet">
+  <link href="<?= base_url() ; ?>assets/frontend/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= base_url() ; ?>assets/frontend/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="<?= base_url() ; ?>assets/frontend/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="<?= base_url() ; ?>assets/frontend/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="<?= base_url() ; ?>assets/frontend/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="<?= base_url() ; ?>assets/frontend/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="<?= base_url() ; ?>assets/frontend/css/style.css" rel="stylesheet">
+   <link href="<?= base_url() ; ?>assets/frontend/css/font-awesome-ie7.css" rel="stylesheet">
+ <link href="<?= base_url() ; ?>assets/frontend/css/themify-icons.css" rel="stylesheet">
 
 
     <style>
@@ -190,48 +203,29 @@
 
     <a href="https://api.whatsapp.com/send?phone=+6282124899677&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan" target="_blank" class="cs-demo-switcher">
         <div class="cs-demo-switcher-inner bg-success" data-toggle="tooltip" data-placement="left" title="Hubungi ahh..">
-            <img src="<?= base_url('assets/frontend/fonts/Whatsapp_icon-icons.com_66931.png'); ?>" alt="">
+            <img src="<?= base_url('assets/frontend/iconwa.png'); ?>" alt="">
         </div>
     </a>
 
     <!--::header part start::-->
-    <header class="main_menu home_menu" style="border-bottom: 2px solid #ee390f;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="."> <img style="width: 190px; height: 60px;" src="<?= base_url(); ?>assets/frontend/img/upload/logo/<?= $logo ?>" alt="logo"> </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="ti-menu"></span>
-                        </button>
+   <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
 
-                        <div class="collapse navbar-collapse main-menu-item justify-content-end" id="navbarSupportedContent">
-                            <ul class="navbar-nav align-items-center">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?= base_url('home'); ?>">HOME</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?= base_url('about'); ?>">ABOUT</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?= base_url('produk'); ?>">PRODUCT</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?= base_url('blog'); ?>">BLOG</a>
-                                </li>
+      <h1 class="logo"><a href="index.html"><img src="<?= base_url(); ?>assets/frontend/img/upload/logo/<?= $logo ?>" alt=""></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="<?= base_url('home'); ?>">Home</a></li>
+          <li><a class="nav-link scrollto" href="<?= base_url('about'); ?>">Profile</a></li>
+          <li><a class="nav-link scrollto" href="<?= base_url('produk'); ?>">Produk</a></li>
+          <li><a class="nav-link scrollto " href="<?= base_url('blog'); ?>">Blog</a></li>
+          <li><a class="nav-link scrollto" href="<?= base_url('contact'); ?>">Kontak</a></li>
+          <li><a class="getstarted scrollto" href="https://api.whatsapp.com/send?phone=<?= $telpon ?>&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan">Hubungi Kami</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?= base_url('contact'); ?>">CONTACT</a>
-                                </li>
-                                <li class="d-none d-lg-block">
-                                    <a class="btn_1" target="_blank" href="https://api.whatsapp.com/send?phone=+6282124899677&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan">Hubungi Kami</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+    </div>
+  </header>

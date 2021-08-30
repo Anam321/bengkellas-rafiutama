@@ -1,92 +1,90 @@
-<footer class="footer-area">
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-sm-6 col-md-4 col-xl-3">
-                <div class="single-footer-widget footer_1">
-                    <a href="#"> <img src="<?= base_url(); ?>assets/frontend/img/upload/logo/<?= $logo ?>" alt=""> </a>
-                    <p><b>BENGKEL LAS RAFI UTAMA</b> BERDIRI TAHUN 1999 dengan modal pengalaman kami di bidang bengkel las selama puluhan tahun, dan didukung dengan tenaga kerja yang profesional dan ahli dibidangnya, kami yakin akan bisa mengerjakan kebutuhan perlengkapan rumah anda dengan hasil yang maksimal, karena motto kami adalah "kepuasan konsumen adalah kebahagian kami" sehingga hasil akhir dari setiap pengerjaan akan kami jaga kualitasnya.</p>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-md-4">
-                <div class="single-footer-widget footer_2">
-                    <h4>Best Services</h4>
-                    <div class="contact_info">
-                        <ul>
-                            <li>
-                                <a href="<?= base_url('admin/dashboard') ?>">Administrator</a>
-                            </li>
-                            <?php foreach ($kategori as $kat) : ?>
-                                <li>
-                                    <a href="#"><?= $kat['nama_kategori'] ?></a>
-                                </li>
-                            <?php endforeach ?>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-sm-6 col-md-4">
-                <div class="single-footer-widget footer_2">
-                    <h4>Contact info</h4>
-                    <div class="contact_info">
-
-                        <p><span> Address :</span> </p>
-                        <p>INDONESIA</p>
-                        <p><?= $alamat ?></p>
-                        <p><span> Phone :</span> <a href="tel:+6282124899677">+6282124899677</a></p>
-
-
-                        <p><span> Email : </span> <?= $email ?> </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="container-fluid">
+<footer id="footer">
+    <div class="footer-top">
+      <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="copyright_part_text text-center">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <p class="footer-text m-0">
-                                Copyright &copy;<script>
-                                    document.write(new Date().getFullYear());
-                                </script> All rights reserved | Rafiutama.com by <a href="#" target="_blank">AnbomekerDev</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- footer part end-->
 
-<!-- jquery plugins here-->
-<!-- jquery -->
-<script src="<?= base_url(); ?>assets/frontend/dist/sweetalert2.all.min.js"></script>
-<script src="<?= base_url(); ?>assets/frontend/js/jquery-1.12.1.min.js"></script>
-<script src="<?= base_url(); ?>assets/frontend/js/myscript.js"></script>
-<!-- popper js -->
-<script src="<?= base_url(); ?>assets/frontend/js/popper.min.js"></script>
-<!-- bootstrap js -->
-<script src="<?= base_url(); ?>assets/frontend/js/bootstrap.min.js"></script>
-<!-- easing js -->
-<script src="<?= base_url(); ?>assets/frontend/js/jquery.magnific-popup.js"></script>
-<!-- swiper js -->
-<script src="<?= base_url(); ?>assets/frontend/js/swiper.min.js"></script>
-<!-- isotope js -->
-<script src="<?= base_url(); ?>assets/frontend/js/isotope.pkgd.min.js"></script>
-<!-- particles js -->
-<script src="<?= base_url(); ?>assets/frontend/js/owl.carousel.min.js"></script>
-<script src="<?= base_url(); ?>assets/frontend/js/jquery.nice-select.min.js"></script>
-<!-- swiper js -->
-<script src="<?= base_url(); ?>assets/frontend/js/slick.min.js"></script>
-<script src="<?= base_url(); ?>assets/frontend/js/jquery.counterup.min.js"></script>
-<script src="<?= base_url(); ?>assets/frontend/js/waypoints.min.js"></script>
-<!-- custom js -->
-<script src="<?= base_url(); ?>assets/frontend/js/custom.js"></script>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+               <img style="width: 200px; hight:200px" src="<?= base_url(); ?>assets/frontend/img/upload/logo/<?= $logo ?>" alt="">
+               <br><br><br>
+             <p><b>BENGKEL LAS RAFI UTAMA</b> BERDIRI TAHUN 1999 dengan modal pengalaman kami di bidang bengkel las selama puluhan tahun, dan didukung dengan tenaga kerja yang profesional dan ahli dibidangnya, kami yakin akan bisa mengerjakan kebutuhan perlengkapan rumah anda dengan hasil yang maksimal, karena motto kami adalah "kepuasan konsumen adalah kebahagian kami" sehingga hasil akhir dari setiap pengerjaan akan kami jaga kualitasnya.</p>
+             
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Profile</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Produk</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Blog</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Kontak</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Konstruki</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Perbaikan</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Interior</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Gorden</a></li>
+             
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>
+                <strong>Alamat :</strong>  <br> <p><?= $alamat ?></p><br>
+                 <strong>Telpon :</strong>  <br> <p><a href="<?= $telpon ?>"><?= $telpon ?></a></p><br>
+                  <strong>Email :</strong>  <br> <p><?= $email ?></p><br>
+            </p>
+           
+             
+              <div class="social-links mt-3">
+                
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=+6282124899677&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan" class="linkedin"><i class="bx bxl-whatsapp"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=+6282124899677&text=Halo%20rafiutama.com%20Mohon%20informasi%20produk%20produk%20dan%20pemesanan" class="linkedin"><i class="bx bxl-whatsapp"></i></a>
+              </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Rafiutama.com</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/multi-responsive-bootstrap-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">AnbomekerDev</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="<?= base_url() ; ?>assets/frontend/vendor/aos/aos.js"></script>
+  <script src="<?= base_url() ; ?>assets/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url() ; ?>assets/frontend/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="<?= base_url() ; ?>assets/frontend/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<?= base_url() ; ?>assets/frontend/vendor/php-email-form/validate.js"></script>
+  <script src="<?= base_url() ; ?>assets/frontend/vendor/purecounter/purecounter.js"></script>
+  <script src="<?= base_url() ; ?>assets/frontend/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="<?= base_url() ; ?>assets/frontend/js/main.js"></script>
 </body>
 
 

@@ -16,6 +16,7 @@ class Blog extends CI_Controller
             //title Page
             'judul' => 'Blog | ' . $this->blog->get_profile('nama_perusahaan'),
             'logo' => $this->blog->get_profile('logo'),
+            'telpon' => $this->blog->get_profile('no_telpon'),
             'telpon2' => $this->blog->get_profile('no_telpon2'),
         ];
 
@@ -81,6 +82,7 @@ class Blog extends CI_Controller
             'blog' => $this->blog->get_blogLimit($config['per_page'], $data['start']),
             'paging' => $this->pagination->create_links(),
             'kategori' => $this->blog->getKategoriProduk(),
+            
         ];
 
         // LOAD VIEW
@@ -113,7 +115,7 @@ class Blog extends CI_Controller
             'post' => $this->blog->get_blogLimit(4, 0),
             'blog' => $blog,
             'kategori' => $this->blog->getKategoriProduk(),
-
+            'produk' => $this->blog->get_produk(),
 
 
         ];

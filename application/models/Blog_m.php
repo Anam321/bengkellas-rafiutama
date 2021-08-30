@@ -52,6 +52,23 @@ class Blog_m extends CI_Model
         return $query->result();
     }
 
+   public function get_produk()
+   {
+      $query = $this->db->query('select * from ref_produk');
+
+      $data = array();
+      foreach ($query->result() as $row) {
+         $data[] = array(
+            'id_produk' => $row->id_produk,
+            'nama_p' => $row->nama_p,
+            'keterangan' => $row->keterangan,
+            'deskripsi' => $row->deskripsi,
+            'foto' => $row->foto,
+         );
+      }
+      return $data;
+   }
+
     public function getKategoriProduk()
     {
         $sql = $this->db->query("select * from ref_kategori");

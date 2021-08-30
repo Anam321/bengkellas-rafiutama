@@ -79,7 +79,7 @@ $db['default'] = array(
 	// 'hostname' => 'localhost',
 	// 'username' => 'root',
 	// 'password' => '',
-	// 'database' => 'rafi_utama',
+	// 'database' => 'db_rafiutama',
 
 	// Server database
 	'hostname' => 'cyrus.jagoanhosting.com',

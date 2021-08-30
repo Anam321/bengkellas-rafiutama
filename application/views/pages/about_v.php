@@ -1,67 +1,76 @@
-<!-- breadcrumb start-->
-<section class="breadcrumb breadcrumb_bg align-items-center">
-    <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-sm-6">
-                <div class="breadcrumb_tittle text-left">
-                    <h2>About Us</h2>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="breadcrumb_content text-right">
-                    <p>Home<span>/</span>About Us</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- breadcrumb start-->
+ <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
 
-<!-- about us start-->
-<section class="about_part section_padding">
-    <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-md-6 col-lg-6">
-                <div class="about_part_img">
-                    <img src="<?= base_url(); ?>assets/frontend/img/about_part_img.png" alt="">
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-5">
-                <div class="about_part_text">
-                    <h2>Rancang Impian Anda Bersama Kami</h2>
-                    <p><?= $visi ?></p>
-                    <p><?= $misi ?></p>
-
-                </div>
-            </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>About</h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>About</li>
+          </ol>
         </div>
-    </div>
-</section>
-<!-- about us part end-->
 
-<section class="about_part experiance_part section_padding single_experiance_section">
-    <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-md-6 col-lg-6">
-                <div class="about_part_text">
-                    <h2>We Are Experience
-                        in Construction</h2>
-                    <p><?= $deskripsi ?></p>
-                    <div class="about_text_iner">
-                        <div class="about_text_counter">
-                            <h2>10</h2>
-                        </div>
-                        <div class="about_iner_content">
-                            <h3>year <span>of Experience</span></h3>
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= About Section ======= -->
+
+
+<section id="why-us" class="why-us section-bg">
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-5 align-items-stretch video-box" style='background-image: url("<?= Base_url(); ?>assets/frontend/img/why-us.jpg");' data-aos="zoom-in" data-aos-delay="100">
+          
+          </div>
+
+          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
+
+            <div class="content">
+              <h3> <strong>Profile Dan sejarah Rafi utama</strong></h3>
+              <p>
+                 Ulasan tentang Rafiutama.com dari sejarah berdiri nya perusahaan kami.
+              </p>
             </div>
-            <div class="col-md-6 col-lg-6">
-                <div class="about_part_img">
-                    <img src="<?= base_url(); ?>assets/frontend/img/upload/logo/1.png" alt="">
-                </div>
+
+            <div class="accordion-list">
+              <ul>
+                <li>
+                  <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Tentang Kami<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                    <p>
+                    <?= $deskripsi ?>
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Visi Kami <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                    <p>
+                       <?= $visi ?>
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Misi Kami <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                    <p>
+                     <?= $misi ?>
+                    </p>
+                  </div>
+                </li>
+
+              </ul>
             </div>
+
+          </div>
+
         </div>
-    </div>
-</section>
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Our Skills Section ======= -->
+    

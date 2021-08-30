@@ -12,8 +12,6 @@ class Produk extends CI_Controller
 
     public function index()
 
-
-
     {
         $hdr = [
             //title Page
@@ -102,6 +100,12 @@ class Produk extends CI_Controller
 
         $produk = $this->produk->get_produk_by_slug($slug);
         $judul = $produk['nama_p'];
+        $config['base_url'] = base_url('produk/index');
+        $config['total_rows'] = $this->produk->get_CountProdukLimit();
+        $config['per_page'] = 12;
+        $config['num_links'] = 3;
+        
+        $data['start'] = $this->uri->segment('3');
 
 
         $data = [
@@ -115,7 +119,7 @@ class Produk extends CI_Controller
             'logo' => $this->produk->get_profile('logo'),
 
             // konten
-
+            'produk2' => $this->produk->get_produkLimit($config['per_page'], $data['start']),
             'produk' => $produk,
             'image' => $this->produk->get_image($slug),
 
